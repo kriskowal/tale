@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<style type="text/css" media="all">
+			@import url(software/@.css);
+		</style>
+	</head>
+	<body id="buffer">
+        <table height="97%" width="100%">
+            <tr>
+                <td align="center" valign"middle" width="50%">
+                    <p>Left side content area</p>
+                    <p><a href="javascript: messageBuffer.enqueueMessage('No information available at this time.')">About</a>
+                </td>
+                <td align="center" valign"middle">
+                    <img src="art/world.png"/><br/>
+                    <img src="art/title.png"/>
+                </td>
+                <td align="center" valign"middle" width="50%">
+                    Right side content area
+                </td>
+            </tr>
+        </table>
+        <span id="bufferEnd"/>
+        <table width="100%">
+            <tr>
+                <td id="prompt">Javascript:</td>
+                <td width="100%"><input type="textbox" id="command"/></td>
+            </tr>
+        </table>
+        <script src="messages.js"></script>
+    </body>
+</html>

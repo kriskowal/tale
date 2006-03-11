@@ -1,0 +1,40 @@
+
+window, body {
+	font-family: Verdana;
+	font-size: 12px;
+    background-color: #46B3D3;
+}
+
+.table
+{
+	border-top: 0;
+	border-left: 0;
+	border-bottom: solid #eeeeee 1px;
+	border-right: solid #eeeeee 1px;
+}
+
+.table td
+{
+	vertical-align: top;
+	border-bottom: 0;
+	border-right: 0;
+	border-top: solid #eeeeee 1px;
+	border-left: solid #eeeeee 1px;
+}
+
+.table th
+{
+	border-bottom: 0;
+	border-right: 0;
+	border-top: solid #eeeeee 1px;
+	border-left: solid #eeeeee 1px;
+}
+
+#command {
+    width: 100%;
+    background-color: #eeeeee;
+}
+
+.date {
+    color: #777777;
+}
