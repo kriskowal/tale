@@ -1,0 +1,52 @@
+<style>
+    .layer {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+</style>
+<body>
+    <img class="layer" id="shield-back" src="dread-orc-shield-back.png"/>
+    <img class="layer" id="leg-right" src="dread-orc-leg-right.png"/>
+    <img class="layer" id="leg-left" src="dread-orc-leg-left.png"/>
+    <img class="layer" id="torso" src="dread-orc-torso.png"/>
+    <img class="layer" id="shield-front" src="dread-orc-shield-front.png"/>
+    <img class="layer" id="armor" src="dread-orc-armor.png"/>
+    <img class="layer" id="head" src="dread-orc-head.png"/>
+    <img class="layer" id="arm-left" src="dread-orc-arm-left.png"/>
+    <script>
+        with (Math) {
+            var at = 0;
+            var count = 10;
+            var frequency = 50;
+            var scale = 1;
+            var leg_right = document.getElementById("leg-right");
+            var leg_left = document.getElementById("leg-left");
+            var torso = document.getElementById("torso");
+            var armor = document.getElementById("armor");
+            var arm_left = document.getElementById("arm-left");
+            var shield_front = document.getElementById("shield-front");
+            var shield_back = document.getElementById("shield-back");
+            var head = document.getElementById("head");
+            setInterval(
+                function () {
+                    leg_right.style.left = 20 * scale * sin(at * PI / count);
+                    leg_right.style.top = 20 * scale * cos(at * PI / count);
+                    leg_left.style.left = 25 * scale * sin(at * PI / count + PI);
+                    leg_left.style.top = 25 * scale * cos(at * PI / count + PI);
+                    torso.style.top = 15 * scale * sin(at * PI * 2 / count + PI / 2);
+                    armor.style.top = 10 * scale * sin(at * PI * 2 / count + PI / 4);
+                    arm_left.style.top =
+                        15 * scale * cos(at * PI / 2 / count + PI) +
+                        15 * scale * cos(at * PI / count + PI + PI / 4);
+                    head.style.top = 5 * scale * sin(at * PI * 2 / count + PI);
+                    head.style.left = 10 * scale * cos(at * PI / count + PI);
+                    shield_front.style.top = 5 * scale * sin(at * PI * 2 / count + PI / 2);
+                    shield_back.style.top = 5 * scale * sin(at * PI * 2 / count + PI / 2);
+                    at += 1;
+                },
+                frequency
+            );
+        }
+    </script>
+</body>
