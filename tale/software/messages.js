@@ -20,15 +20,15 @@ this.commandsAfter = [];
 
 this.refreshTitle = function () {
     if ((!hasFocus || reviewingMessages) && unviewedMessageCount > 0) {
-        title = "[" + unviewedMessageCount + "] " + titleBase;
+        this.title = "[" + unviewedMessageCount + "] " + titleBase;
     } else {
-        title = titleBase;
+        this.title = this.titleBase;
         unviewedMessageCount = 0;
     }
 };
 
 this.setTitle = function(newTitle) {
-    titleBase = newTitle;
+    this.titleBase = newTitle;
     refreshTitle();
 };
 
