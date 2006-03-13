@@ -92,6 +92,10 @@ this.enqueueMessage = function(message) {
     }
 };
 
+this.enqueueException = function(exception) {
+    enqueueMessage('<b>Client Exception: </b>' + exception);
+};
+
 this.enqueuePage = function(message) {
 	enqueueMessage(message);
 };
@@ -107,21 +111,12 @@ this.enqueueUrl = function(url) {
 			var message = req.responseText;
 			enqueueMessage(message);
 		} else {
-			enqueueMessage("<pre>Unable to load: " + url + "</pre>");
+			enqueueException("Unable to load <tt>" + url + "</tt>");
 		}
 		
 	} catch (x) {
-
-		enqueueMessage(
-            "<p><b>Exception:</b><p>" +
-            x +
-            "</p><p>Unable to load <tt>" +
-            url + 
-            "</tt>"
-        );
-
+		enqueueException(x + "<br/>Unable to load <tt>" + url + "</tt>");
         throw x;
-
 	}
 };
 
@@ -195,7 +190,7 @@ this.command = function(command) {
     try {
         handleCommand(command.value, enqueueMessage);
     } catch (x) {
-        enqueueMessage("<p><b>Exception:</b> <tt>" + x + "</tt></p>");
+        enqueueException(x);
     }
     command.value = "";
 };

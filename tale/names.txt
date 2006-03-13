@@ -1,0 +1,50 @@
+cube:
+    cubetale.com available
+    cubeward.com available
+    oldetale.com available
+    cubeworld.com taken
+    cubeworld.com taken
+
+corner:
+    cornertale.com available
+    corners.com taken
+    cornerworld.com taken
+    eightcorners.com taken
+
+tale:
+    cubetale.com available
+    cornertale.com available
+    sixtales.com available
+    hextale.com available
+    thytale.com available
+    tale.com taken
+    tales.com taken
+    mytale.com taken
+    yourtale.com taken
+    thetale.com taken
+
+world:
+    theworld.com taken
+    otherworld.com taken
+    tileworld.com taken
+
+legend:
+    legend.com taken
+    legendary.com taken
+
+olde:
+    oldetale.com available
+
+beyond.com taken
+etherion.com taken
+farfaraway.com taken
+faroff.com taken
+never.com taken
+neverafter.com taken
+nowhere.com taken
+somewhere.com taken
+there.com taken
+thyspace.com taken
+underwhere.com taken
+where.com taken
+myrpg.com taken
