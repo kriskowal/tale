@@ -37,6 +37,7 @@ var mage = (function () {
                             var response = request.responseXML;
                             session = response.getElementsByTagName('session')[0].firstChild.data;
                             var messages = response.getElementsByTagName('messages')[0];
+                            window.title = response.getElementsByTagName('title')[0].firstChild.data;
                             var message = messages.firstChild;
                             while (message) {
                                 enqueueMessage(message.firstChild.data);
