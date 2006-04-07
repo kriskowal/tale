@@ -44,7 +44,7 @@ try {
         }
 
         request = new XMLHttpRequest();
-        var url = urlBase + '/state?session=' + escape(session);
+        var url = urlBase + '/session?session=' + escape(session);
         if (arguments.length && command) {
             url += '&command=' + escape(command);
             request.command = command;
