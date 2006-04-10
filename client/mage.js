@@ -16,6 +16,8 @@ var enqueueException = function (x) {
     window.messageBuffer.enqueueException(x);
 }
 
+var commandTextbox = document.getElementById('command');
+
 try {
 
     var poll = function (command) {
@@ -68,6 +70,7 @@ try {
                         session = response.getElementsByTagName('session')[0].firstChild.data;
                         var messages = response.getElementsByTagName('messages')[0];
                         window.title = response.getElementsByTagName('title')[0].firstChild.data;
+                        commandTextbox.type = (response.getElementsByTagName('silent')[0].firstChild.data == "no")? "textbox" : "password";
                         var message = messages.firstChild;
                         while (message) {
                             enqueueMessage(message.firstChild.data);
