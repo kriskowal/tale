@@ -8,6 +8,7 @@ var initialConnectStatus = 0;
 var request = 0;
 var trials = 0;
 var trialMax = 20;
+var silent = 'no';
 
 var enqueueMessage = function (message) {
     window.messageBuffer.enqueueMessage(message);
@@ -16,7 +17,8 @@ var enqueueException = function (x) {
     window.messageBuffer.enqueueException(x);
 }
 
-var commandTextbox = document.getElementById('command');
+var commandBox = document.getElementById('command');
+var promptBox = document.getElementById('prompt');
 
 try {
 
@@ -68,9 +70,21 @@ try {
 
                         var response = request.responseXML;
                         session = response.getElementsByTagName('session')[0].firstChild.data;
+                        var prompt = response.getElementsByTagName('prompt')[0].firstChild.data;
+                        var silent2 = response.getElementsByTagName('silent')[0].firstChild.data;
+                        var title = response.getElementsByTagName('title')[0].firstChild.data;
                         var messages = response.getElementsByTagName('messages')[0];
-                        window.title = response.getElementsByTagName('title')[0].firstChild.data;
-                        commandTextbox.type = (response.getElementsByTagName('silent')[0].firstChild.data == "no")? "textbox" : "password";
+
+                        promptBox.innerHTML = prompt;
+
+                        if (silent != silent2) {
+                            silent = silent2;
+                            commandBox.type = (silent == "no")? "textbox" : "password";
+                            commandBox.focus();
+                        }
+
+                        window.title = title;
+
                         var message = messages.firstChild;
                         while (message) {
                             enqueueMessage(message.firstChild.data);

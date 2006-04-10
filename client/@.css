@@ -1,5 +1,5 @@
 
-window, body {
+window, body, #prompt {
 	font-family: Verdana;
 	font-size: 12px;
     background-color: #46B3D3;
@@ -38,3 +38,4 @@ window, body {
 .date {
     color: #777777;
 }
+
