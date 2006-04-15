@@ -1,34 +1,37 @@
 window.messageBuffer = (function () {
 
 // title
-this.titleBase = "Tale";
-this.hasFocus = 0;
-this.reviewingMessages = 0;
+var titleBase = "Tale";
+var hasFocus = 0;
+var reviewingMessages = 0;
 
 // messages
-this.unviewedMessageCount = 0;
-this.messageCountMax = 64;
-this.pageYFudge = 10;
-this.lastPageYOffset = 0;
+var unviewedMessageCount = 0;
+var messageCountMax = 64;
+var pageYFudge = 10;
+var lastPageYOffset = 0;
 
 // commands
-this.silent = 0;
-this.commandsBefore = [];
-this.commandsAfter = [];
+var silent = 0;
+var commandsBefore = [];
+var commandsAfter = [];
+
+var commandBox = document.getElementById("command");
+var titleBox = document.getElementsByTagName("title")[0];
 
 // title
 
 this.refreshTitle = function () {
     if ((!hasFocus || reviewingMessages) && unviewedMessageCount > 0) {
-        this.title = "[" + unviewedMessageCount + "] " + titleBase;
+        document.title = "[" + unviewedMessageCount + "] " + titleBase;
     } else {
-        this.title = this.titleBase;
+        document.title = titleBase;
         unviewedMessageCount = 0;
     }
 };
 
 this.setTitle = function(newTitle) {
-    this.titleBase = newTitle;
+    titleBase = newTitle;
     refreshTitle();
 };
 
@@ -53,7 +56,7 @@ window.addEventListener(
 window.addEventListener(
     "load",
     function () {
-        document.getElementById("command").focus();
+        commandBox.focus();
     },
     true
 );
@@ -146,34 +149,29 @@ this.autoScroll = function() {
     lastPageYOffset = window.document.height - window.innerHeight;
 };
 
-// prompt
-
-this.setPrompt = function(message) {
-	var prompt = document.getElementById("prompt");
-	prompt.value = message;
-};
-
-
 // command editor
 
-this.setSilent = function(silent) {
-	var command = document.getElementById("command");
-	command.type = silent? "password" : "";
+this.setSilent = function(silent2) {
+    if (silent != silent2) {
+        silent = silent2;
+        commandBox.type = silent? "password" : "textbox";
+        commandBox.focus();
+    }
 };
 
 
 // keypress handler
-document.getElementById("command").onkeydown = function (event) {
+commandBox.onkeydown = function (event) {
     var key = String.fromCharCode(event.which);
     if (0) {
     } else if (event.which == 13) { // enter
-        command(this);
+        command();
         return false;
     } else if (event.which == 38) { // up
-        commandUp(this);
+        commandUp();
         return false;
     } else if (event.which == 40) { // down
-        commandDown(this);
+        commandDown();
         return false;
     } else if (event.which == 27) { // escape
         this.value = "";
@@ -183,38 +181,38 @@ document.getElementById("command").onkeydown = function (event) {
 };
 
 // command history
-this.command = function(command) {
+this.command = function() {
 	if (!silent) {
-		commandsBefore.push(command.value);
+		commandsBefore.push(commandBox.value);
 	}
     try {
-        handleCommand(command.value, enqueueMessage);
+        handleCommand(commandBox.value, enqueueMessage);
     } catch (x) {
         enqueueException(x);
     }
-    command.value = "";
+    commandBox.value = "";
 };
-this.commandUp = function(command) {
+this.commandUp = function() {
 	if (!silent) {
-		if (/[^\s]/.test(command.value)) {
-			commandsAfter.unshift(command.value);
+		if (/[^\s]/.test(commandBox.value)) {
+			commandsAfter.unshift(commandBox.value);
 		}
-		if (this.commandsBefore.length > 0) {
-			command.value = commandsBefore.pop();
+		if (commandsBefore.length > 0) {
+			commandBox.value = commandsBefore.pop();
 		} else {
-			command.value = "";
+			commandBox.value = "";
 		}
 	}
 };
-this.commandDown = function(command) {
+this.commandDown = function() {
 	if (!silent) {
-		if (/[^\s]/.test(command.value)) {
-			commandsBefore.push(command.value);
+		if (/[^\s]/.test(commandBox.value)) {
+			commandsBefore.push(commandBox.value);
 		}
 		if (commandsAfter.length > 0) {
-			command.value = commandsAfter.shift();
+			commandBox.value = commandsAfter.shift();
 		} else {
-			command.value = "";
+			commandBox.value = "";
 		}
 	}
 };
@@ -230,4 +228,3 @@ autoScroll();
 
 return this;
 })();
-

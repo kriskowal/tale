@@ -71,19 +71,15 @@ try {
                         var response = request.responseXML;
                         session = response.getElementsByTagName('session')[0].firstChild.data;
                         var prompt = response.getElementsByTagName('prompt')[0].firstChild.data;
-                        var silent2 = response.getElementsByTagName('silent')[0].firstChild.data;
+                        var silent = response.getElementsByTagName('silent')[0].firstChild.data;
                         var title = response.getElementsByTagName('title')[0].firstChild.data;
                         var messages = response.getElementsByTagName('messages')[0];
 
                         promptBox.innerHTML = prompt;
 
-                        if (silent != silent2) {
-                            silent = silent2;
-                            commandBox.type = (silent == "no")? "textbox" : "password";
-                            commandBox.focus();
-                        }
+                        messageBuffer.setSilent(silent == 'yes')
 
-                        window.title = title;
+                        messageBuffer.setTitle(title);
 
                         var message = messages.firstChild;
                         while (message) {
@@ -133,4 +129,3 @@ try {
 
 return this;
 }());
-
