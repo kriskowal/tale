@@ -4,6 +4,8 @@ window.messageBuffer = (function () {
 var titleBase = "Tale";
 var hasFocus = 0;
 var reviewingMessages = 0;
+var titleSpinner = 0;
+var titleTimeout = 1000;
 
 // messages
 var unviewedMessageCount = 0;
@@ -23,7 +25,13 @@ var titleBox = document.getElementsByTagName("title")[0];
 
 this.refreshTitle = function () {
     if ((!hasFocus || reviewingMessages) && unviewedMessageCount > 0) {
-        document.title = "[" + unviewedMessageCount + "] " + titleBase;
+        if (titleSpinner) {
+            document.title = "[" + unviewedMessageCount + "]   " + titleBase;
+        } else {
+            document.title = "[" + unviewedMessageCount + "] " + titleBase;
+        }
+        titleSpinner = !titleSpinner;
+        setTimeout(refreshTitle, titleTimeout);
     } else {
         document.title = titleBase;
         unviewedMessageCount = 0;
