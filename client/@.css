@@ -39,3 +39,17 @@ window, body, #prompt {
     color: #777777;
 }
 
+#widgets {
+    position: fixed;
+    width: 95%;
+    top: 0px;
+    left: 0px;
+    margin: 0px;
+    padding: 10px;
+}
+
+#map {
+    text-align: right;
+    padding: 10px;
+}
+

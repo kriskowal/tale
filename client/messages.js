@@ -26,9 +26,9 @@ var titleBox = document.getElementsByTagName("title")[0];
 this.refreshTitle = function () {
     if ((!hasFocus || reviewingMessages) && unviewedMessageCount > 0) {
         if (titleSpinner) {
-            document.title = "[" + unviewedMessageCount + "]   " + titleBase;
+            document.title = "[" + unviewedMessageCount + "]  " + titleBase;
         } else {
-            document.title = "[" + unviewedMessageCount + "] " + titleBase;
+            document.title = "[" + unviewedMessageCount + "] " + titleBase + " ";
         }
         titleSpinner = !titleSpinner;
         setTimeout(refreshTitle, titleTimeout);

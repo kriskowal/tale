@@ -10,12 +10,8 @@ var trials = 0;
 var trialMax = 20;
 var silent = 'no';
 
-var enqueueMessage = function (message) {
-    window.messageBuffer.enqueueMessage(message);
-}
-var enqueueException = function (x) {
-    window.messageBuffer.enqueueException(x);
-}
+var enqueueMessage = window.messageBuffer.enqueueMessage;
+var enqueueException = window.messageBuffer.enqueueException;
 
 var commandBox = document.getElementById('command');
 var promptBox = document.getElementById('prompt');
@@ -74,6 +70,7 @@ try {
                         var silent = response.getElementsByTagName('silent')[0].firstChild.data;
                         var title = response.getElementsByTagName('title')[0].firstChild.data;
                         var messages = response.getElementsByTagName('messages')[0];
+                        var overlays = response.getElementsByTagName('overlays')[0];
 
                         promptBox.innerHTML = prompt;
 
@@ -85,6 +82,12 @@ try {
                         while (message) {
                             enqueueMessage(message.firstChild.data);
                             message = message.nextSibling;
+                        }
+
+                        var overlay = overlays.firstChild;
+                        while (overlay) {
+                            window.overlays.update(overlay.firstChild);
+                            overlay = overlay.nextSibling;
                         }
 
                         // set the request object to zero so that
@@ -110,6 +113,7 @@ try {
                         'or are experiencing <b>lag</b>.'
                     );
                 }
+                throw(x);
                 connectStatus = 0;
             }
 
