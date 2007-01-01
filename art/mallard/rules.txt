@@ -23,7 +23,7 @@ wing-front
 cannons-sea
 sweeps
 
-# square rigging
+# ship rigging
 
 # gaff rigging
 
