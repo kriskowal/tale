@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 
 from cixar.tale import TaleService
 from cixar.ish.lazy import serve, HostService
