@@ -1,0 +1,179 @@
+
+# hull layers
+galley
+blimp
+blimp-fin-3
+wing-back
+wing-front
+canopy
+
+# armaments
+bucklers
+cannons-sea
+cannons-sky
+
+# propulsion
+sweeps
+steam
+rocket
+
+# scenery
+sea
+
+# rigging
+#  from front to back
+#  from bottom to top
+
+bowsprit
+
+    bowspirt-gallant-yard
+    bowspirt-gallant-sail
+    bowspirt-top-yard
+    bowspirt-top-sail
+
+fore-mast
+
+    # boat rigging
+    fore-sail
+
+    # stay sails
+    fore-spinnaker
+    bow-jib-outer-sail
+    bow-jib-inner-sail
+
+    # ship rigging
+    fore-top-yard
+    fore-top-sail
+    fore-gallant-yard
+    fore-gallant-sail
+
+    # gaff rigging
+    fore-gaff
+    fore-gaff-sail
+    fore-marconi-sail
+    fore-boom
+
+    # wing rigging
+    fore-lowtop-gaff
+    fore-lowtop-gaff-sail
+    fore-top-gaff
+    fore-top-gaff-sail
+    fore-gallant-gaff
+    fore-gallant-gaff-sail
+
+    # junk rigging
+    fore-junk-gaff
+    fore-junk-sail
+    fore-boom
+
+    # lateen rigging
+    fore-lateen-yard
+    fore-lateen-sail
+
+main-mast
+
+    # boat rigging
+    main-sail
+
+    # stay sails
+    main-top-stay-sail
+    main-gallant-stay-sail
+    main-gallant-fly-sail
+
+    # ship rigging
+    main-top-yard
+    main-top-sail
+    main-gallant-yard
+    main-gallant-sail
+    main-stub
+    main-royal-yard
+    main-royal-sail
+    main-moon
+
+    # gaff rigging
+    main-gaff
+    main-gaff-sail
+    main-marconi-sail
+    main-boom
+
+    # wing rigging
+    main-top-gaff
+    main-top-gaff-sail
+    main-gallant-gaff
+    main-gallant-gaff-sail
+
+    # junk rigging
+    main-junk-gaff
+    main-junk-sail
+    main-boom
+
+    # lateen rigging
+    main-lateen-sail
+    main-lateen-yard
+
+mizzen-mast
+
+    # boat rigging
+    mizzen-sail
+    mizzen-aftstay-sail
+    mizzen-boom
+
+    # stay sails
+    mizzen-top-stay-sail
+    mizzen-gallant-stay-sail
+    mizzen-gallant-fly-sail
+
+    # ship rigging
+    mizzen-top-yard
+    mizzen-top-sail
+    mizzen-gallant-yard
+    mizzen-gallant-sail
+
+    # gaff rigging
+    mizzen-boom
+    mizzen-gaff
+    mizzen-gaff-sail
+    mizzen-marconi-sail
+
+    # wing rigging
+
+    # junk rigging
+    mizzen-junk-gaff
+    mizzen-junk-sail
+    mizzen-boom
+
+    # lateen rigging
+    mizzen-lateen-yard
+    mizzen-lateen-sail
+
+sloop-mast
+
+    # stay sails
+    sloop-jib
+
+    # gaff rigging
+    sloop-gaff
+    sloop-gaff-sail
+    sloop-marconi-sail
+    sloop-boom
+
+    # catboat rigging
+    sloop-cat-gaff
+    sloop-cat-sail
+    sloop-boom
+
+ketch-mast
+
+    ketch-boom
+    ketch-gaff
+    ketch-gaff-sail
+    ketch-marconi-sail
+
+yawl-mast
+
+    yawl-boom
+    yawl-gaff
+    yawl-gaff-sail
+
+lateen-sternpole
+

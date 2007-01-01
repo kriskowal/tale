@@ -1,0 +1,134 @@
+#!/usr/bin/env python
+
+from cixar.python.xml.tags import tags, Tag, Name
+from cixar.python.iterkit import any
+import re
+
+# get the image
+
+image = Tag.parse('@.svg')
+
+label_to_layer = dict(
+    (layer['inkscape:label'], layer)
+    for layer in image
+    if isinstance(layer, Tag) and
+    layer.name == 'g' and
+    'inkscape:label' in layer
+)
+
+labels = label_to_layer.keys()
+layers = label_to_layer.values()
+
+# populate the less table with rules
+
+def uncomment(source):
+    for line in source:
+        pos = line.find('#')
+        if pos >= 0:
+            line = line[:pos]
+        line = line.strip()
+        yield line
+
+def blocks(source):
+    accumulator = []
+    for line in source:
+        if line:
+            accumulator.append(line)
+        else:
+            if accumulator:
+                yield accumulator
+                accumulator = []
+    if accumulator:
+        yield accumulator
+
+rules = tuple(blocks(
+    uncomment(
+        file('rules.txt')
+    )
+))
+
+class LessTable(dict):
+    def __getitem__(self, key):
+        if key not in self:
+            self[key] = set() 
+        return super(LessTable, self).__getitem__(key)
+
+less_table = LessTable()
+
+for row in rules: 
+
+    equivalences = []
+    for expression in row:
+        matchers = tuple(
+            re.compile('^%s$' % part)
+            for part in expression.split(' ')
+        )
+        matches = tuple(
+            label
+            for label in labels
+            if any(
+                matcher.match(label)
+                for matcher in matchers
+            )
+        )
+        if not matches:
+            print 'no labels match the expression', `expression`
+        equivalences.append(matches)
+
+    for index in range(1, len(equivalences)):
+        lessers = equivalences[index-1]
+        greaters = equivalences[index]
+        for lesser in lessers:
+            for greater in greaters:
+                less_table[greater].add(lesser)
+
+#for key in sorted(less_table):
+#    for inner in sorted(less_table[key]):
+#        print ' ', inner
+#    print key
+#    print
+#raise SystemExit()
+
+def topological_sort(table):
+
+    visited = set()
+
+    def inner_sort(key):
+        visited.add(key)
+        for inner in sorted(table[key]):
+            if inner not in visited:
+                for item in inner_sort(inner):
+                    yield item
+        yield key
+
+    for key in sorted(table):
+        if key not in visited:
+            for line in inner_sort(key):
+                yield line
+
+#for label in sorted(labels):
+#    print label
+#print '-' * 79
+
+# check whether all layers have been accounted
+#  for in the less table rules
+for label in sorted(labels):
+    if label not in less_table:
+        print "%s not accounted for" % label
+print '-' * 79
+
+for label in topological_sort(less_table):
+    print label
+print '-' * 79
+
+new_image = tags.svg(
+    image.attributes,
+    image[Name('defs')],
+    (
+        label_to_layer[label]
+        for label in topological_sort(less_table)
+    )
+)
+
+new_image.writexml(file('sort.svg', 'w'))
+

@@ -1,0 +1,243 @@
+
+mount_body
+rodent_head_otter
+rodent_head_elephant
+rodent_head_bear
+rodent_head_mouse
+rodent_eyes_elephant
+rodent_eyes_beady
+rodent_eyes_wombat
+rodent_goggles
+rodent_horn_rhino
+rodent_unihorn
+
+# mount attributes
+rodent_head_bear
+rodent_snout
+rodent_head_mouse
+rodent_nostril
+rodent_eyes_elephant
+
+# mount ears
+
+dinosaur_bow_tie
+rodent_ear_.*_right
+rodent_head_otter
+rodent_head_elephant
+rodent_head_bear
+rodent_head_mouse
+rodent_goggles
+rodent_ear_.*_left
+
+rodent_ear_elephant_right
+rodent_ear_wolf_right
+rodent_ear_mouse_right
+rodent_ear_bunny_right
+
+rodent_ear_bunny_left
+rodent_ear_mouse_left
+rodent_ear_wolf_left
+rodent_ear_elephant_left
+rodent_ear_poodle_left
+
+# antlers
+
+rodent_ear_mouse_right
+rodent_antler_right
+rodent_ear_bunny_right
+
+rodent_ear_bunny_left
+rodent_antler_left
+rodent_ear_mouse_left
+
+# dinosaur attributes
+mount_body
+dinosaur_teeth_buck
+dinosaur_fangs
+dinosaur_ear_bunny_right
+dinosaur_head
+dinosaur_eyes_normal
+dinosaur_eyes_evil
+dinosaur_goggles
+dinosaur_horn
+dinosaur_ear_bunny_left
+dinosaur_collar
+dinosaur_bow_tie
+rodent_head_elephant
+
+# teeth
+mount_body
+rodent_teeth_buck
+rodent_fangs
+rodent_head_otter
+rodent_tusk_mastadon_right
+rodent_head_elephant
+rodent_head_bear
+rodent_tusks_elephant
+rodent_head_mouse
+rodent_tusk_mastadon_left
+rodent_ear_.*_left
+
+# wings
+
+mount_wing_.*_right
+mount_tail.*
+
+rodent_ear_bunny_left
+mount_wing_.*_left
+rodent_ear_bunny_right
+
+# tails
+mount_tail_.*
+mount_body
+
+# legs and arms
+
+mount_leg_chicken_right
+mount_leg_bunny_right
+mount_leg_elephant_right
+mount_leg_mouse_right
+mount_leg_wombat_right
+
+mount_arm_chicken_right
+mount_arm_bunny_right
+mount_arm_elephant_right
+mount_arm_mouse_right
+mount_arm_wombat_right
+
+mount_leg_.*_right mount_arm_.*_right
+mount_body
+mount_leg_.*_left mount_arm_.*_left
+rodent_head_.* dinosaur_head
+
+mount_leg_mouse_left
+mount_arm_mouse_left
+mount_leg_wombat_left
+mount_arm_wombat_left
+mount_leg_bunny_left
+mount_arm_bunny_left
+mount_leg_elephant_left
+mount_arm_elephant_left
+mount_leg_chicken_left
+mount_arm_chicken_left
+
+# spots
+mount_body
+mount_spots_cow
+mount_leg_elephant_left mount_arm.*
+mount_spots_rump
+mount_leg_chicken_left
+
+# the mane must be between the body
+#  and the head
+mount_spots_cow
+mount_mane
+rodent_head_.* dinosaur_head
+
+# ventral blades
+
+mount_tail_badger mount_tail_rat mount_tail_curly dinosaur_ventral_blades_back
+mount_tail_bunny
+mount_body
+
+dinosaur_ear_bunny_right
+dinosaur_ventral_blades_front
+dinosaur_ear_bunny_left
+
+# rider
+
+rider_arm_right
+rider_torso
+rider_arm_left
+rider_fuzz
+rider_hair_long
+rider_hair_short
+rider_ear_.*_right
+rider_face_long
+rider_ear_.*_left
+rider_face_round
+rider_mouth.*
+rider_hair_bangs
+
+# eyes
+rider_face_long rider_face_round
+rider_eyes_aggressive
+rider_eyes_normal
+rider_eyes_surprised
+rider_eyes_pupils
+rider_hair_bangs
+
+# legs pants shoes
+rider_torso
+rider_leg_right
+rider_leg_left
+
+rider_leg_right
+rider_shoe_right
+rider_pant_small_right
+
+rider_leg_left
+rider_shoe_left
+rider_pant_small_left
+
+# shirt breastplate
+rider_torso rider_arm.* rider_leg.* rider_pant_small.* rider_fuzz
+rider_shirt
+rider_breastplate
+rider_face_long rider_face_round
+
+# hands
+
+rider_hand_left
+rider_arm_left
+rider_hand_left_thumb
+
+rider_hand_right
+rider_arm_right
+rider_hand_right_thumb
+
+# equipment
+
+rider_hand_left_buckler
+rider_hand_left rider_arm_left rider_shirt
+rider_hand_left_sword
+rider_hand_left_knife
+rider_hand_left_thumb
+
+rider_hand_right_buckler
+rider_hand_right rider_arm_left rider_shirt
+rider_hand_right_sword
+rider_hand_right_knife
+rider_hand_right_thumb
+
+rider_shoulder_left_buckler
+rider_shoulder_left_sword
+rider_shoulder_right_buckler
+rider_shoulder_right_sword
+rider_torso rider_hair.*
+
+
+# critical points between rider and mount
+
+rider_pant_small_right
+dinosaur_ventral_blades_back
+saddle_right
+mount_body
+
+mount_leg_.*_left
+saddle_left
+rider_leg_left
+
+dinsaur_bow_tie
+saddle_front
+mount_wing_.*_left
+
+rider_shoe_left
+mount_mane
+
+rider_hand_right_thumb
+dinosaur_ear_bunny_right
+
+rider_breastplate
+rodent_ear_bunny_right
+

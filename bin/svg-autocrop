@@ -1,0 +1,89 @@
+#!/usr/bin/env python
+
+from decimal import Decimal
+from cixar.python.xml.tags import tags, Tag
+
+class Canvas(object):
+    pass
+
+class Glyph(object):
+    pass
+
+class TerrainGlyph(Glyph):
+    pass
+
+image_base = sys.argv[1]
+desired_tile_size = Decimal(500)
+
+image = Tag.parse(open('%s.svg' % image_base))
+
+layers = tuple(
+    tag 
+    for tag in image
+    if isinstance(tag, Tag)
+    and tag.name == 'g'
+    and 'inkscape:label' in tag
+)
+
+for layer in layers:
+
+    if layer['inkscape:label'] == 'unit':
+        rect = layer.names['rect'][0]
+        unit_size = max(
+            Decimal(rect['height']),
+            Decimal(rect['width']),
+        )
+        break
+
+for layer in layers:
+
+    try:
+        n = None
+        n = int(layer['inkscape:label'])
+    except:
+        continue
+
+    if n is not None:
+        print n
+
+        content = layer
+
+        for layer in layers:
+            if layer['inkscape:label'] == "%s-crop" % n:
+                rect = layer.names['rect'][0]
+                y, x, height, width = (
+                    Decimal(rect[attribute])
+                    for attribute in ('y', 'x', 'height', 'width')
+                )
+
+        scale = desired_tile_size / unit_size
+
+        new_image = tags.svg(
+            {
+                'height': desired_tile_size,
+                'width': desired_tile_size,
+                'xmlns': 'http://www.w3.org/2000/svg',
+                'xmlns:svg': 'http://www.w3.org/2000/svg',
+                'xmlns:xlink': 'http://www.w3.org/1999/xlink',
+                'xmlns:inkscape': 'http://www.inkscape.org/namespaces/inkscape',
+                'xmlns:dc': 'http://purl.org/dc/elements/1.1/',
+                'xmlns:cc': 'http://web.resource.org/cc/',
+                'xmlns:rdf': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
+                'xmlns:sodipodi': 'http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd',
+                'version': 1.0,
+            },
+            image.names['defs'],
+            tags.g(
+                tags.g(
+                    tags.g(
+                        content,
+                        transform = 'matrix(%s, %s, %s, %s, %s, %s)' % (1, 0, 0, 1, -x, -y)
+                    ),
+                    transform = 'matrix(%s, %s, %s, %s, %s, %s)' % (scale, 0, 0, scale, 0, 0)
+                ),
+                transform = 'matrix(%s, %s, %s, %s, %s, %s)' % (1, 0, 0, 1, (desired_tile_size - width * scale) / 2, (desired_tile_size - height * scale) / 2)
+            )
+        )
+
+        new_image.writexml(open('%s-%s.svg' % (image_base, n), 'w'))
+
