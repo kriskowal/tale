@@ -1,0 +1,43 @@
+
+# gaff rigging
+mizzen-gaff-sail mizzen-marconi-sail
+mizzen-boom mizzen-gaff
+mizzen-mast
+main-gaff-sail main-marconi-sail
+main-gaff main-boom
+main-mast
+fore-gaff-sail fore-marconi-sail
+fore-gaff fore-boom
+fore-mast
+
+# junk rigging
+mizzen-junk-sail
+mizzen-junk-gaff mizzen-boom
+mizzen-mast
+main-junk-sail
+main-junk-gaff main-boom
+main-mast
+fore-junk-sail
+fore-junk-gaff fore-boom
+fore-mast
+
+# wing rigging
+mizzen-gaff-sail mizzen-marconi-sail
+mizzen-boom mizzen-gaff
+mizzen-mast
+main-top-gaff main-gallant-gaff
+main-mast
+main-top-gaff-sail main-gallant-gaff-sail
+fore-lowtop-gaff fore-top-gaff fore-gallant-gaff
+fore-mast
+fore-top-gaff-sail fore-gallant-gaff-sail
+fore-spinnaker
+fore-lowtop-gaff-sail
+
+# shroud rigging
+fore-mast
+main-mast
+mizzen-mast
+main-gallant-fly-sail
+mizzen-gallant-fly-sail
+

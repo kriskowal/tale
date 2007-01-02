@@ -1,0 +1,18 @@
+
+wing-back
+blimp
+steam
+blimp-fin-3
+mizzen-aftstay-sail mizzen-boom mizzen-gaff mizzen-gaff-sail mizzen-gallant-fly-sail mizzen-gallant-sail mizzen-gallant-stay-sail mizzen-gallant-yard mizzen-junk-gaff mizzen-junk-sail mizzen-lateen-sail mizzen-lateen-yard mizzen-marconi-sail mizzen-mast mizzen-sail mizzen-top-sail mizzen-top-stay-sail mizzen-top-yard main-boom main-gaff main-gaff-sail main-gallant-fly-sail main-gallant-gaff main-gallant-gaff-sail main-gallant-sail main-gallant-stay-sail main-gallant-yard main-junk-gaff main-junk-sail main-lateen-sail main-lateen-yard main-marconi-sail main-mast main-moon main-royal-sail main-royal-yard main-sail main-stub main-top-gaff main-top-gaff-sail main-top-sail main-top-stay-sail main-top-yard fore-boom fore-gaff fore-gaff-sail fore-gallant-gaff fore-gallant-gaff-sail fore-gallant-sail fore-gallant-yard fore-junk-gaff fore-junk-sail fore-lateen-sail fore-lateen-yard fore-lowtop-gaff fore-marconi-sail fore-mast fore-sail fore-spinnaker fore-top-gaff fore-top-gaff-sail fore-top-sail fore-top-yard ketch-mast ketch-boom ketch-gaff ketch-gaff-sail ketch-marconi-sail yawl-mast yawl-boom yawl-gaff yawl-gaff-sail lateen-sternpole
+galley
+canopy
+bucklers
+cannons-sky
+sea
+rocket
+wing-front
+cannons-sea
+sweeps
+# shroud sails
+fore-lowtop-gaff-sail main-gallant-fly-sail mizzen-gallant-fly-sail
+

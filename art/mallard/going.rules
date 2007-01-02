@@ -1,0 +1,70 @@
+
+# boat rigging
+fore-sail
+fore-gallant-yard
+fore-mast
+main-sail
+main-gallant-yard
+main-mast
+mizzen-sail
+mizzen-gallant-yard
+mizzen-aftstay-sail
+mizzen-boom
+mizzen-mast
+
+# ship rigging
+bowspirt-gallant-sail
+bowspirt-gallant-yard
+bowspirt-top-sail
+bowspirt-top-yard
+bowsprit
+bow-jib-outer-sail
+bow-jib-inner-sail
+fore-top-sail
+fore-top-yard
+fore-gallant-sail
+fore-gallant-yard
+fore-mast
+main-moon
+main-top-sail
+main-gallant-sail
+main-royal-sail
+main-top-yard
+main-gallant-yard
+main-royal-yard
+main-stub
+main-mast
+mizzen-top-sail
+mizzen-top-yard
+mizzen-gallant-sail
+mizzen-gallant-yard
+mizzen-mast
+
+# lateen rigging
+fore-lateen-sail
+fore-lateen-yard
+fore-mast
+main-lateen-sail
+main-lateen-yard
+main-mast
+mizzen-lateen-sail
+mizzen-lateen-yard
+mizzen-mast
+lateen-sternpole
+
+# sloop, ketch, and yawl rigging
+yawl-gaff-sail
+yawl-boom yawl-gaff
+yawl-mast
+ketch-gaff-sail ketch-marconi-sail
+ketch-gaff ketch-boom
+ketch-mast
+sloop-jib sloop-gaff-sail sloop-marconi-sail
+sloop-gaff sloop-boom
+sloop-mast
+
+# catboat rigging
+sloop-cat-sail
+sloop-cat-gaff sloop-boom
+sloop-mast
+

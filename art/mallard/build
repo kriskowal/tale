@@ -1,0 +1,6 @@
+
+cat @.svg \
+| svg-filter $1.layers \
+| svg-sort rules $1.rules \
+| rsvg - $1.png
+
