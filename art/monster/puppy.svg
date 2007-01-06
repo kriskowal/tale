@@ -14,7 +14,7 @@
    sodipodi:version="0.32"
    inkscape:version="0.43"
    version="1.0"
-   sodipodi:docbase="/home/kkowal/tale/art"
+   sodipodi:docbase="/home/kkowal/tale/art/monster"
    sodipodi:docname="puppy.svg"
    inkscape:export-filename="/home/kkowal/tale/art/puppy.png"
    inkscape:export-xdpi="90.909088"
@@ -33,8 +33,8 @@
      inkscape:cy="488.75768"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
-     inkscape:window-width="1600"
-     inkscape:window-height="1125"
+     inkscape:window-width="1590"
+     inkscape:window-height="1121"
      inkscape:window-x="0"
      inkscape:window-y="25" />
   <metadata
@@ -53,7 +53,7 @@
      inkscape:groupmode="layer"
      id="layer1">
     <path
-       style="opacity:1;color:#000000;fill:#abc293;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3.9000001;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
+       style="opacity:1;color:#000000;fill:#c2c293;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3.9000001;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
        d="M 341.42856,253.57143 C 261.43329,246.40915 230.32996,167.91056 345.22435,159.16971 C 398.17547,123.84143 460.98275,131.33805 493.3743,187.94905 C 532.01729,224.39964 626.47476,257.82655 613.19916,162.16775 C 642.27635,118.90651 754.32924,164.59481 748.29893,221.53432 C 708.10758,320.62714 823.19421,276.01398 848.22444,296.02823 C 842.93086,349.01962 787.82945,465.03388 719.8928,425.03279 C 667.33004,417.03947 579.36817,417.85935 570.92919,484.79922 C 609.69365,528.47119 588.64318,606.08123 519.35247,603.72248 C 399.88736,607.18058 444.15296,557.7939 447.84283,506.17994 C 412.65132,452.38597 326.88259,518.93085 275.15123,502.54734 C 239.77848,479.66443 203.32936,384.50874 208.56682,334.55267 C 233.09453,279.84588 318.06705,311.41962 341.42856,253.57143 z "
        id="path11588"
        sodipodi:nodetypes="ccccccccccccc" />
