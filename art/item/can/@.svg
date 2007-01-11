@@ -92,7 +92,7 @@
      inkscape:cx="755.79787"
      inkscape:cy="885.80766"
      inkscape:document-units="px"
-     inkscape:current-layer="layer2"
+     inkscape:current-layer="layer7"
      inkscape:window-width="1590"
      inkscape:window-height="1121"
      inkscape:window-x="0"
@@ -161,7 +161,7 @@
      inkscape:groupmode="layer"
      id="layer7"
      inkscape:label="branding-blank"
-     style="display:none">
+     style="display:inline">
     <path
        style="opacity:1;color:#000000;fill:#ededed;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3.9000001;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
        d="M 240.41631,172.68507 C 188.08461,235.51422 190.52602,322.83202 198.6648,399.54188 C 206.31287,460.25533 203.92446,521.66621 205.68454,582.64291 C 200.94476,658.43957 165.57389,738.67661 201.08774,811.97903 C 229.6309,860.36121 288.27105,875.24722 337.68684,892.98157 C 465.94323,929.67028 606.08617,906.26611 723.87619,847.21427 C 751.7828,830.50643 781.92261,809.00479 793.15382,777.51985 C 817.78434,644.97177 814.66132,509.29813 806.60681,375.32216 C 822.67533,314.50999 819.45876,246.80372 789.06596,190.85927 C 764.53146,160.14381 727.17147,186.15746 703.51411,203.92579 C 670.00109,224.18835 629.05338,225.88665 591.57225,234.54564 C 489.43963,251.52246 379.52878,253.28158 283.46862,209.9712 C 266.9095,200.50885 251.28994,188.56833 240.41631,172.68507 z "
@@ -279,7 +279,7 @@
      inkscape:groupmode="layer"
      id="layer9"
      inkscape:label="branding-grog"
-     style="display:inline">
+     style="display:none">
     <path
        style="opacity:1;color:#000000;fill:#ff0e00;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3.9000001;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
        d="M 240.41631,172.68507 C 188.08461,235.51422 190.52602,322.83202 198.6648,399.54188 C 206.31287,460.25533 203.92446,521.66621 205.68454,582.64291 C 200.94476,658.43957 165.57389,738.67661 201.08774,811.97903 C 229.6309,860.36121 288.27105,875.24722 337.68684,892.98157 C 465.94323,929.67028 606.08617,906.26611 723.87619,847.21427 C 751.7828,830.50643 781.92261,809.00479 793.15382,777.51985 C 817.78434,644.97177 814.66132,509.29813 806.60681,375.32216 C 822.67533,314.50999 819.45876,246.80372 789.06596,190.85927 C 764.53146,160.14381 727.17147,186.15746 703.51411,203.92579 C 670.00109,224.18835 629.05338,225.88665 591.57225,234.54564 C 489.43963,251.52246 379.52878,253.28158 283.46862,209.9712 C 266.9095,200.50885 251.28994,188.56833 240.41631,172.68507 z "

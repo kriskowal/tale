@@ -16,7 +16,10 @@
    inkscape:version="0.43"
    version="1.0"
    sodipodi:docbase="/home/kkowal/tale/art/item/can"
-   sodipodi:docname="mt-dewm.svg">
+   sodipodi:docname="mt-dewm.svg"
+   inkscape:export-filename="/home/kkowal/tale/art/item/can/mt-dewm.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <defs
      id="defs4">
     <linearGradient
@@ -90,8 +93,8 @@
      inkscape:cy="587.68375"
      inkscape:document-units="px"
      inkscape:current-layer="layer3"
-     inkscape:window-width="1600"
-     inkscape:window-height="1125"
+     inkscape:window-width="1590"
+     inkscape:window-height="1121"
      inkscape:window-x="0"
      inkscape:window-y="25" />
   <metadata
@@ -157,7 +160,7 @@
   <g
      inkscape:groupmode="layer"
      id="layer3"
-     inkscape:label="branding"
+     inkscape:label="branding-mt-dewm"
      style="display:inline">
     <g
        style="display:inline"
@@ -195,7 +198,7 @@
        id="path10550" />
   </g>
   <g
-     inkscape:label="Layer 1"
+     inkscape:label="rim"
      inkscape:groupmode="layer"
      id="layer1"
      style="display:inline">
