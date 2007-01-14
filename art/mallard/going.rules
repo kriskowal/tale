@@ -25,6 +25,8 @@ fore-top-yard
 fore-gallant-sail
 fore-gallant-yard
 fore-mast
+main-top-stay-sail
+main-gallant-stay-sail
 main-moon
 main-top-sail
 main-gallant-sail
@@ -34,6 +36,8 @@ main-gallant-yard
 main-royal-yard
 main-stub
 main-mast
+mizzen-top-stay-sail
+mizzen-gallant-stay-sail
 mizzen-top-sail
 mizzen-top-yard
 mizzen-gallant-sail

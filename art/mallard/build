@@ -2,5 +2,9 @@
 cat @.svg \
 | svg-filter $1.layers \
 | svg-sort rules $1.rules \
-| rsvg - $1.png
+> $1.svg
+
+rsvg $1.svg $1.png
+rsvg -w 100 $1.svg $1-100.png
+rsvg -w 400 $1.svg $1-400.png
 

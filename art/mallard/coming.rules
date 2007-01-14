@@ -25,19 +25,20 @@ fore-mast
 mizzen-gaff-sail mizzen-marconi-sail
 mizzen-boom mizzen-gaff
 mizzen-mast
+main-moon
 main-top-gaff main-gallant-gaff
 main-mast
 main-top-gaff-sail main-gallant-gaff-sail
 fore-lowtop-gaff fore-top-gaff fore-gallant-gaff
 fore-mast
-fore-top-gaff-sail fore-gallant-gaff-sail
 fore-spinnaker
+fore-top-gaff-sail fore-gallant-gaff-sail
 fore-lowtop-gaff-sail
 
 # shroud rigging
-fore-mast
-main-mast
 mizzen-mast
-main-gallant-fly-sail
+main-mast
+fore-mast
 mizzen-gallant-fly-sail
+main-gallant-fly-sail
 

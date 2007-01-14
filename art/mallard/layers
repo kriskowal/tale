@@ -53,7 +53,7 @@ fore-mast
     fore-marconi-sail
     fore-boom
 
-    # wing rigging
+    # bat rigging
     fore-lowtop-gaff
     fore-lowtop-gaff-sail
     fore-top-gaff
@@ -96,7 +96,7 @@ main-mast
     main-marconi-sail
     main-boom
 
-    # wing rigging
+    # bat rigging
     main-top-gaff
     main-top-gaff-sail
     main-gallant-gaff
@@ -135,7 +135,11 @@ mizzen-mast
     mizzen-gaff-sail
     mizzen-marconi-sail
 
-    # wing rigging
+    # bat rigging
+    mizzen-boom
+    mizzen-gaff
+    mizzen-gaff-sail
+    mizzen-marconi-sail
 
     # junk rigging
     mizzen-junk-gaff
@@ -155,7 +159,7 @@ sloop-mast
     sloop-gaff
     sloop-gaff-sail
     sloop-marconi-sail
-    sloop-boom
+    sloop-boom # TODO verify existence of boom
 
     # catboat rigging
     sloop-cat-gaff

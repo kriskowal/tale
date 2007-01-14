@@ -1,0 +1,20 @@
+#!/usr/bin/env python
+
+from cixar.python.xml.tags import tags, Tag
+from cixar.python.text import uncomment, blocks, nonblank
+from sys import stdin, stdout, stderr, argv
+
+selected = set(nonblank(uncomment(file(argv[1]))))
+
+image = Tag.parse(stdin)
+for index, child in enumerate(image):
+    if (
+        isinstance(child, Tag) and
+        child.name == 'g' and
+        'inkscape:label' in child and
+        child['inkscape:label'] not in selected
+    ):
+        image[index] = None
+
+image.writexml(stdout)
+
