@@ -1,0 +1,3 @@
+
+cat @.svg | svg-filter `basename $1 .layers`.layers | rsvg - `basename $1 .layers`.png
+

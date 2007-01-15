@@ -1,0 +1,4 @@
+
+ls *.layers | while read layer; do
+    ./build `basename $layer .layers`
+done

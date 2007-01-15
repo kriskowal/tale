@@ -1,5 +1,4 @@
 
-from twisted.web.http import HTTPFactory, HTTPChannel, Request as HTTPRequest
 from python.xml.tags import Tag, Name, tags
 
 def configure_sprite(

@@ -1,0 +1,238 @@
+
+mount_body 
+
+# parts
+
+	# heads
+	rodent_head_mouse
+	rodent_head_otter
+	rodent_head_bear
+	rodent_head_elephant
+	
+	# eyes
+	rodent_eyes_beady
+	rodent_eyes_wombat
+	rodent_eyes_elephant
+	dinosaur_eyes_evil
+	dinosaur_eyes_normal
+
+	# teeth
+	rodent_teeth_buck
+	dinosaur_teeth_buck
+	rodent_fangs
+	rodent_tusks_elephant
+
+
+    # tails
+    mount_tail_bunny
+    mount_tail_rat
+    mount_tail_badger
+    mount_tail_curly
+    mount_tail_otter
+
+    # ears
+
+        # bunny
+        rodent_ear_bunny_left
+        rodent_ear_bunny_right
+
+        # elephant
+        rodent_ear_elephant_left
+        rodent_ear_elephant_right
+
+        # mouse
+        rodent_ear_mouse_left
+        rodent_ear_mouse_right
+
+        # poodle
+        rodent_ear_poodle_left
+
+        # wolf
+        rodent_ear_wolf_left
+        rodent_ear_wolf_right
+
+        # dinosaur bunny
+        dinosaur_ear_bunny_left
+        dinosaur_ear_bunny_right
+
+    # legs
+
+        #
+
+# sources
+	
+	# bear
+	rodent_head_bear
+	rodent_snout
+	
+	# unicorn
+	rodent_unihorn
+	
+	# bunny
+	mount_arm_bunny_left
+	mount_arm_bunny_right
+	mount_leg_bunny_left
+	mount_leg_bunny_right
+	mount_tail_bunny
+	rodent_ear_bunny_left
+	rodent_ear_bunny_right
+	rodent_teeth_buck
+	
+	# chicken
+	mount_arm_chicken_left
+	mount_arm_chicken_right
+	mount_leg_chicken_left
+	mount_leg_chicken_right
+	
+	# elephant
+	rodent_head_elephant
+	rodent_eyes_elephant
+	mount_arm_elephant_left
+	mount_arm_elephant_right
+	mount_leg_elephant_left
+	mount_leg_elephant_right
+	rodent_ear_elephant_left
+	rodent_ear_elephant_right
+	rodent_tusks_elephant
+	
+	# mastadon
+	rodent_tusk_mastadon_left
+	rodent_tusk_mastadon_right
+	
+	# mouse
+	mount_arm_mouse_left
+	mount_arm_mouse_right
+	mount_leg_mouse_left
+	mount_leg_mouse_right
+	rodent_head_mouse
+	rodent_ear_mouse_left
+	rodent_ear_mouse_right
+	
+	# moose
+	rodent_antler_left
+	rodent_antler_right
+	
+	# rat
+	rodent_nostril
+	rodent_eyes_beady
+	mount_tail_rat
+	
+	# wombat
+	rodent_eyes_wombat
+	mount_arm_wombat_left
+	mount_arm_wombat_right
+	mount_leg_wombat_left
+	mount_leg_wombat_right
+	
+	# cow
+	mount_spots_cow
+	mount_spots_rump
+	
+	# lion
+	mount_mane
+	
+	# badger
+	mount_tail_badger
+	
+	
+	# poodle
+	mount_tail_curly
+	rodent_ear_poodle_left
+	
+	# wolf
+	rodent_fangs
+	rodent_ear_wolf_left
+	rodent_ear_wolf_right
+	
+	# otter
+	rodent_head_otter
+	mount_tail_otter
+	
+	# bat
+	mount_wing_bat_left
+	mount_wing_bat_right
+	
+	# bird
+	mount_wing_bird_left
+	mount_wing_bird_right
+	rodent_goggles
+	
+	# hummingbird
+	mount_wing_hummingbird_left
+	mount_wing_hummingbird_right
+	
+	# rhinocerous
+	rodent_horn_rhino
+	
+	# dinosaur
+	
+	    dinosaur_head
+	    dinosaur_ventral_blades_back
+	    dinosaur_ventral_blades_front
+	    dinosaur_eyes_evil
+	    dinosaur_eyes_normal
+	
+	    # features
+	    dinosaur_horn
+	    dinosaur_fangs
+	    dinosaur_teeth_buck
+	
+	    # dinosaur bunny
+	    dinosaur_ear_bunny_left
+	    dinosaur_ear_bunny_right
+	
+	    # accoutriments
+	    dinosaur_goggles
+	    dinosaur_collar
+	    dinosaur_bow_tie
+	
+	
+# saddle
+saddle_front
+saddle_left
+saddle_right
+
+# rider
+rider_arm_left
+rider_arm_right
+rider_breastplate
+rider_ear_elven_left
+rider_ear_elven_right
+rider_ear_round_left
+rider_ear_round_right
+rider_eyes_aggressive
+rider_eyes_normal
+rider_eyes_pupils
+rider_eyes_surprised
+rider_face_long
+rider_face_round
+rider_fuzz
+rider_hair_bangs
+rider_hair_long
+rider_hair_short
+rider_hand_left
+rider_hand_left_buckler
+rider_hand_left_knife
+rider_hand_left_sword
+rider_hand_left_thumb
+rider_hand_right
+rider_hand_right_buckler
+rider_hand_right_knife
+rider_hand_right_sword
+rider_hand_right_thumb
+rider_leg_left
+rider_leg_right
+rider_mouth_grimmace
+rider_mouth_smile
+rider_pant_small_left
+rider_pant_small_right
+rider_shirt
+rider_shoe_left
+rider_shoe_right
+rider_shoulder_left_buckler
+rider_shoulder_left_sword
+rider_shoulder_right_buckler
+rider_shoulder_right_sword
+rider_torso
+
+
