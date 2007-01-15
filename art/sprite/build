@@ -1,3 +1,7 @@
 
-cat @.svg | svg-filter `basename $1 .layers`.layers | rsvg - `basename $1 .layers`.png
+cat @.svg | svg-filter `basename $1 .layers`.layers > `basename $1 .layers`.svg
+
+rsvg `basename $1 .layers`.svg `basename $1 .layers`.png
+rsvg -w 100 `basename $1 .layers`.svg `basename $1 .layers`-100.png
+rsvg -w 400 `basename $1 .layers`.svg `basename $1 .layers`-400.png
 
