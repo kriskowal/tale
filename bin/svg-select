@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
 from cixar.python.xml.tags import tags, Tag
-from sys import stdin, stdout, argv
+from sys import stdin, stdout, stderr, argv
 
-selected = argv[1:]
+selected = set(argv[1:])
 
 image = Tag.parse(stdin)
 for index, child in enumerate(image):
@@ -13,7 +13,7 @@ for index, child in enumerate(image):
         'inkscape:label' in child and
         child['inkscape:label'] not in selected
     ):
-        del image[index]
+        image[index] = None
 
 image.writexml(stdout)
 

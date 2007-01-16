@@ -1,0 +1,5 @@
+
+cat @.svg | svg-layers | while read layer; do
+    cat @.svg | svg-select $layer > layer/$layer.svg
+done
+

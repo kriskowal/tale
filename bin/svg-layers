@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from cixar.python.xml.tags import tags, Tag
+from cixar.tale.svg import labels, parse
 from sys import stdin, stdout, argv
 
 args = argv[1:]
@@ -9,12 +9,7 @@ if args:
 else:
     f = stdin
 
-image = Tag.parse(f)
-for child in image:
-    if (
-        isinstance(child, Tag) and
-        child.name == 'g' and
-        'inkscape:label' in child
-    ):
-        print child['inkscape:label']
+image = parse(f)
+for label in labels(image):
+    print label
 

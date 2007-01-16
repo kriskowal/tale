@@ -1,0 +1,3 @@
+
+svg-cat layer/*.svg | svg-sort rules > @.svg
+

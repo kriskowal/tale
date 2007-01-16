@@ -4,104 +4,9 @@ from cixar.python.xml.tags import tags, Tag, Name
 from cixar.python.iterkit import any, chain
 from cixar.python.text import uncomment, blocks
 from sys import stdin, stdout, stderr, argv
+from cixar.tale.svg import parse
 from decimal import Decimal
 import re
-
-if len(argv) == 1:
-    source_file = file('@.svg')
-    target_file = file('sort.svg', 'w')
-    rules_files = [file('rules.txt')]
-elif len(argv) > 1:
-    source_file = stdin
-    target_file = stdout
-    rules_files = [file(arg) for arg in argv[1:]]
-
-# get the image
-
-image = Tag.parse(source_file)
-
-label_to_layer = dict(
-    (layer['inkscape:label'], layer)
-    for layer in image
-    if isinstance(layer, Tag) and
-    layer.name == 'g' and
-    'inkscape:label' in layer
-)
-
-labels = label_to_layer.keys()
-layers = label_to_layer.values()
-
-# populate the less table with rules
-
-rules = tuple(chain(*(blocks(uncomment(rules_file)) for rules_file in rules_files)))
-
-rule_labels = labels + list(chain(*[
-    expression.split(' ') 
-    for row in rules
-    for expression in row
-]))
-
-class LessTable(dict):
-    def __getitem__(self, key):
-        if key not in self:
-            self[key] = set() 
-        return super(LessTable, self).__getitem__(key)
-
-less_table = LessTable()
-
-for row in rules: 
-
-    equivalences = []
-    for expression in row:
-        matchers = tuple(
-            re.compile('^%s$' % part)
-            for part in expression.split(' ')
-        )
-        matches = tuple(
-            label
-            for label in rule_labels
-            if any(
-                matcher.match(label)
-                for matcher in matchers
-            )
-        )
-        if not matches:
-            #print 'no labels match the expression', `expression`
-            pass
-        equivalences.append(matches)
-
-    for index in range(1, len(equivalences)):
-        lessers = equivalences[index - 1]
-        greaters = equivalences[index]
-        for lesser in lessers:
-            for greater in greaters:
-                less_table[greater].add(lesser)
-
-def reduce_less_cell(labels, lesser, less_table):
-    if lesser in labels:
-        return [lesser]
-    else:
-        return set(chain(*(
-            reduce_less_cell(labels, sublesser, less_table)
-            for sublesser in less_table[lesser]
-        )))
-
-def reduce_less_row(labels, lessers, less_table):
-    return set(chain(*(
-        reduce_less_cell(labels, lesser, less_table)
-        for lesser in lessers
-    )))
-
-def reduce_less_table(labels, less_table):
-    return LessTable(dict(
-        (greater, lessers)
-        for greater, lessers in 
-        (
-            (greater, reduce_less_row(labels, lessers, less_table))
-            for greater, lessers in less_table.items()
-        )
-        if lessers
-    ))
 
 def topological_sort(items, less_table):
 
@@ -132,6 +37,71 @@ def topological_sort(items, less_table):
             for line in inner_sort(key):
                 yield line
 
+class LessTable(dict):
+    def __getitem__(self, key):
+        if key not in self:
+            self[key] = set() 
+        return super(LessTable, self).__getitem__(key)
+
+# get the image
+
+source_file = stdin
+target_file = stdout
+rules_files = [file(arg) for arg in argv[1:]]
+
+image = parse(source_file)
+
+label_to_layer_items = list(
+    (layer['inkscape:label'], layer)
+    for layer in image
+    if isinstance(layer, Tag) and
+    layer.name == 'g' and
+    'inkscape:label' in layer
+)
+labels = list(label for label, layer in label_to_layer_items)
+label_to_layer = dict(label_to_layer_items)
+
+# get the sort rules
+
+rules = tuple(
+    chain(*[
+        blocks(uncomment(rules_file))
+        for rules_file in rules_files
+    ])
+)
+
+# construct digraph, 'less_table' from the rules
+#  and known label names
+
+less_table = LessTable()
+
+for row in rules: 
+
+    equivalences = []
+    for expression in row:
+        matchers = tuple(
+            re.compile('^%s$' % part)
+            for part in expression.split(' ')
+        )
+        matches = tuple(
+            label
+            for label in labels
+            if any(
+                matcher.match(label)
+                for matcher in matchers
+            )
+        )
+        if not matches:
+            #print 'no labels match the expression', `expression`
+            pass
+        equivalences.append(matches)
+
+    for index in range(1, len(equivalences)):
+        lessers = equivalences[index - 1]
+        greaters = equivalences[index]
+        for lesser in lessers:
+            for greater in greaters:
+                less_table[greater].add(lesser)
 #try:
 #    topological_sort(['a', 'b'], {'a': ['b', 'a'], 'b': ['a', 'b']})
 #    assert False, 'should have been a cycle exception'
@@ -173,12 +143,12 @@ new_image = tags.svg(
         for label in list(topological_sort(labels, less_table))
         if label in labels
     ),
-    tags.g(
-        tags.text(
-            {'x': '100px', 'y': '100px', 'font-size': '20px'},
-            ', '.join(list(label for label in labels if label not in less_table))
-        )
-    )
+#    tags.g(
+#        tags.text(
+#            {'x': '100px', 'y': '100px', 'font-size': '20px'},
+#            ', '.join(list(label for label in labels if label not in less_table))
+#        )
+#    )
 )
 
 new_image.writexml(target_file)

@@ -1,7 +1,7 @@
 
 mount_body 
 
-# parts
+# mount layers by body part
 
 	# heads
 	rodent_head_mouse
@@ -21,7 +21,6 @@ mount_body
 	dinosaur_teeth_buck
 	rodent_fangs
 	rodent_tusks_elephant
-
 
     # tails
     mount_tail_bunny
@@ -55,11 +54,39 @@ mount_body
         dinosaur_ear_bunny_left
         dinosaur_ear_bunny_right
 
-    # legs
+    # legs and arms
 
-        #
+        # bunny
+        mount_arm_bunny_left
+        mount_arm_bunny_right
+        mount_leg_bunny_left
+        mount_leg_bunny_right
+        
+        # chicken
+        mount_arm_chicken_left
+        mount_arm_chicken_right
+        mount_leg_chicken_left
+        mount_leg_chicken_right
+        
+        # elephant
+        mount_arm_elephant_left
+        mount_arm_elephant_right
+        mount_leg_elephant_left
+        mount_leg_elephant_right
+        
+        # mouse
+        mount_arm_mouse_left
+        mount_arm_mouse_right
+        mount_leg_mouse_left
+        mount_leg_mouse_right
+        
+        # wombat
+        mount_arm_wombat_left
+        mount_arm_wombat_right
+        mount_leg_wombat_left
+        mount_leg_wombat_right
 
-# sources
+# mount layers by species
 	
 	# bear
 	rodent_head_bear
@@ -185,8 +212,7 @@ mount_body
 	    dinosaur_goggles
 	    dinosaur_collar
 	    dinosaur_bow_tie
-	
-	
+
 # saddle
 saddle_front
 saddle_left

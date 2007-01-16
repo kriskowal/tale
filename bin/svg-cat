@@ -1,0 +1,35 @@
+#!/usr/bin/env python
+
+from sys import stdin, stdout, stderr, argv
+from cixar.python.xml.tags import tags, Tag, Name
+
+target_file = stdout
+defs = {}
+gs = []
+attributes = {}
+
+for source_file_name in argv[1:]:
+    source_file = file(source_file_name)
+    source_image = Tag.parse(source_file)
+    attributes.update(source_image.attributes)
+    for definition in (
+        tag
+        for tag in source_image[Name('defs')].elements
+        if isinstance(tag, Tag)
+    ):
+        defs[definition['id']] = definition
+    gs.extend(
+        layer
+        for layer in source_image
+        if isinstance(layer, Tag) and
+        layer.name == 'g'
+    )
+
+target_image = tags.svg(
+    attributes,
+    tags.defs(definition for definition in defs.values()),
+    gs,
+)
+
+target_image.writexml(target_file)
+
