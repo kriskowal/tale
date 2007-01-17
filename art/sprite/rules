@@ -108,7 +108,11 @@ mount_arm_wombat_right
 mount_leg_.*_right mount_arm_.*_right
 mount_body
 mount_leg_.*_left mount_arm_.*_left
-rodent_head_.* dinosaur_head
+rodent_head_.*
+
+mount_arm_(chicken|bunny|elephant|mouse|wombat)_left
+dinosaur_head
+mount_arm_llama_left
 
 mount_leg_mouse_left
 mount_arm_mouse_left
@@ -143,6 +147,13 @@ mount_body
 dinosaur_ear_bunny_right
 dinosaur_ventral_blades_front
 dinosaur_ear_bunny_left
+
+dinosaur_head
+dinosaur_eyes.*
+dinosaur_goggles
+mount_llama_wig
+dinosaur_unihorn
+dinosaur_unihorn
 
 # rider
 
@@ -240,4 +251,8 @@ dinosaur_ear_bunny_right
 
 rider_breastplate
 rodent_ear_bunny_right
+
+dinosaur_head
+mount_llama_fur
+saddle_front saddle_left
 

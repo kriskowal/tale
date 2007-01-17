@@ -28,6 +28,7 @@ mount_body
     mount_tail_badger
     mount_tail_curly
     mount_tail_otter
+    mount_tail_llama
 
     # ears
 
@@ -85,6 +86,12 @@ mount_body
         mount_arm_wombat_right
         mount_leg_wombat_left
         mount_leg_wombat_right
+        
+        # llama
+        mount_arm_llama_left
+        mount_arm_llama_right
+        mount_leg_llama_left
+        mount_leg_llama_right
 
 # mount layers by species
 	
@@ -94,6 +101,7 @@ mount_body
 	
 	# unicorn
 	rodent_unihorn
+    dinosaur_unihorn
 	
 	# bunny
 	mount_arm_bunny_left
@@ -134,6 +142,15 @@ mount_body
 	rodent_head_mouse
 	rodent_ear_mouse_left
 	rodent_ear_mouse_right
+
+    # llama
+    mount_tail_llama
+    mount_llama_fur
+    mount_llama_wig
+    mount_arm_llama_left
+    mount_arm_llama_right
+    mount_leg_llama_left
+    mount_leg_llama_right
 	
 	# moose
 	rodent_antler_left
