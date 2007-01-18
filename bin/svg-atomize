@@ -1,0 +1,6 @@
+#!/bin/bash
+source=`basename $1 .svg`
+mkdir -p $source
+cat $source.svg | svg-layers | while read layer; do
+    cat $source.svg | svg-select $layer > $source/$layer.svg
+done

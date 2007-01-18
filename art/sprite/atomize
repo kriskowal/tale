@@ -1,6 +1,0 @@
-
-source=`basename temp.svg .svg`
-cat $source.svg | svg-layers | while read layer; do
-    cat $source.svg | svg-select $layer > layer/$layer.svg
-done
-
