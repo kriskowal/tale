@@ -92,6 +92,12 @@ mount_body
         mount_arm_llama_right
         mount_leg_llama_left
         mount_leg_llama_right
+        
+        # plesiosaur
+        mount_arm_plesiosaur_left
+        mount_arm_plesiosaur_right
+        mount_leg_plesiosaur_left
+        mount_leg_plesiosaur_right
 
 # mount layers by species
 	
