@@ -1,0 +1,5 @@
+
+mkdir -p tests
+cat @.svg | svg-filter `basename $1 .layers`.layers > `basename $1 .layers`.svg
+rsvg `basename $1 .layers`.svg tests/`basename $1 .layers`.png
+

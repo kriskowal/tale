@@ -1,0 +1,23 @@
+#!/usr/bin/env python
+
+from sys import argv, stdin, stdout
+from cixar.python.graphkit import digraph
+from cixar.tale.svg import parse, parse_rules, topo_sorted, labels
+
+source_file = stdin
+target_file = stdout
+rules_files = [file(arg) for arg in argv[1:]]
+
+image = parse(source_file)
+labels = labels(image)
+rules = parse_rules(labels, rules_files)
+sorted_labels = topo_sorted(labels, rules)
+
+target_file.write(
+    digraph(
+        (lesser, greater, 'to')
+        for greater in rules.keys()
+        for lesser in rules[greater]
+    ).file().read()
+)
+

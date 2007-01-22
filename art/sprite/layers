@@ -17,8 +17,8 @@ mount_body
 	dinosaur_eyes_normal
 
 	# teeth
-	rodent_teeth_buck
 	dinosaur_teeth_buck
+	rodent_teeth_buck
 	rodent_fangs
 	rodent_tusks_elephant
 

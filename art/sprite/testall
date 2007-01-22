@@ -1,0 +1,4 @@
+
+ls *.layers | while read layer; do
+    ./test `basename $layer .layers`
+done
