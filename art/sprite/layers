@@ -29,6 +29,11 @@ mount_body
     mount_tail_curly
     mount_tail_otter
     mount_tail_llama
+    mount_tail_horse
+
+    # accoutriments
+	rodent_goggles
+    rodent_snorkel
 
     # ears
 
@@ -92,6 +97,11 @@ mount_body
         mount_arm_llama_right
         mount_leg_llama_left
         mount_leg_llama_right
+
+        mount_hoof_leg_left
+        mount_hoof_leg_right
+        mount_hoof_arm_left
+        mount_hoof_arm_right
         
         # plesiosaur
         mount_arm_plesiosaur_left
@@ -152,6 +162,7 @@ mount_body
     # llama
     mount_tail_llama
     mount_llama_fur
+    horse_hair
     mount_llama_wig
     mount_arm_llama_left
     mount_arm_llama_right
@@ -205,7 +216,6 @@ mount_body
 	# bird
 	mount_wing_bird_left
 	mount_wing_bird_right
-	rodent_goggles
 	
 	# hummingbird
 	mount_wing_hummingbird_left
@@ -217,6 +227,7 @@ mount_body
 	# dinosaur
 	
 	    dinosaur_head
+        horse_head
 	    dinosaur_ventral_blades_back
 	    dinosaur_ventral_blades_front
 	    dinosaur_eyes_evil
@@ -230,11 +241,15 @@ mount_body
 	    # dinosaur bunny
 	    dinosaur_ear_bunny_left
 	    dinosaur_ear_bunny_right
+	    dinosaur_ear_horse_left
+	    dinosaur_ear_horse_right
 	
 	    # accoutriments
 	    dinosaur_goggles
+        dinosaur_snorkel
 	    dinosaur_collar
 	    dinosaur_bow_tie
+
 
 # saddle
 saddle_front
@@ -242,46 +257,64 @@ saddle_left
 saddle_right
 
 # rider
-rider_arm_left
-rider_arm_right
-rider_breastplate
-rider_ear_elven_left
-rider_ear_elven_right
-rider_ear_round_left
-rider_ear_round_right
-rider_eyes_aggressive
-rider_eyes_normal
-rider_eyes_pupils
-rider_eyes_surprised
-rider_face_long
-rider_face_round
-rider_fuzz
-rider_hair_bangs
-rider_hair_long
-rider_hair_short
-rider_hand_left
-rider_hand_left_buckler
-rider_hand_left_knife
-rider_hand_left_sword
-rider_hand_left_thumb
-rider_hand_right
-rider_hand_right_buckler
-rider_hand_right_knife
-rider_hand_right_sword
-rider_hand_right_thumb
-rider_leg_left
-rider_leg_right
-rider_mouth_grimmace
-rider_mouth_smile
-rider_pant_small_left
-rider_pant_small_right
-rider_shirt
-rider_shoe_left
-rider_shoe_right
-rider_shoulder_left_buckler
-rider_shoulder_left_sword
-rider_shoulder_right_buckler
-rider_shoulder_right_sword
-rider_torso
+
+    rider_torso
+    rider_fuzz
+    rider_arm_left
+    rider_arm_right
+    rider_leg_left
+    rider_leg_right
+    rider_eyes_pupils
+    rider_hand_left
+    rider_hand_left_thumb
+    rider_hand_right
+    rider_hand_right_thumb
+    rider_face_round
+
+    # face
+
+
+        # ears
+        rider_ear_elven_left
+        rider_ear_elven_right
+        rider_ear_round_left
+        rider_ear_round_right
+
+        # eyes
+        rider_eyes_aggressive
+        rider_eyes_normal
+        rider_eyes_surprised
+
+        # hair
+        rider_hair_long_spikey
+        rider_hair_long
+        rider_hair_short
+        rider_hair_bangs
+
+        # mouth
+        rider_mouth_grimmace
+        rider_mouth_smile
+
+    # clothes
+    rider_pant_small_left
+    rider_pant_small_right
+    rider_shoe_left
+    rider_shoe_right
+    rider_shirt_left
+    rider_shirt_right
+    rider_breastplate
+
+    # equipment
+
+    rider_hand_left_buckler
+    rider_hand_left_knife
+    rider_hand_left_sword
+    rider_hand_right_buckler
+    rider_hand_right_knife
+    rider_hand_right_sword
+    rider_shoulder_left_buckler
+    rider_shoulder_left_sword
+    rider_shoulder_right_buckler
+    rider_shoulder_right_sword
 
 

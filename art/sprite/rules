@@ -8,15 +8,19 @@ rider_right_bottom
 
 rider_right_top
 saddle_right
-mount_arm_(elephant|wombat|bunny|chicken|mouse|plesiosaur|llama)_right
-mount_leg_(elephant|wombat|bunny|chicken|mouse|plesiosaur|llama)_right
-mount_tail_(bunny|rat|badger|curly|otter|llama)
+mount_hoof_arm_right
+mount_arm_(elephant|wombat|bunny|chicken|mouse|plesiosaur|llama|horse)_right
+mount_hoof_leg_right
+mount_leg_(elephant|wombat|bunny|chicken|mouse|plesiosaur|llama|horse)_right
+mount_tail_(bunny|rat|badger|curly|otter|llama|horse)
 dinosaur_ventral_blades_back
 mount_body
 mount_spots_cow
 mount_leg_(elephant|wombat|bunny)_left
 mount_spots_rump
+mount_hoof_leg_left
 mount_leg_(chicken|mouse|plesiosaur|llama)_left
+mount_hoof_arm_left
 mount_arm_(elephant|wombat|bunny|chicken|mouse|plesiosuar)_left
 mount_mane
 dinosaur_head_bottom
@@ -55,6 +59,7 @@ rodent_ear_(elephant|mouse|poodle|wolf)_left
 rodent_(nostril|snout)
 rodent_unihorn
 rodent_horn_rhino
+rodent_snorkel
 rodent_head_top
 
 
@@ -62,14 +67,15 @@ rodent_head_top
 
 dinosaur_head_bottom
 dinosaur_teeth_(buck)
-dinosaur_ear_bunny_right
+dinosaur_ear_(horse|bunny)_right
 dinosaur_ventral_blades_front
-dinosaur_head
+(dinosaur|horse)_head
 dinosaur_collar
 dinosaur_bow_tie
 dinosaur_eyes_(normal|evil)
 dinosaur_goggles
-dinosaur_ear_bunny_left
+horse_hair
+dinosaur_ear_(horse|bunny)_left
 mount_llama_wig
 dinosaur_unihorn
 dinosaur_head_top
@@ -149,7 +155,7 @@ rider_leg_right_top
 # rider face box
 
 rider_face_bottom
-rider_hair_long
+rider_hair_(long|long_spikey)
 rider_ear_(elven|round)_(left|right)
 rider_face_round
 rider_eyes_(normal|aggressive|surprised)
