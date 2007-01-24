@@ -34,6 +34,8 @@ mount_body
     # accoutriments
 	rodent_goggles
     rodent_snorkel
+    rocket
+    rodent_shell_turtle
 
     # ears
 
@@ -92,12 +94,21 @@ mount_body
         mount_leg_wombat_left
         mount_leg_wombat_right
         
+        # horse
+        mount_arm_horse_left
+        mount_arm_horse_right
+        mount_leg_horse_left
+        mount_leg_horse_right
+        mount_hoof_leg_left
+        mount_hoof_leg_right
+        mount_hoof_arm_left
+        mount_hoof_arm_right
+        
         # llama
         mount_arm_llama_left
         mount_arm_llama_right
         mount_leg_llama_left
         mount_leg_llama_right
-
         mount_hoof_leg_left
         mount_hoof_leg_right
         mount_hoof_arm_left
@@ -237,6 +248,8 @@ mount_body
 	    dinosaur_horn
 	    dinosaur_fangs
 	    dinosaur_teeth_buck
+        dinosaur_antler_left
+        dinosaur_antler_right
 	
 	    # dinosaur bunny
 	    dinosaur_ear_bunny_left

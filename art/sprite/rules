@@ -29,6 +29,10 @@ dinosaur_head_top
 mount_arm_llama_left
 rodent_shell_turtle
 mount_llama_fur
+rodent_head_right_bottom
+
+rodent_head_right_top
+rocket
 saddle_left
 rider_left_bottom
 
@@ -37,18 +41,21 @@ saddle_front
 mount_wings_left_bottom
 
 mount_wings_left_top
-rodent_head_bottom
+rodent_head_left_bottom
 
-rodent_head_top
+rodent_head_left_top
 
 
 # rodent head box
 
-rodent_head_bottom
+rodent_head_right_bottom
 rodent_teeth_buck rodent_fangs rodent_tusks_elephant rodent_tusk_mastadon_right
 rodent_ear_(elephant|mouse|wolf)_right
 rodent_antler_right
 rodent_ear_(bunny)_right
+rodent_head_right_top
+
+rodent_head_left_top
 rodent_head_(mouse|otter|bear|elephant)
 rodent_tusk_mastadon_left
 rodent_eyes_(beady|wombat|elephant)
@@ -60,13 +67,14 @@ rodent_(nostril|snout)
 rodent_unihorn
 rodent_horn_rhino
 rodent_snorkel
-rodent_head_top
+rodent_head_left_top
 
 
 # dinosaur head box
 
 dinosaur_head_bottom
 dinosaur_teeth_(buck)
+dinosaur_antler_right
 dinosaur_ear_(horse|bunny)_right
 dinosaur_ventral_blades_front
 (dinosaur|horse)_head
@@ -75,7 +83,8 @@ dinosaur_bow_tie
 dinosaur_eyes_(normal|evil)
 dinosaur_goggles
 horse_hair
-dinosaur_ear_(horse|bunny)_left
+dinosaur_ear_(bunny|horse)_left
+dinosaur_antler_left
 mount_llama_wig
 dinosaur_unihorn
 dinosaur_head_top
