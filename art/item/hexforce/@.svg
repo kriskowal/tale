@@ -1234,7 +1234,7 @@
      inkscape:cx="614.93425"
      inkscape:cy="547.40192"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer4"
      inkscape:window-width="1590"
      inkscape:window-height="1121"
      inkscape:window-x="0"
@@ -1263,7 +1263,7 @@
        id="path6073"
        sodipodi:nodetypes="cssssssssscssss" />
     <path
-       style="color:#000000;fill:#ffdad7;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:80;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.25465836;visibility:visible;display:inline;overflow:visible"
+       style="color:#000000;fill:#ff1300;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:80;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.25465836;visibility:visible;display:inline;overflow:visible"
        d="M 508.34755,477.42535 C 479.35884,444.61464 466.52219,411.66939 437.09138,379.53606 C 408.98185,356.10613 375.43478,322.10632 356.27692,288.0184 C 341.87269,263.2104 288.4126,235.82889 316.75946,208.2524 C 348.12304,186.21145 387.12486,197.85262 422.08264,194.55221 C 483.5519,193.06276 544.42884,182.26603 605.96283,181.73094 C 627.06555,186.42684 670.80614,165.69201 670.05815,202.68341 C 667.55217,238.21039 634.56648,255.86907 616.02061,280.83278 C 589.88624,319.09343 570.8082,362.75415 547.72878,403.33651 C 534.81327,428.17557 519.27877,451.36325 508.34755,477.42535 z "
        id="path3099"
        sodipodi:nodetypes="cccccccccc" />
@@ -1293,7 +1293,7 @@
        id="path6071"
        sodipodi:nodetypes="cccsssssssss" />
     <path
-       style="color:#000000;fill:#deffdd;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:80;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.25465836;visibility:visible;display:inline;overflow:visible"
+       style="color:#000000;fill:#07ff00;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:80;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.25465836;visibility:visible;display:inline;overflow:visible"
        d="M 168.39486,488.63472 C 273.29175,467.39213 380.49101,487.91044 485.97238,477.87183 C 534.28502,487.48912 485.53,541.85817 468.57296,562.25145 C 434.35357,617.21296 415.04111,681.31088 395.64574,743.96179 C 386.55461,785.78497 343.38684,812.85967 325.89089,760.30256 C 282.27369,673.60746 230.01072,592.42625 171.89625,516.88858 C 166.37639,509.07782 163.067,497.69328 168.39486,488.63472 z "
        id="path4007" />
     <path
@@ -1322,7 +1322,7 @@
        id="path4218"
        sodipodi:nodetypes="csssssssss" />
     <path
-       style="color:#000000;fill:#dbe3ff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:80;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.25465836;visibility:visible;display:inline;overflow:visible"
+       style="color:#000000;fill:#0038ff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:80;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.25465836;visibility:visible;display:inline;overflow:visible"
        d="M 513.69757,487.46398 C 621.39978,485.40529 729.30345,488.21329 836.78448,479.04935 C 793.58118,581.05773 721.21816,720.87267 657.54414,810.23592 C 624.62583,764.05889 610.65165,694.96699 579.4522,651.02155 C 553.03816,599.40764 521.6089,546.41323 513.69757,487.46398 z "
        id="path4021"
        sodipodi:nodetypes="ccccc" />
