@@ -1,0 +1,13 @@
+
+ls *.layers | while read layer; do
+    ./build `basename $layer .layers`
+done
+
+svg-layers @.svg | while read color; do
+    cat @.svg | svg-select $color > $color.svg
+    rsvg $color.svg $color.png
+    rsvg -w 100 $color.svg $color-100.png
+    rsvg -w 400 $color.svg $color-400.png
+done
+
+
