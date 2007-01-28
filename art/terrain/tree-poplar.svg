@@ -13,9 +13,9 @@
    id="svg2"
    sodipodi:version="0.32"
    inkscape:version="0.43"
-   sodipodi:docbase="C:\Documents and Settings\Cowbert\Desktop"
+   sodipodi:docbase="/home/kkowal/tale/art/terrain"
    sodipodi:docname="tree-poplar.svg"
-   inkscape:export-filename="C:\Documents and Settings\Cowbert\Desktop\tree-poplar.png"
+   inkscape:export-filename="/home/kkowal/tale/art/terrain/tree-poplar.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -34,8 +34,8 @@
      inkscape:current-layer="layer3"
      inkscape:window-width="1045"
      inkscape:window-height="913"
-     inkscape:window-x="-4"
-     inkscape:window-y="-4"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
      showguides="true"
      inkscape:guide-bbox="true" />
   <metadata

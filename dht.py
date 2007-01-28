@@ -1,4 +1,0 @@
-
-class dht(object):
-    pass
-
