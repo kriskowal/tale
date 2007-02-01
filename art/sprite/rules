@@ -15,6 +15,7 @@ mount_leg_(elephant|wombat|bunny|chicken|mouse|plesiosaur|llama|horse)_right
 mount_tail_(bunny|rat|badger|curly|otter|llama|horse|fish)
 dinosaur_ventral_blades_back
 mount_body
+mount_fish_scales
 mount_spots_cow mount_spikes_fish
 mount_leg_(elephant|wombat|bunny)_left
 mount_spots_rump
