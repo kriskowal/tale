@@ -12,20 +12,24 @@ mount_hoof_arm_right
 mount_arm_(elephant|wombat|bunny|chicken|mouse|plesiosaur|llama|horse)_right
 mount_hoof_leg_right
 mount_leg_(elephant|wombat|bunny|chicken|mouse|plesiosaur|llama|horse)_right
-mount_tail_(bunny|rat|badger|curly|otter|llama|horse)
+mount_tail_(bunny|rat|badger|curly|otter|llama|horse|fish)
 dinosaur_ventral_blades_back
 mount_body
-mount_spots_cow
+mount_spots_cow mount_spikes_fish
 mount_leg_(elephant|wombat|bunny)_left
 mount_spots_rump
 mount_hoof_leg_left
 mount_leg_(chicken|mouse|plesiosaur|llama)_left
 mount_hoof_arm_left
 mount_arm_(elephant|wombat|bunny|chicken|mouse|plesiosuar)_left
+mount_fin_fish
 mount_mane
 dinosaur_head_bottom
 
 dinosaur_head_top
+fish_head_bottom
+
+fish_head_top
 mount_arm_llama_left
 rodent_shell_turtle
 mount_llama_fur
@@ -88,6 +92,15 @@ dinosaur_antler_left
 mount_llama_wig
 dinosaur_unihorn
 dinosaur_head_top
+
+
+# fish head box
+
+mount_head_fish_bottom
+mount_eyes_fish
+mount_fish_goggles
+mount_mouth_fish
+mount_head_fish_top
 
 
 # rider right box

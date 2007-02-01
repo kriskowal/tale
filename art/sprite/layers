@@ -1,4 +1,5 @@
 
+
 mount_body 
 
 # mount layers by body part
@@ -15,6 +16,7 @@ mount_body
 	rodent_eyes_elephant
 	dinosaur_eyes_evil
 	dinosaur_eyes_normal
+    mount_eyes_fish
 
 	# teeth
 	dinosaur_teeth_buck
@@ -30,6 +32,7 @@ mount_body
     mount_tail_otter
     mount_tail_llama
     mount_tail_horse
+    mount_tail_fish
 
     # accoutriments
 	rodent_goggles
@@ -195,6 +198,14 @@ mount_body
 	mount_arm_wombat_right
 	mount_leg_wombat_left
 	mount_leg_wombat_right
+
+    # fish
+    mount_eyes_fish
+    mount_fin_fish
+    mount_fish_goggles
+    mount_mouth_fish
+    mount_spikes_fish
+    mount_tail_fish
 	
 	# cow
 	mount_spots_cow
