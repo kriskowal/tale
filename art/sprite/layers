@@ -281,65 +281,130 @@ saddle_front
 saddle_left
 saddle_right
 
+
 # rider
 
-    rider_torso
-    rider_fuzz
-    rider_arm_left
-    rider_arm_right
-    rider_leg_left
-    rider_leg_right
-    rider_eyes_pupils
-    rider_hand_left
-    rider_hand_left_thumb
-    rider_hand_right
-    rider_hand_right_thumb
-    rider_face_round
+    # female
+    rider_female_bust
+    rider_female_leg_left
+    rider_female_leg_right
+
+    rider_female_arm_straight_left
+    rider_female_arm_straight_right
+    rider_female_arm_bent_left
+    rider_female_arm_bent_right
+    rider_female_arm_down_left
+    rider_female_arm_down_right
+
+    # male
+    rider_male_bust
+    rider_male_leg_left
+    rider_male_leg_right
+
+    rider_male_arm_bent_left
+    rider_male_arm_bent_right
+    rider_male_arm_down_left
+    rider_male_arm_down_right
+    rider_male_arm_straight_left
+    rider_male_arm_straight_right
+
+    # head
+    rider_head_angular
+    rider_head_oval
+    rider_head_round
 
     # face
+    rider_face_wink
+    rider_face_grin
+    rider_face_normal
+    rider_face_beam
+    rider_face_bawl
+    rider_face_sad
+    rider_face_bonk
+    rider_face_smile
+    rider_face_cry
+    rider_face_glare
+    rider_face_dead
+    rider_face_laugh
+    rider_face_grok
+    rider_face_awkward
 
+    # ears
+    rider_ear_large_round
+    rider_ear_large_lobed
+    rider_ear_small_round
+    rider_ear_small_lobed
+    rider_earring
 
-        # ears
-        rider_ear_elven_left
-        rider_ear_elven_right
-        rider_ear_round_left
-        rider_ear_round_right
+    # hair
 
-        # eyes
-        rider_eyes_aggressive
-        rider_eyes_normal
-        rider_eyes_surprised
+    rider_hair_boss
+    rider_hair_balding
+    rider_hair_curly
+    rider_hair_block
+    rider_hair_dreads
+    rider_hair_short_round
+    rider_hair_long_round
+    rider_hair_medium_round
+    rider_hair_long_even
+    rider_hair_lemming
+    rider_bangs_parted
+    rider_bangs_dreads
+    rider_bangs_split
+    rider_bangs_straight
+    rider_bangs_lemming
+    rider_bangs_block
+    rider_bangs_boss
+    rider_bangs_balding
 
-        # hair
-        rider_hair_long_spikey
-        rider_hair_long
-        rider_hair_short
-        rider_hair_bangs
+    # shirt
 
-        # mouth
-        rider_mouth_grimmace
-        rider_mouth_smile
+    rider_female_shirt
+    rider_female_sleeve_bent_left
+    rider_female_sleeve_bent_right
+    rider_female_sleeve_down_left
+    rider_female_sleeve_down_right
+    rider_female_sleeve_straight_left
+    rider_female_sleeve_straight_right
 
-    # clothes
-    rider_pant_small_left
-    rider_pant_small_right
-    rider_shoe_left
-    rider_shoe_right
-    rider_shirt_left
-    rider_shirt_right
-    rider_breastplate
+    rider_male_shirt
+    rider_male_sleeve_bent_left
+    rider_male_sleeve_bent_right
+    rider_male_sleeve_down_left
+    rider_male_sleeve_down_right
+    rider_male_sleeve_straight_left
+    rider_male_sleeve_straight_right
 
-    # equipment
+    # pants
 
-    rider_hand_left_buckler
-    rider_hand_left_knife
-    rider_hand_left_sword
-    rider_hand_right_buckler
-    rider_hand_right_knife
-    rider_hand_right_sword
-    rider_shoulder_left_buckler
-    rider_shoulder_left_sword
-    rider_shoulder_right_buckler
-    rider_shoulder_right_sword
+    rider_female_pants_left
+    rider_female_pants_right
+    rider_female_shorts_left
+    rider_female_shorts_right
 
+    rider_male_pants_left
+    rider_male_pants_right
+    rider_male_shorts_left
+    rider_male_shorts_right
+
+    # shoes
+
+    rider_famale_boot_right
+    rider_female_boot_left
+    rider_female_sandals_left
+    rider_female_sandals_right
+    rider_female_shoe_left
+    rider_female_shoe_right
+    rider_male_boot_left
+    rider_male_boot_right
+    rider_male_sandals_left
+    rider_male_sandals_right
+    rider_male_shoe_left
+    rider_male_shoe_right
+
+    # armor
+    rider_armor
+
+    rider_crop
+    rider_crop_face
 

@@ -28,9 +28,9 @@ mount_mane
 dinosaur_head_bottom
 
 dinosaur_head_top
-fish_head_bottom
+mount_head_fish_bottom
 
-fish_head_top
+mount_head_fish_top
 mount_arm_llama_left
 rodent_shell_turtle
 mount_llama_fur
@@ -60,7 +60,7 @@ rodent_antler_right
 rodent_ear_(bunny)_right
 rodent_head_right_top
 
-rodent_head_left_top
+rodent_head_left_bottom
 rodent_head_(mouse|otter|bear|elephant)
 rodent_tusk_mastadon_left
 rodent_eyes_(beady|wombat|elephant)
@@ -107,95 +107,43 @@ mount_head_fish_top
 # rider right box
 
 rider_right_bottom
-rider_back_bottom
-
-rider_back_top
-rider_torso # TODO redistribute torso, left and right leg so that the layers can stack properly
-rider_fuzz
-rider_leg_right_bottom
-
-rider_leg_right_top
-rider_arm_right_bottom
-
-rider_arm_right_top
-rider_shirt_right
+rider_hair_.*
+rider_(male|female)_leg_right
+rider_(male|female)_(shoe|boot|sandal)_right
+rider_(male|female)_(pants|shorts)_right
+rider_(male|female)_arm_(straight|bent|down)_right
+rider_(male|female)_sleeve_(straight|bent|down)_right
 rider_right_top
 
 
 # rider left box
 
 rider_left_bottom
-rider_(arm|leg)_left_bottom
+rider_(male|female)_leg_left
+rider_(male|female)_(shoe|boot|sandal)_left
+rider_(male|female)_(pants|shorts)_left
+rider_(male|female)_arm_(straight|bent|down)_left
+rider_(male|female)_sleeve_(straight|bent|down)_left
+rider_bust_bottom
 
-rider_(arm|leg)_left_top
-rider_breastplate
-rider_face_bottom
-
-rider_face_top
+rider_bust_top
+rider_(buckler|shield_(hero|roman))
 rider_left_top
 
 
-# rider right arm box
+# rider bust box
 
-rider_arm_right_bottom
-rider_arm_right
-rider_arm_right_top
-
-
-# rider left arm box
-
-rider_arm_left_bottom
-rider_hand_left_buckler
-rider_hand_left
-rider_arm_left
-rider_hand_left_(sword|knife)
-rider_hand_left_thumb
-rider_shirt_left
-rider_arm_left_top
-
-
-# rider left leg box
-
-rider_arm_right_bottom
-rider_hand_right_buckler
-rider_hand_right
-rider_arm_right
-rider_hand_right_(sword|knife)
-rider_hand_right_thumb
-rider_shirt_right
-rider_arm_right_top
-
-
-# rider right leg box
-
-rider_leg_right_bottom
-rider_leg_right
-rider_shoe_right
-rider_pant_(large|small)_right
-rider_leg_right_top
-
-
-# rider face box
-
-rider_face_bottom
-rider_hair_(long|long_spikey)
-rider_ear_(elven|round)_(left|right)
-rider_face_round
-rider_eyes_(normal|aggressive|surprised)
-rider_eyes_pupils
-rider_hair_bangs
-rider_mouth_(smile|grimamce)
-rider_face_top
-
-
-# rider back box
-
-rider_back_bottom
-rider_shoulder_left_buckler
-rider_shoulder_right_buckler
-rider_shoulder_left_sword
-rider_shoulder_right_sword
-rider_back_top
+rider_bust_bottom
+rider_(male|female)_bust
+rider_(male|female)_shirt
+rider_armor
+rider_head_(angular|oval|round)
+rider_face_.*
+rider_bangs_(balding|block|parted|split|straight)
+rider_ear_.*
+rider_earring
+rider_bangs_(lemming|boss|dreads)
+rider_bust_top
 
 
 # wings

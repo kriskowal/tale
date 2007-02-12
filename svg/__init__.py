@@ -8,34 +8,97 @@ from cixar.python.text import uncomment, blocks
 
 class Layer(Tag):
 
-    def __init__(self, label = None):
+    def __init__(
+        self,
+        label = None,
+        groups = None,
+        group = None,
+        defs = None,
+        attributes = None,
+    ):
+        if groups is None: groups = []
+        if group is not None: groups.append(group)
+        if defs is None: defs = {}
+        if attributes is None: attributes = {}
         self.name = 'g'
         self.label = label
-        self.gs = []
+        self.groups = groups
+        self.defs = defs
+        self._attributes = attributes
 
-    def append(self, g):
-        self.gs.append(g)
+    def append(self, group):
+        if isinstance(group, Layer):
+            self.defs.update(group.defs)
+        self.groups.append(group)
+
+    def translated(self, start = None, x = None, y = None, label = None):
+        if x is None or y is None:
+            assert x is None and y is None
+            assert start is not None
+            x, y = start
+        if label is None: label = self.label
+        return Layer(
+            groups = [
+                tags.g(
+                    self.groups,
+                    transform = 'translate(%s, %s)' % (x, y)
+                )
+            ],
+            defs = self.defs,
+            label = label
+        )
+
+    def scaled(self, factor, label = None):
+        return Layer(
+            groups = [
+                tags.g(
+                    self.groups,
+                    transform = 'scale(%s)' % factor
+                ),
+            ],
+            defs = self.defs,
+            label = label,
+        )
 
     @property
     def elements(self):
-        return []
+        return self.groups
 
     @property
     def attributes(self):
-        return {}
+        attributes = self._attributes
+        if self.label is not None:
+            attributes['inkscape:label'] = self.label
+        return attributes
 
 class Svg(Layer):
 
-    def __init__(self, width = None, height = None, size = None):
+    def __init__(
+        self,
+        width = None,
+        height = None, 
+        size = None,
+        groups = None,
+        group = None,
+        defs = None,
+    ):
+
         if width is None or height is None:
             assert width is None and height is None
             assert size is not None
             width, height = size
+        if groups is None:
+            groups = []
+        if group is not None:
+            groups.append(group)
+        if defs is None:
+            defs = {}
+
         self.name = 'svg'
         self.width = width
         self.height = height
-        self.defs = {}
-        self.gs = []
+        self.defs = defs
+        self.groups = groups
 
     @property
     def elements(self):
@@ -46,7 +109,7 @@ class Svg(Layer):
                     for definition in self.defs.values()
                 ),
             ] +
-            self.gs
+            self.groups
         )
 
     @property
@@ -64,6 +127,49 @@ class Svg(Layer):
             'xmlns:sodipodi': 'http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd',
             'version': 1.0,
         }
+
+    @classmethod
+    def parse(Self, file):
+        xml = Tag.parse(file)
+        return Self(
+            width = xml['width'],
+            height = xml['height'],
+            groups = list(
+                element
+                for element in xml.tags
+                if element.name == 'g'
+            ),
+            defs = dict(
+                (element['id'], element)
+                for element in xml[Name('defs')].tags
+            ),
+        )
+
+    def label_iter(image):
+        for element in image.tags:
+            if (
+                element.name == 'g' and
+                'inkscape:label' in element
+            ):
+                yield element['inkscape:label']
+
+    labels = property(wrap(list)(label_iter))
+
+    def layers_iter(image):
+        for child in image:
+            if (
+                isinstance(child, Tag) and
+                child.name == 'g' and
+                'inkscape:label' in child
+            ):
+                label = child['inkscape:label']
+                yield label, Layer(
+                    label,
+                    groups = child.elements,
+                    attributes = child.attributes
+                )
+
+    layers = property(wrap(dict)(layers_iter))
 
 class Rectangle(Tag):
     def __init__(
