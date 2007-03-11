@@ -60,6 +60,18 @@ class Layer(Tag):
             label = label,
         )
 
+    def rotated(self, angle, label = None):
+        return Layer(
+            groups = [
+                tags.g(
+                    self.groups,
+                    transform = 'rotate(%s)' % angle
+                ),
+            ],
+            defs = self.defs,
+            label = label,
+        )
+
     @property
     def elements(self):
         return self.groups
@@ -81,6 +93,7 @@ class Svg(Layer):
         groups = None,
         group = None,
         defs = None,
+        attributes = None,
     ):
 
         if width is None or height is None:
@@ -89,16 +102,21 @@ class Svg(Layer):
             width, height = size
         if groups is None:
             groups = []
+        else:
+            groups = list(groups)
         if group is not None:
             groups.append(group)
         if defs is None:
             defs = {}
+        if attributes is None:
+            attributes = {}
 
         self.name = 'svg'
         self.width = width
         self.height = height
         self.defs = defs
         self.groups = groups
+        self._attributes = attributes
 
     @property
     def elements(self):
@@ -114,7 +132,7 @@ class Svg(Layer):
 
     @property
     def attributes(self):
-        return {
+        attributes = {
             'height': self.height,
             'width': self.width,
             'xmlns': 'http://www.w3.org/2000/svg',
@@ -127,6 +145,8 @@ class Svg(Layer):
             'xmlns:sodipodi': 'http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd',
             'version': 1.0,
         }
+        attributes.update(self._attributes)
+        return attributes
 
     @classmethod
     def parse(Self, file):
