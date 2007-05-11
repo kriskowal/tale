@@ -1,0 +1,11 @@
+#!/bin/bash
+
+ls *.mid | while read mid; do
+    file=`basename $mid .mid`
+
+    timidity "$file.mid" -Ov -o "$file.ogg"
+    sox "$file.ogg" "$file.wav"
+    lame "$file.wav" "$file.mp3"
+
+done
+
