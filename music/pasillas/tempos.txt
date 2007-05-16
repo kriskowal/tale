@@ -1,0 +1,2 @@
+euia adventure major 100
+euia adventure minor 80
