@@ -1,0 +1,71 @@
+<html xmlns:chiron="http://cixar.com/javascript">
+    <head>
+        <script src="bin/cixar/javascript/modules.js?chiron.js"></script>
+    </head>
+    <body>
+        <a href="#" id="button">Toggle</a>
+        <script language="chironscript">
+            with (require('sound.js')) {
+            with (require('http.js')) {
+            with (require('event.js')) {
+            with (require('transitions.js')) {
+            ready.observe(function () {
+
+            var tuneUrls = [
+                '6-1-euia-adventure.mp3',
+                '6-1-euia-adventure-minor-slowed.mp3'
+            ];
+
+            var tunes = each(tuneUrls, function (tuneUrl) {
+                return sound('music/pasillas/' + tuneUrl);
+            });
+
+            var ready = State();
+
+            tunes.each(function (tune) {
+                tune.observe('ready', function () {
+                    if (
+                        tunes.each(function (tune) {
+                            return tune.ready.bool();
+                        }).all()
+                    ) {
+                        ready();
+                    }
+                });
+            });
+
+            var majorSound = tunes.getItem(0);
+            var minorSound = tunes.getItem(1);
+            var major, minor;
+
+            ready.observe(function () {
+                major = majorSound.play();
+            });
+
+            var crossFade = function (direction) {
+                var tracks = direction > 0 ? [major, minor] : [minor, major];
+                count(0, 100, 25).timedEach(1000, function (n) {
+                    n = n / 100;
+                    tracks[0].setVolume(1 - n);
+                    tracks[1].setVolume(n);
+                });
+            };
+
+            var toggle;
+            button.getElement().onclick = function () {
+                if (toggle = !toggle) {
+                    minor = minorSound.play();
+                    minor.setPosition(major.getPosition());
+                    crossFade(1);
+                } else {
+                    major = majorSound.play();
+                    major.setPosition(minor.getPosition());
+                    crossFade(-1);
+                }
+            };
+
+            }); /* ready */
+            }}}} /* with */
+        </script>
+    </body>
+</html>
