@@ -1,0 +1,43 @@
+<html xmlns:chiron="http://cixar.com/javascript">
+    <head>
+        <style>@import url(@.css);</style>
+        <script language="javascript" src="bin/cixar/javascript/modules.js"></script>
+    </head>
+    <body>
+        <table align="center" width="600"><tr><td style="border: none">
+
+            <p style="text-align: center">
+                <img src="art/world.png" alt="The world of Tale is a cube.">
+            </p>
+
+            <br/>
+
+            <p class="encounter">You encounter <i>Tale</i>.</p>
+
+            <div id="_" chiron:type="file:///home/kkowal/tale/play.js#Play"></div>
+
+            <div class="choices">
+                <a href="play.html" id="play"><img src="art/cursor.png"/>Play</a>
+                <a href="http://cixar.com/tale/wiki"><img src="art/cursor.png"/>Wiki</a>
+                <a href="http://cixar.com/tale/trac"><img src="art/cursor.png"/>Trac</a>
+                <a href="http://cixar.com/tale/svn"><img src="art/cursor.png"/>SVN</a>
+                <a href="http://cixar.com"><img src="art/cursor.png"/>Flee</a>
+            </div>
+
+            <script language="javascript">
+                document.getElementById('play').onclick = function () {
+                    try {
+                        try {
+                            chiron.requireRelative('play.js');
+                        } catch (exception) {
+                            alert(exception);
+                        }
+                    } finally {
+                        return false;
+                    }
+                };
+            </script>
+
+        </td></tr></table>
+    </body>
+</html>

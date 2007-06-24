@@ -1,0 +1,136 @@
+
+window, body, td, th {
+    font-family: Verdana, Helvetica, sans-serif;
+    color: black;
+}
+
+body {
+    background-color: #46B3D3;
+}
+
+a {
+    color: #0055aa;
+    text-decoration: none;
+}
+a:hover {
+    color: #000;
+}
+
+hr {
+    border: solid #333355 1px;
+    background-color: #333355;
+}
+
+body {
+}
+
+h1, h2, h3, h4, h5 {
+    text-align: center;
+    font-family: monospace;
+}
+
+#navigation {
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    margin: 0 auto;
+    margin-bottom: -10px;
+    padding-bottom: 10px;
+    position: fixed;
+    text-align: center;
+    padding-top: 7px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-top: #fff dashed 2px;
+}
+
+.choices {
+    width: 100%;
+    text-align: center;
+    margin: auto auto;
+    font-size: 24px;
+    font-family: monospace;
+}
+.choices a {
+    text-decoration: none;
+    white-space: nowrap;
+    color: #000;
+    opacity: .25;
+    filter: alpha(opacity = 25);
+}
+.choices a img { 
+    height: 1em;
+    border: none;
+    padding-right: .3ex;
+    vertical-align: bottom;
+    font-weight: bold;
+}
+.choices a:hover {
+    opacity: 1;
+    filter: alpha(opacity = 100);
+}
+.choices a:focus {
+    opacity: 1;
+    filter: alpha(opacity = 100);
+}
+
+
+.encounter {
+    text-align: center;
+    font-family: monospace;
+    font-size: 2em;
+}
+
+.description {
+    padding: 1em 3em;
+    text-align: center;
+    font-family: monospace;
+    color: #333355;
+}
+
+td, th {
+    border: solid #0055aa 1px;
+    padding: 2px 4px;
+}
+
+/* an attribute for the moinmoin wiki.  Hightlights links to pages
+   that have not been created yet. */
+.nonexistent {
+	color: #aa0055;
+}
+
+#message {
+    border: solid 1px #aa0055;
+    border-raduis: 10px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.diff {
+    width: 99%;
+}
+    
+.diff > * {
+    font-family: monospace;
+}
+
+.diff-title {
+}
+
+.diff-added {
+	vertical-align: sub;
+}
+
+.diff-removed {
+	vertical-align: sub;
+}
+
+.diff-added span {
+	background-color: #80ff80;
+}
+
+.diff-removed span {
+	background-color: #ffff80;
+}
+
