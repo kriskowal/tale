@@ -1,0 +1,148 @@
+
+body {
+    background-color: #46B3D3;
+    margin: 0;
+}
+
+#content {
+    min-height: 100%;
+    height: 100%;
+    position: absolute;
+    left: 22.5%;
+    width: 55%;
+    /*outline: dotted white 1px;*/
+}
+
+#panel {
+    text-align: right;
+    display: table-cell;
+    vertical-align: center;
+    overflow: hidden;
+    position: fixed;
+    bottom: 40%;
+    left: 1.25%;
+    width: 20%;
+    /*outline: dotted white 1px;*/
+}
+
+#ad {
+    text-align: left;
+    overflow: hidden;
+    position: fixed;
+    bottom: 40%;
+    right: 1.25%;
+    width: 20%;
+    float: right;
+    /*outline: dotted white 1px;*/
+}
+
+body, p, td, th {
+    font-family: Lucida Grande, Tahoma, sans-serif;
+    font-size: 30px;
+}
+
+p, td, th {
+    text-align: justify;
+}
+
+p {
+    margin: .5em;
+}
+
+.code {
+    font-family: Monaco, monospace;
+}
+
+code, tt, pre {
+    font-family: Monaco, monospace;
+}
+
+code {
+}
+
+
+/* messages */
+
+.message {
+    padding: 3px 6px 2px 6px;
+    /*border-bottom: 1px solid #dddddd;*/
+    min-height: 16px;
+}
+
+.message a.source {
+    font-size: .8em;
+}
+
+.message a.source {
+    opacity: .5;
+    -moz-opacity: .5;
+    -webkit-opacity: .5;
+}
+
+.message a.source:hover {
+    opacity: 1;
+    -moz-opacity: 1;
+    -webkit-opacity: 1;
+}
+
+
+
+/* widgets */
+
+#commandLine {
+    background: url(cursor.png) no-repeat left center;
+    background-position: .5ex;
+    background-height: 1em;
+    background-width: 1em;
+    width: 100%;
+    font-family: Lucida Grande, sans-serif;
+    font-size: 1em;
+    padding-left: 2.5ex;
+    padding-right: 1ex;
+    padding-top: .5ex;
+    padding-bottom: .5ex;
+    border: solid #fff 3px;
+    -moz-border-radius: 1ex;
+    -webkit-border-radius: 1ex;
+}
+
+#prompt {
+    text-align: center;
+}
+
+#buffer {
+}
+
+.bottom {
+    width: 100%;
+}
+
+
+/* interactive tutorials */
+
+*[command] {
+    display: none;
+}
+
+.lesson {
+    /*border-top: 3px solid #dddddd;*/
+}
+
+.choices {
+    text-align: center;
+}
+
+a.choice, .choices a {
+    font-family: Monaco, monospace;
+    color: #0055aa;
+    text-decoration: none;
+    background: url(cursor.png) no-repeat left center;
+    padding-left: 2ex;
+    padding-right: 1ex;
+    opacity: .75;
+}
+
+a.choice:hover, .choices a:hover {
+    opacity: .9999;
+}
+

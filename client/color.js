@@ -42,16 +42,6 @@ setInterval(function () {
     setColorScheme(b.string(), f.string());
 }, 100);
 
-/*
-this.Console = type([Widget], function () {
-    this.init = function (element) {
-        this.getSuper(Console).init(element);
-        element.innerHTML = 'Here';
-        log('here');
-    };
-});
-*/
-
 /*license
 
     Credits
