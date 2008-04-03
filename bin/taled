@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 
-from cixar.tale import TaleService
-from cixar.ish.lazy import serve, HostService
+import sys
+import os.path
+sys.path.insert(0, os.path.join(__file__, '..', 'lib'))
+
+from tale import TaleService
+from planes.lazy import serve, HostService
 serve(HostService(TaleService()), port = 2380)
 
