@@ -2,9 +2,12 @@
 
 import sys
 import os.path
-sys.path.insert(0, os.path.join(__file__, '..', 'lib'))
+sys.path.insert(0, os.path.join(*(
+    os.path.split(__file__)[:-1] +
+    ('..', 'lib')
+)))
 
 from tale import TaleService
-from planes.lazy import serve, HostService
-serve(HostService(TaleService()), port = 2380)
+from planes.lazy import serve, StandardService, PathService
+serve(StandardService(PathService(paths = {'session': TaleService()})), port = 2380)
 

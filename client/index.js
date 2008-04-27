@@ -5,7 +5,7 @@ observe(
     'click',
     function () {
         this.stop();
-        alert('here');
+        require('./play.js');
     }
 );
 

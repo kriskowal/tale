@@ -16,17 +16,21 @@ body {
 /* rc =  (map) (ad space) */
 
 body {
+    position: relative;
+    text-align: center;
     margin: 0;
 }
 
 #body {
+    margin: 0 auto 0 auto;
+    text-align: left;
+    position: relative;
+    width: 600px;
+    height: 100%;
 }
 
 .content {
-}
-
-#center {
-    width: 100%;
+    padding: 5px 10px;
 }
 
 #left {
@@ -115,8 +119,6 @@ i {
 
 .encounter {
     text-align: center;
-    font-family: monospace;
-    font-size: 2em;
 }
 
 .description {
@@ -169,5 +171,39 @@ td, th {
 
 .diff-removed span {
 	background-color: #ffff80;
+}
+
+
+/* functional */
+
+.menuBar {
+    text-align: center;
+}
+
+
+
+#commandBar {
+    border: none;
+    border-spacing: 0;
+    margin: 0;
+}
+#commandBar * {
+    border: none;
+}
+#commandBar td.B {
+    width: 100%;
+    padding: 0 1ex;
+}
+#commandBar td.B input {
+    width: 100%;
+    font-size: 1em;
+}
+
+#prompt {
+    font-family: Monaco, monospace;
+}
+
+#commandLine {
+    width: 100%;
 }
 
