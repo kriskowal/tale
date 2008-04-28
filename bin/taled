@@ -9,5 +9,5 @@ sys.path.insert(0, os.path.join(*(
 
 from tale import TaleService
 from planes.lazy import serve, StandardService, PathService
-serve(StandardService(PathService(paths = {'session': TaleService()})), port = 2380)
+serve(StandardService(PathService(paths = {'session': TaleService()})), port = 2380, debug = True)
 

@@ -1,5 +1,6 @@
 
 //include('debug.js');
+include('minidebug.js');
 include('base.js');
 include('select.js');
 include('browser.js');
@@ -29,10 +30,12 @@ var commandBar = tag(
     ]
 );
 var viewport = document.body;
-var menuBar = select('.menuBar').get(0);
-menuBar.parentNode.insertBefore(commandBar, menuBar);
+buffer.parentNode.insertBefore(commandBar, buffer.nextSibling);
 var console = Console(buffer, prompt, commandLine, viewport);
-menuBar.parentNode.removeChild(menuBar);
+
+var menuBar = select('.menuBar').forEach(function (menuBar) {
+    menuBar.parentNode.removeChild(menuBar);
+});
 
 var n = 0;
 
@@ -53,7 +56,7 @@ var connectedNotes = add(iter([
 ]));
 
 var disconnectedNotes = cycle([
-    "The Tale server does not appear to be listening.  " +
+    "The narrator does not appear to be listening.  " +
     "Don't feel unloved; it promises to return.",
     "Tale's not listening again.",
     "This is probably getting old, but Tale is down again.",
@@ -76,28 +79,39 @@ var receive = function (response) {
 };
 
 var receiveError = function (response) {
+    error('error ' + response.getStatus());
     if (connected)
-        note(disconnectedNotes.next());
+        note(disconnectedNotes.next() + ' ' + response.getStatus());
     connected = false;
 };
 
 setInterval(function () {
     json.request({
-        'url': '/session/' + n,
+        'url': '/session/',
+        'method': 'POST',
+        'content': json.format(n),
         'error': receiveError
     }, receive);
 }, 1000);
 
 console.observe('command', function (command) {
-    json.request({
-        'url': '/session/command/',
-        'method': 'POST',
-        'content': json.format({
-            'n': n,
-            'command': command
-        }),
-        'error': receiveError
-    }, receive);
+    if (!connected) {
+        note(
+            "Sorry, the command, " + enquote(command) +
+            ", was not sent because the Tale server " +
+            "does not appear to be listening."
+        );
+    } else {
+        json.request({
+            'url': '/session/command/',
+            'method': 'POST',
+            'content': json.format({
+                'n': n,
+                'command': command
+            }),
+            'error': receiveError
+        }, receive);
+    }
 });
 
 commandLine.focus();

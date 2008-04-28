@@ -1,5 +1,5 @@
 
-from planes.lazy import PathService, FileTreeService, FileService, Response, SessionService, JsonReaderService, JsonWriterService, FunctionService
+from planes.lazy import PathService, FileTreeService, FileService, Response, SessionService, JsonService, JsonReaderService, JsonWriterService, FunctionService
 
 import tale
 import planes.chiron
@@ -34,19 +34,13 @@ def TaleService():
             else:
                 messages.append(command)
 
-        @JsonReaderService
-        @JsonWriterService
+        @JsonService
         def command_service(kit, object):
-            print object
-            if kit.request.method == "POST":
-                command(object['command'])
-            else:
-                command(kit.path[1:])
+            command(object['command'])
             return respond(kit, object['n'])
 
-        @FunctionService
-        @JsonWriterService
-        def messages_service(kit, n = 0):
+        @JsonService
+        def messages_service(kit, n):
             return respond(kit, n)
 
         return PathService(
