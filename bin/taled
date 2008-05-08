@@ -8,6 +8,17 @@ sys.path.insert(0, os.path.join(*(
 )))
 
 from tale import TaleService
-from planes.lazy import serve, StandardService, PathService
-serve(StandardService(PathService(paths = {'session': TaleService()})), port = 2380, debug = True)
+from planes.lazy import\
+    serve,\
+    PathService,\
+    AdhocKitService,\
+    LogService,\
+    ResponseService
+
+service = TaleService()
+service = PathService(paths = {'session': service})
+service = AdhocKitService(service)
+#service = LogService(service)
+service = ResponseService(service)
+serve(service, port = 2380, debug = True)
 

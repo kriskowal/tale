@@ -36,6 +36,21 @@ img.parentNode.style.cursor = 'pointer';
 
 if (isSafari || isFirefox) {
 
+    var quantum = isSafari ? 100 : 1000;
+    var animate = function (rate, functor) {
+        var lastPosition = new Date().getTime();
+        var tick = function () {
+            try {
+                var position = new Date().getTime() * rate / quantum;
+                functor(position - lastPosition);
+                lastPosition = position;
+            } finally {
+                setTimeout(tick, quantum);
+            }
+        };
+        tick();
+    };
+
     var canvas = document.createElement('canvas');
     canvas.width = 360;
     canvas.height = 360;
@@ -48,15 +63,13 @@ if (isSafari || isFirefox) {
     var context = canvas.getContext('2d');
     context.translate(180, 180);
     context.rotate(Math.PI * 2 / 1000 / 5);
-    handle = setInterval(function () {
-        try {
-            context.clearRect(-180, -180, 360, 360);
-            context.rotate(Math.PI * 2 / 1000 / 5);
-            context.drawImage(img, -123, -180, 261, 300);
-        } catch (x) {
-            error(x.message);
-            clearInterval(handle);
-        }
-    }, 250);
+
+    var lastPosition;
+    animate(Math.PI * 2 / 1000 / 5, function (delta) {
+        context.clearRect(-180, -180, 360, 360);
+        context.rotate(delta);
+        context.drawImage(img, -123, -180, 261, 300);
+    });
+
 }
 

@@ -8,9 +8,7 @@ include('widget/console.js');
 var json = require("json.js");
 var http = require('http.js');
 
-var sound = require('sound.js');
-sound.ready.observe(function () {
-});
+var quantum = 1000;
 
 var buffer = document.getElementById('buffer');
 var viewport = document.body;
@@ -76,23 +74,28 @@ var receive = function (response) {
             n = Number(message.n) + 1;
         }
     });
+    tick();
 };
 
 var receiveError = function (response) {
-    error('error ' + response.getStatus());
     if (connected)
         note(disconnectedNotes.next() + ' ' + response.getStatus());
     connected = false;
+    tick();
 };
 
-setInterval(function () {
-    json.request({
-        'url': '/session/',
-        'method': 'POST',
-        'content': json.format(n),
-        'error': receiveError
-    }, receive);
-}, 1000);
+var tick = function () {
+    setTimeout(function () {
+        json.request({
+            'url': '/session/',
+            'method': 'POST',
+            'content': json.format(n),
+            'error': receiveError
+        }, receive, receiveError);
+    }, quantum);
+};
+
+tick();
 
 console.observe('command', function (command) {
     if (!connected) {
@@ -101,7 +104,7 @@ console.observe('command', function (command) {
             ", was not sent because the Tale server " +
             "does not appear to be listening."
         );
-    } else {
+    } //else {
         json.request({
             'url': '/session/command/',
             'method': 'POST',
@@ -110,8 +113,8 @@ console.observe('command', function (command) {
                 'command': command
             }),
             'error': receiveError
-        }, receive);
-    }
+        }, receive, receiveError);
+    //}
 });
 
 commandLine.focus();
