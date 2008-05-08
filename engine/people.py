@@ -9,12 +9,15 @@ __all__ = [
     'Soul',
 ]
 
-
 class Person(Creature):
 
-    @property
-    def name(self):
+    def get_name(self):
+        if hasattr(self, '_name'):
+            return self._name
         return self.__class__.__name__
+    def set_name(self, name):
+        self._name = name
+    name = property(get_name, set_name)
 
     singular = 'person'
     plural = 'people'
@@ -24,7 +27,7 @@ class Person(Creature):
         from narrate import Narration
         return Narration(self, audience)
 
-class Human(GenderNamed):
+class Human(GenderNamed, Person):
 
     singular_male = 'man'
     singular_female = 'woman'

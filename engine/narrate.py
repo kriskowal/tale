@@ -119,8 +119,13 @@ class Narrator(Person):
 
 if __name__ == '__main__':
 
-    you = Player(gender = Male)
-    gwen = Player(gender = Female, name = "Gwen")
+    from people import Person, Human
+    from mammals import Cat
+    from things import Hat
+    from events import *
+
+    you = Person(gender = Male)
+    gwen = Person(gender = Female, name = "Gwen")
     narrator = Narrator()
     narrate = narrator.narrate(you)
     narrate = narrate.narrate_event

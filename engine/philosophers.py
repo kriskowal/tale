@@ -24,7 +24,8 @@ class Spock(Philosopher, Vulcan):
 
 if __name__ == '__main__':
 
-    from engine import *
+    from events import Kick
+    from __init__ import *
 
     socrates = Socrates()
     plato = Plato()

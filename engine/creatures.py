@@ -12,7 +12,7 @@ class GenderNamed(object):
         return self.gender is Male and self.singular_male or self.singular_female
 
     @property
-    def pular(self):
+    def plural(self):
         return self.gender is Male and self.plural_male or self.plural_female
 
 class GenderCollectiveNamed(object):
