@@ -1,10 +1,8 @@
 
-from things import Thing
+from things import Thing, Unique
+from people import Person
 from creatures import Male, Female
-
-__all__ = [
-    'Narrator',
-]
+from lrucache import LruCache
 
 def sentential(terms, within = None):
     def head(terms):
@@ -21,27 +19,53 @@ def sentential(terms, within = None):
         )
     return head(terms) + '.'
 
-class Narration(object):
+def observe_gender(audience, object):
+    if hasattr(object, 'show_gender'):
+        shown_gender = object.show_gender(audience)
+        if hasattr(audience, 'observe_gender'):
+            observed_gender = audience.observe_gender(object)
+            if observed_gender == shown_gender:
+                return observed_gender
+
+class Narrative(object):
 
     def __init__(self, narrator, audience):
         self.narrator = narrator
         self.audience = audience
         self.it = None
+        self.they = None
         self.he = None
         self.she = None
-        self.names = {} # object to name
-        self.objects = {} # name to object
+        self.names = {} # LruCache(7) # object to name
+        self.objects = {} # LruCache(7) # name to object
+        self.genders = {} # objects to their known genders
         self.names[self] = 'narrator'
         self.stuff = set() # stuff you 'own'
         # classes that the narrator knows and presumes their audience knows about too
         self.knowledge = {} # names of objects that the narrator presumes the audience knows them by
         self.vocabulary = set([Thing])
 
+        self.sensitivity = 1
+        self.olfactory_sensitivity = 1
+        self.aural_sensitivity = 1
+        self.visual_sensitivty = 1
+
     def narrate_story(self, story):
         pass
 
+    def narrate_events(self, events):
+        if events is None:
+            return
+        return '  '.join(
+            story for story in (
+                self.narrate_event(event)
+                for event in events
+            ) if story is not None
+        )
+
     def narrate_event(self, event):
-        return self.narrate_(event.subject, event, event.object, *event.modifiers, **event.transitives)
+        if event.impact >= self.sensitivity:
+            return self.narrate_(event.subject, event, event.object, *event.modifiers, **event.transitives)
 
     def narrate_(self, subject, verb, object = None, *modifiers, **transitives):
         parts = []
@@ -52,7 +76,7 @@ class Narration(object):
         for modifier in modifiers:
             parts.append(modifier)
         for modifier, object in transitives.items():
-            parts.append([modifier.lower(), object])
+            parts.append([modifier.lower(), self.noun(object)])
         return sentential(parts)
 
     def verb(self, subject, verb):
@@ -76,6 +100,9 @@ class Narration(object):
         elif object is self.it:
             if subject is object: name = 'itself'
             else: name = 'it'
+        elif object is self.they:
+            if subject is object: name = 'themself'
+            else: name = 'their'
         elif object is self.she:
             if object is subject: name = 'herself'
             elif subject: name = 'her'
@@ -85,8 +112,10 @@ class Narration(object):
             elif subject: name = 'him'
             else: name ='he'
         elif object in self.names:
-            print 'recalled'
             name = self.names[object]
+            the = True
+        elif isinstance(object, Unique):
+            name = object.singular
             the = True
         else:
             # describe
@@ -100,17 +129,24 @@ class Narration(object):
 
         # learn
         if object is not self.audience:
-            if hasattr(object, 'gender'):
-                if object.gender == Male:
+            if object in self.genders:
+                gender = self.genders[object]
+                if gender is Male:
                     self.he = object
-                if object.gender == Female:
+                if gender is Female:
                     self.she = object
+                self.it = None
+            elif isinstance(object, Person):
+                self.they = object
+                self.it = None
             else:
                 self.it = object
+
         self.names[name] = object
 
         if a: name = ('a', name)
-        if the: name = ('the', name)
+        elif the: name = ('the', name)
+
         return name
 
 from people import Person

@@ -34,9 +34,31 @@ class Creature(Thing):
     __metaclass__ = MetaGenetic
     gender = Gene(Male, Female)
 
+    def show_gender(self, other):
+        if hasattr(self, 'gender'):
+            return self.gender
+
+    def observe_gender(self, other):
+        if hasattr(other, 'gender'):
+            return other.gender
+
+    def tick(self, context):
+        from random import randint, choice
+        from events import Move
+        if randint(0, 1) == 0:
+            if context.room.parent is not None:
+                neighbors = [
+                    room for room in
+                    context.room.parent.children
+                    if room is not context.room
+                ]
+                if neighbors:
+                    yield Move(self, **{'to': choice(neighbors), 'from': context.room})
+
 class Reproducer(Thing):
     def __init__(self, begets):
         self.begets = begets
         
 from animals import *
+from microbes import *
 

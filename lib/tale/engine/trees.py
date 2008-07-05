@@ -2,6 +2,7 @@
 from things import Thing
 from plants import Plant, Deciduous
 from fruit import *
+from berries import *
 from flowers import *
 from cones import *
 from nuts import *

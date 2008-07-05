@@ -1,5 +1,6 @@
 
 from creatures import Creature, GenderNamed, Male, Female
+from weakproperty import WeakProperty
 
 __all__ = [
     'Person',
@@ -23,9 +24,8 @@ class Person(Creature):
     plural = 'people'
     collective = 'group'
 
-    def narrate(self, audience):
-        from narrate import Narration
-        return Narration(self, audience)
+    mother = WeakProperty()
+    father = WeakProperty()
 
 class Human(GenderNamed, Person):
 

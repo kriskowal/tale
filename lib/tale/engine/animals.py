@@ -1,10 +1,6 @@
 
 from creatures import Creature
 
-__all__ = [
-    'Animal',
-]
-
 class Animal(Creature):
     pass
 

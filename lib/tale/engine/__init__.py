@@ -29,25 +29,25 @@ __all__ = []
 # Import all classes from this directory
 import os
 mypath = os.path.dirname(__file__)
-print 'mypath', mypath
+#print 'mypath', mypath
 sub_modules = [
     x[:-3] 
     for x in os.listdir(mypath or '.')
     if x[-2:] == 'py'
 ]
-print 'sub_modules', sub_modules
+#print 'sub_modules', sub_modules
 
 for module in sub_modules:
     full_name = os.path.join(os.path.basename(mypath) + '.' + module)
     if module != '__init__':
-        print 'loading', full_name
+        #print 'loading', full_name
         #m = __import__(full_name)
         m = __import__(module, globals(), locals(), ['*'])
-        print 'module:', m
+        #print 'module:', m
         #__all__.append(m.__name__)
-        print m.__name__
+        #print m.__name__
 
-print __all__
+#print __all__
 if __name__ == '__main__':
     print dir()
 

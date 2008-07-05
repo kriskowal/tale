@@ -1,22 +1,30 @@
-__all__ = [
-    'Thing',
-    'Hat',
-    'Quote',
-    'Claim',
-]
+
+from weakproperty import WeakProperty
 
 class Thing(object):
+
     @property
     def singular(self):
         return self.__class__.__name__.lower()
+
     @property
     def plural(self):
-        return self.singular + 's'
+        return self.singular + {
+            's': 'es',
+            'x': 'es',
+        }.get(self.singular[-1], 's')
+
     collective = 'collection'
 
-class Hat(Thing):
-    pass
+    def tick(self, context):
+        if False: yield
 
+    owner = WeakProperty()
+    creator = WeakProperty()
+    container = WeakProperty()
+
+class Unique(object):
+    pass
 
 # things that can be said
 
