@@ -89,7 +89,7 @@ var tick = function () {
         json.request({
             'url': '/session/',
             'method': 'POST',
-            'content': json.format(n),
+            'content': json.encode(n),
             'error': receiveError
         }, receive, receiveError);
     }, quantum);
@@ -104,17 +104,17 @@ console.observe('command', function (command) {
             ", was not sent because the Tale server " +
             "does not appear to be listening."
         );
-    } //else {
+    } else {
         json.request({
             'url': '/session/command/',
             'method': 'POST',
-            'content': json.format({
+            'content': json.encode({
                 'n': n,
                 'command': command
             }),
             'error': receiveError
         }, receive, receiveError);
-    //}
+    }
 });
 
 commandLine.focus();

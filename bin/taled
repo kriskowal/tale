@@ -15,6 +15,10 @@ from planes.lazy import\
     LogService,\
     ResponseService
 
+import os
+import pwd
+os.setuid(pwd.getpwnam('www-data')[2])
+
 service = TaleService()
 service = PathService(paths = {'session': service})
 service = AdhocKitService(service)

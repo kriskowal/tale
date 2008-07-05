@@ -209,7 +209,6 @@
         }
         
         #map {
-            border: dotted 1px black;
             position: absolute;
             height: 300px;
             width: 300px;
@@ -217,7 +216,6 @@
         }
         
         #ad {
-            border: dotted 1px black;
             position: absolute;
             height: 600px;
             width: 120px;
@@ -226,7 +224,6 @@
         }
         
         #widgetBar {
-            border: dotted 1px black;
             position: absolute;
             height: 400px;
             width: 80px;

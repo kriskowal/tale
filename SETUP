@@ -1,0 +1,6 @@
+
+apt-get install lighttpd
+apt-get install python-twisted
+
+install simplejson
+
