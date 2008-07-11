@@ -6,6 +6,7 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="400"
@@ -18,7 +19,30 @@
    sodipodi:docname="narwahl.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape">
   <defs
-     id="defs42641" />
+     id="defs42641">
+    <linearGradient
+       id="linearGradient46028">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0.42857143;"
+         offset="0"
+         id="stop46030" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="1"
+         id="stop46032" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient46028"
+       id="radialGradient46034"
+       cx="220.00543"
+       cy="249.83044"
+       fx="220.00543"
+       fy="249.83044"
+       r="14.881101"
+       gradientTransform="matrix(1.031356,0.9065957,-0.654815,0.7449287,157.7707,-141.53611)"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -29,9 +53,9 @@
      objecttolerance="10"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="299.52605"
-     inkscape:cy="179.47468"
+     inkscape:zoom="1.979899"
+     inkscape:cx="325.75508"
+     inkscape:cy="113.48382"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      width="400px"
@@ -88,9 +112,13 @@
        id="path42755"
        d="M 107.54174,156.30022 C 106.6222,155.30718 105.79863,154.22723 104.95156,153.16971 C 101.7766,149.28648 98.646061,145.36522 95.537691,141.42584 C 89.624539,133.88803 83.75918,126.31093 77.899163,118.72969 C 70.770664,109.50493 63.603754,100.31155 56.4912,91.073802 C 50.0302,82.675651 43.640324,74.219895 37.313045,65.715489 C 32.479454,59.110346 27.474946,52.639028 22.111406,46.477643 C 19.370966,43.38614 16.750965,40.156184 12.922359,38.772337 C 20.091805,32.023511 17.651125,34.649748 19.216966,42.713577 C 21.02505,50.610196 23.422887,58.352766 25.941499,66.036997 C 28.880421,74.766907 32.133462,83.380539 35.454697,91.963563 C 38.403972,99.629026 41.557894,107.20849 44.796594,114.74937 C 47.587819,121.22704 50.500665,127.64804 53.430122,134.06085 C 55.860155,139.34824 58.339486,144.61177 60.840823,149.86404 C 62.869583,154.13991 64.94268,158.39335 67.048345,162.6299 C 68.763739,166.09833 70.531582,169.53929 72.343086,172.95593 C 73.881659,175.86238 75.506507,178.71868 77.135848,181.57215 C 78.079522,183.21437 79.054124,184.83728 80.026688,186.46157 L 73.289693,192.28032 C 72.320831,190.64468 71.350128,189.01024 70.409702,187.35706 C 68.785098,184.48703 67.163371,181.61506 65.628789,178.69295 C 63.824433,175.25869 62.06632,171.79881 60.363067,168.31067 C 58.272871,164.05353 56.220519,159.777 54.207543,155.48093 C 51.726863,150.20475 49.269006,144.91711 46.859988,139.60609 C 43.95478,133.16566 41.062488,126.71885 38.28749,120.21801 C 35.064989,112.64972 31.926682,105.04327 28.99293,97.35167 C 25.690575,88.744412 22.458258,80.107397 19.473551,71.37806 C 16.887878,63.717776 14.495118,55.983965 12.482559,48.142928 C 10.550809,39.573584 10.302129,38.207208 19.217917,32.385485 C 22.998176,34.291234 25.77753,37.440884 28.520287,40.746675 C 33.801443,47.0126 38.736068,53.568521 43.560318,60.208731 C 49.850799,68.738416 56.206178,77.217754 62.646414,85.629272 C 69.731206,94.886488 76.862196,104.10671 84.065423,113.26748 C 89.976247,120.79661 95.901458,128.31487 101.93545,135.74082 C 105.10879,139.61485 108.32116,143.45424 111.60197,147.23329 C 112.47513,148.2402 113.32673,149.27212 114.28826,150.19297 L 107.54174,156.30022 z " />
     <path
-       style="opacity:1;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       style="opacity:1;color:#000000;fill:#2a3849;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
        d="M 235.49181,241.84799 C 229.39663,239.13296 221.27827,241.0864 217.7155,246.90627 C 213.71473,254.00756 216.76219,264.17197 224.16724,267.69715 C 231.36206,271.1849 241.13547,267.99028 244.56671,260.68557 C 247.73153,253.84909 244.03558,244.68651 236.87573,242.18061 C 236.42631,242.02699 235.9643,241.90376 235.49181,241.84799 z "
        id="path44817" />
+    <path
+       id="path46026"
+       d="M 235.49181,241.84799 C 229.39663,239.13296 221.27827,241.0864 217.7155,246.90627 C 213.71473,254.00756 216.76219,264.17197 224.16724,267.69715 C 231.36206,271.1849 241.13547,267.99028 244.56671,260.68557 C 247.73153,253.84909 244.03558,244.68651 236.87573,242.18061 C 236.42631,242.02699 235.9643,241.90376 235.49181,241.84799 z "
+       style="opacity:1;color:#000000;fill:url(#radialGradient46034);fill-opacity:1.0;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
     <path
        style="opacity:1;color:#000000;fill:#00264e;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
        id="path42757"
