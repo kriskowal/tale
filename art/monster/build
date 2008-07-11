@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+ls *.svg | while read file; do rsvg -w 100 $file `basename $file .svg`-100.png; done
+ls *.svg | while read file; do rsvg -w 400 $file `basename $file .svg`-400.png; done

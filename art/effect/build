@@ -1,0 +1,5 @@
+
+rsvg $1.svg $1.png
+rsvg -w 100 $1.svg $1-100.png
+rsvg -w 400 $1.svg $1-400.png
+
