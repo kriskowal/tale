@@ -29,15 +29,15 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="293.26548"
-     inkscape:cy="365.13483"
+     inkscape:zoom="0.7"
+     inkscape:cx="500.39005"
+     inkscape:cy="490.70034"
      inkscape:document-units="px"
-     inkscape:current-layer="layer2"
+     inkscape:current-layer="layer4"
      inkscape:window-width="1680"
-     inkscape:window-height="979"
+     inkscape:window-height="975"
      inkscape:window-x="0"
-     inkscape:window-y="45" />
+     inkscape:window-y="49" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -67,7 +67,8 @@
      inkscape:label="rocket"
      inkscape:groupmode="layer"
      id="layer1"
-     style="display:inline">
+     style="display:inline"
+     sodipodi:insensitive="true">
     <path
        style="opacity:1;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
        d="M 601.12743,261.05227 C 597.82329,262.77374 594.51045,264.47856 591.2063,266.20002 C 589.7378,275.10822 582.61196,283.06247 577.54135,290.16049 C 553.36366,309.99867 542.12515,319.04053 501.35456,332.46567 C 494.29318,332.2985 482.26982,334.42999 472.15276,334.05681 C 540.54088,455.82404 608.92609,577.59301 677.31421,699.36025 C 677.92508,728.33391 712.13086,752.04799 738.7129,737.54724 C 790.59439,725.16693 835.38186,690.93728 866.56443,648.35068 C 875.88669,619.6305 843.39624,604.08118 830.71732,583.20817 C 753.94887,476.00585 677.70746,368.38887 601.12743,261.05227 z M 703.80176,742.13343 L 704.73771,742.88219 L 703.80176,742.13343 z "
@@ -208,6 +209,12 @@
        style="opacity:1;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:80;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.25465836;visibility:visible;display:inline;overflow:visible"
        id="path4126"
        d="M 521.49923,668.59581 C 519.84219,677.31582 517.57398,685.93021 515.78311,694.6339 C 509.83685,725.60174 505.95531,757.05836 505.74035,788.6526 C 505.83772,813.79192 508.20941,840.42199 525.51048,859.60171 C 540.20568,876.96215 574.25994,880.18834 579.6104,880.11739 C 605.6912,879.02084 627.97716,864.85571 642.98312,843.31112 C 658.15052,819.67589 660.2098,790.8583 657.05771,763.41262 C 656.04616,756.44379 656.59907,759.88582 655.40486,753.08542 L 674.57562,751.21282 C 675.62266,758.51923 675.14061,754.82432 676.01636,762.29824 C 678.749,792.72171 676.1934,824.4441 660.08789,850.90143 C 643.7167,875.80665 619.33783,893.3712 589.86128,896.63318 C 560.18371,899.00619 528.94664,891.42399 508.05392,868.39966 C 489.98371,845.82405 487.07889,816.64884 487.6479,788.27165 C 488.31974,756.07331 492.33487,724.1145 496.25593,692.19869 C 497.11998,685.28393 498.97781,673.65442 498.69076,668.3857 L 521.49923,668.59581 z " />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer9"
+     inkscape:label="harness"
+     style="display:inline">
     <path
        style="opacity:1;color:#000000;fill:#dd1717;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
        id="path30452"
