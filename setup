@@ -1,8 +1,0 @@
-cd work
-svn co https://cixar.com/svns/python/cixar
-cd cixar
-svn co https://cixar.com/svns/ish
-svn co https://cixar.com/svns/javascript
-cd ..
-cd ..
-py work/tale.py

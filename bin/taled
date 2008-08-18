@@ -2,12 +2,10 @@
 
 import sys
 import os.path
-sys.path.insert(0, os.path.join(*(
-    os.path.split(__file__)[:-1] +
-    ('..', 'lib')
-)))
+from os.path import join, dirname
+sys.path.insert(0, join(dirname(__file__), '..', 'lib'))
 
-from tale import TaleService
+from tale.taled import TaleService
 from planes.lazy import\
     serve,\
     PathService,\

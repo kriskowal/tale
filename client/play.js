@@ -1,6 +1,5 @@
 
 //include('debug.js');
-include('minidebug.js');
 include('base.js');
 include('select.js');
 include('browser.js');

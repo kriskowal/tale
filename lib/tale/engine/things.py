@@ -17,7 +17,7 @@ class Thing(object):
     collective = 'collection'
 
     def tick(self, context):
-        if False: yield
+        if False: yield None
 
     owner = WeakProperty()
     creator = WeakProperty()

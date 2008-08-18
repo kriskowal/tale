@@ -6,4 +6,3 @@ svg-layers @.svg | grep '^branding' | sed 's/^branding\-//' | while read brandin
     rsvg -w 400 $branding.svg $branding-400.png
 done
 
-
