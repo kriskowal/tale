@@ -1,0 +1,44 @@
+#!/usr/bin/env python
+
+"""\
+Usage: taledctl start|stop|restart|reload
+"""
+
+# get bearings
+import sys
+import os
+import signal
+from os.path import join, dirname, realpath, exists
+from subprocess import call
+ROOTDIR = realpath(join(dirname(__file__), '..'))
+BINFILE = join(ROOTDIR, 'bin', 'taled')
+PIDFILE = join(ROOTDIR, 'var', 'run', 'taled.pid')
+
+def help():
+    print>>sys.stderr, __doc__,
+
+def start():
+    return call(['/usr/bin/env', 'python', BINFILE])
+
+def stop():
+    os.kill(int(file(PIDFILE).read()), signal.SIGTERM)
+    return 0
+    
+def restart():
+    stop()
+    start()
+
+reload = restart
+
+def status():
+    status = exists(PIDFILE)
+    print "Status: %s" % (status and "up" or "down")
+    return int(not status)
+
+if len(sys.argv) < 2:
+    sys.exit(help())
+elif not sys.argv[1] in locals():
+    sys.exit(help())
+else:
+    sys.exit(locals()[sys.argv[1]]())
+

@@ -1,0 +1,45 @@
+#!/usr/bin/env python
+
+"""\
+Usage: lighttpdctl start|stop|restart|reload
+"""
+
+import sys
+import os
+import signal
+from subprocess import call
+from os.path import join, dirname, realpath, exists
+
+# get bearings
+ROOTDIR = realpath(join(dirname(__file__), '..'))
+PIDFILE = join(ROOTDIR, 'var', 'run', 'lighttpd.pid')
+CONFFILE = join(ROOTDIR, 'etc', 'lighttpd.conf')
+
+def help():
+    print>>sys.stderr, __doc__,
+
+def start():
+    return call(['/usr/bin/env', 'lighttpd', '-f', CONFFILE])
+
+def stop():
+    os.kill(int(file(PIDFILE).read()), signal.SIGTERM)
+    return 0
+
+def restart():
+    stop()
+    start()
+
+def status():
+    status = exists(PIDFILE)
+    print "Status: %s" % (status and "up" or "down")
+    return int(not status)
+    
+reload = restart
+
+if len(sys.argv) < 2:
+    sys.exit(help())
+elif not sys.argv[1] in locals():
+    sys.exit(help())
+else:
+    sys.exit(locals()[sys.argv[1]]())
+

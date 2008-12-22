@@ -76,3 +76,20 @@ def TaleService():
     session_service = SessionService(TaleSession)
     return session_service
 
+def taled():
+
+    from planes.lazy import\
+        serve,\
+        PathService,\
+        AdhocKitService,\
+        LogService,\
+        ResponseService
+
+    service = TaleService()
+    service = PathService(paths = {'session': service})
+    service = AdhocKitService(service)
+    #service = LogService(service)
+    service = ResponseService(service)
+    serve(service, port = 2380, debug = True)
+
+
