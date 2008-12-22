@@ -8,14 +8,16 @@ Usage: taledctl start|stop|restart|reload
 import sys
 import os
 import signal
-from os.path import join, dirname, realpath, exists
+from os.path import join, dirname, basename, realpath, exists
 from subprocess import call
+
 ROOTDIR = realpath(join(dirname(__file__), '..'))
 BINFILE = join(ROOTDIR, 'bin', 'taled')
 PIDFILE = join(ROOTDIR, 'var', 'run', 'taled.pid')
 
 def help():
     print>>sys.stderr, __doc__,
+    return -1
 
 def start():
     return call(['/usr/bin/env', 'python', BINFILE])
@@ -27,11 +29,15 @@ def stop():
 def restart():
     stop()
     start()
+    return 0
 
 reload = restart
 
 def status():
     status = exists(PIDFILE)
+    if status:
+        pid = int(file(PIDFILE).read())
+        status = ('%d' % pid) in os.listdir('/proc')
     print "Status: %s" % (status and "up" or "down")
     return int(not status)
 

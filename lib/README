@@ -1,0 +1,2 @@
+This directory is meant to be on the PYTHONPATH or sys.path when running Tale code.
+It contains Python modules on which tale depends.

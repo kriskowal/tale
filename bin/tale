@@ -1,0 +1,14 @@
+#!/usr/bin/env python
+
+# get bearings
+import sys
+from os.path import join, dirname, realpath
+ROOTDIR = realpath(join(dirname(__file__), '..'))
+
+# arrange for tale libraries to be available
+LIBDIR = join(ROOTDIR, 'lib')
+sys.path.insert(0, LIBDIR)
+
+from tale.taled import taled
+taled()
+

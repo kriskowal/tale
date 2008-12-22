@@ -8,6 +8,7 @@ var json = require("json.js");
 var http = require('http.js');
 
 var quantum = 1000;
+var timeout = 10000;
 
 var buffer = document.getElementById('buffer');
 var viewport = document.body;
@@ -43,6 +44,7 @@ var note = function (html) {
 };
 
 var connected = true;
+var request;
 
 var connectedNotes = add(iter([
     "Oh, Tale is listening now."
@@ -61,17 +63,19 @@ var disconnectedNotes = cycle([
 ])
 
 var receive = function (response) {
+    if (!response.isOk()) {
+        throw new Error("receive should only get ok responses");
+    }
+    response = response.getText();
+    response = json.decode(response);
     if (!connected)
         note(connectedNotes.next());
     connected = true;
     forEach(response.messages, function (message) {
-        if (Number(message.n) >= n) {
-            if (!no(message.html))
-                note(message.html);
-            if (!no(message.sound))
-                sound(message.sound).play();
-            n = Number(message.n) + 1;
-        }
+        if (message.html)
+            note(message.html);
+        if (message.sound)
+            sound(message.sound).play();
     });
     tick();
 };
@@ -83,14 +87,21 @@ var receiveError = function (response) {
     tick();
 };
 
+var commandError = function (response) {
+    note('Tale did not accept your command.');
+    tick();
+};
+
 var tick = function () {
     setTimeout(function () {
-        json.request({
-            'url': '/session/',
-            'method': 'POST',
+        if (request) request.abort();
+        request = http.request({
+            'url': '/session/push.json',
             'content': json.encode(n),
-            'error': receiveError
-        }, receive, receiveError);
+            'ok': receive,
+            'error': receiveError,
+            'asynchronous': true
+        });
     }, quantum);
 };
 
@@ -100,20 +111,22 @@ console.observe('command', function (command) {
     if (!connected) {
         note(
             "Sorry, the command, " + enquote(command) +
-            ", was not sent because the Tale server " +
+            ", may not have been received because Tale " +
             "does not appear to be listening."
         );
-    } else {
-        json.request({
-            'url': '/session/command/',
-            'method': 'POST',
-            'content': json.encode({
-                'n': n,
-                'command': command
-            }),
-            'error': receiveError
-        }, receive, receiveError);
     }
+    if (request) request.abort();
+    request = http.request({
+        'url': '/session/command.json',
+        'method': 'POST',
+        'content': json.encode({
+            'n': n,
+            'command': command
+        }),
+        'ok': receive,
+        'error': commandError,
+        'asynchronous': true
+    });
 });
 
 commandLine.focus();
