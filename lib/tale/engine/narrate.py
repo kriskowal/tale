@@ -69,8 +69,8 @@ class Narrative(object):
 
     def narrate_(self, subject, verb, object = None, *modifiers, **transitives):
         parts = []
-        parts.append(self.noun(subject))
         parts.append(self.verb(subject, verb))
+        parts.insert(0, self.noun(subject))
         if object is not None:
             parts.append(self.noun(object, subject))
         for modifier in modifiers:
@@ -80,11 +80,16 @@ class Narrative(object):
         return sentential(parts)
 
     def verb(self, subject, verb):
+        if subject is self.they:
+            return verb.personal_present
         if subject is self.audience or subject is self.narrator:
             return verb.personal_present
         return verb.present
 
     def noun(self, object, subject = None):
+
+        if isinstance(object, basestring):
+            return '"%s"' % object
 
         a = False
         the = False
@@ -102,7 +107,7 @@ class Narrative(object):
             else: name = 'it'
         elif object is self.they:
             if subject is object: name = 'themself'
-            else: name = 'their'
+            else: name = 'they'
         elif object is self.she:
             if object is subject: name = 'herself'
             elif subject: name = 'her'
