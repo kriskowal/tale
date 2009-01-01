@@ -2,8 +2,7 @@
 from weakref import proxy
 class WeakProperty(object):
     def __get__(self, instance, klass):
-        if hasattr(self, 'value'):
-            return self.value
+        return self.value
     def __set__(self, instance, value):
         if value is None:
             self.value = None

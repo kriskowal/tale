@@ -8,6 +8,10 @@ class Event(object):
     thermal = 0
     mystical = 0
 
+    # denotes that the sender should see the event instantly, without
+    #  having to wait for the engine to confirm and propagate.
+    guaranteed = False
+
     def __init__(self, subject, object = None, *modifiers, **transitives):
         self.subject = subject
         self.object = object
@@ -64,6 +68,7 @@ class Set(Event):
 
 class Say(Event):
     past = 'said'
+    guaranteed = True
 
 class Hit(Event):
     past = 'hit'

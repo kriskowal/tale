@@ -126,7 +126,7 @@ class Narrative(object):
             # describe
             # distinguish
             # generalize
-            if hasattr(object, 'name'):
+            if getattr(object, 'name', None) is not None:
                 name = object.name
             else:
                 name = object.singular

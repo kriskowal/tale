@@ -13,9 +13,7 @@ __all__ = [
 class Person(Creature):
 
     def get_name(self):
-        if hasattr(self, '_name'):
-            return self._name
-        return self.__class__.__name__
+        return getattr(self, '_name', None)
     def set_name(self, name):
         self._name = name
     name = property(get_name, set_name)

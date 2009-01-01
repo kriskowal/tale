@@ -1,5 +1,5 @@
 
-from weakref import ref
+from weakref import proxy
 from itertools import count
 import simplejson
 from xml.sax.saxutils import escape
@@ -136,15 +136,21 @@ class TaleEngine(object):
         super(TaleEngine, self).__init__(*args, **kws)
     def player(self):
         player = Player(self)
-        self.players.append(ref(player))
+        self.players.append(proxy(player, self.logouter(player)))
         return player
+    def logouter(self, player):
+        def logout():
+            self.players.remove(player)
+        return logout
     def tick(self):
-        self.players = [player_ref for player_ref in self.players if player_ref() is not None]
         requests = self.read_requests()
-        for player_ref in self.players:
-            player = player_ref()
+        for player in self.players:
             for event in requests:
-                player.signal(event)
+                if not (
+                    event.guaranteed and
+                    event.subject == player
+                ):
+                    player.signal(event)
             player.tick()
     def read_requests(self):
         requests = self.requests
@@ -167,7 +173,7 @@ from engine.events import Say
 
 class Player(Observable, engine_people.Person):
     def __init__(self, engine, *args, **kws):
-        self.engine_ref = ref(engine)
+        self.engine = engine
         self.commands = []
         super(Player, self).__init__(*args, **kws)
     def command(self, command):
@@ -178,7 +184,10 @@ class Player(Observable, engine_people.Person):
         return commands
     def tick(self):
         for command in self.read_commands():
-            self.engine_ref().request(Say(self, command))
+            event = Say(self, command)
+            if event.guaranteed:
+                self.signal(event)
+            self.engine.request(Say(self, command))
 
 Engine = mix(TaleEngine, ReactorEngine)
 
