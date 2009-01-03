@@ -31,17 +31,12 @@ def sentential(terms, within = None):
             isinstance(term, basestring) and term or tail(term)
             for term in terms
         )
-    return head(terms) + '.'
-
-def observe_gender(audience, object):
-    if hasattr(object, 'show_gender'):
-        shown_gender = object.show_gender(audience)
-        if hasattr(audience, 'observe_gender'):
-            observed_gender = audience.observe_gender(object)
-            if observed_gender == shown_gender:
-                return observed_gender
+    sentence = head(terms) + '.'
+    return sentence
 
 class Narrative(object):
+
+    cache_size = 7
 
     def __init__(self, narrator, audience):
         self.narrator = narrator
@@ -53,11 +48,10 @@ class Narrative(object):
         self.they = None # third person pronoun? plural third person pronoun?
         self.he = None
         self.she = None
-        self.things = {'narrator': self} # the narrator
-        self.others = {} # other things, if they've been displaced from primacy in things
-        self.encounters = {} # encountered things in order by name
+        self.things = LruCache(self.cache_size) # the most recently encountered thing of a given class
+        self.others = LruCache(self.cache_size) # other things, if they've been displaced from primacy in things
+        self.encounters = LruCache(self.cache_size) # encountered things in order by name
         self.names = {} # LruCache(7) # object to name
-        self.objects = {} # LruCache(7) # name to object
         self.genders = {} # objects to their known genders
 
     def meet(self, person):
@@ -122,6 +116,8 @@ class Narrative(object):
         return verb.present # He says, she says, it says, Joe says
 
     def noun(self, object, subject = None):
+        # find out what to call something, either in the subject or the predicate
+        #  of a sentence, based on what the narrative already describes.
 
         if object is None:
             return 'nothing'

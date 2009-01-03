@@ -6,6 +6,7 @@ from time import sleep
 from weakref import proxy
 from itertools import chain
 import datetime
+from traverse import postfix
 
 class Context(object):
     def __init__(self, parent = None, **kws):
@@ -90,23 +91,12 @@ def drive(event, context):
             for subevent in drive(event, context):
                 yield subevent
 
-def traversal(root, pre = False, post = False):
-    if pre:
-        yield root
-    for child in root.children:
-        for room in traversal(child, pre, post):
-            yield room
-    if post:
-        yield root
-
-def postfix_visit(root, function, *args, **kws):
-    for room in traversal(root, post = True):
-        for event in function(room, *args, **kws):
-            yield event
-
 def simd():
-    while True:
-        context = Context(time = datetime.datetime.now(),)
-        print narrative.narrate_events(postfix_visit(world, tick, context))
-        sleep(1)
+    try:
+        while True:
+            context = Context(time = datetime.datetime.now(),)
+            print narrative(postfix(world, tick, context))
+            sleep(1)
+    except KeyboardInterrupt:
+        pass
 
