@@ -1,9 +1,6 @@
 
-from tale.engine.mammals import Sheep
-from tale.engine.things import Thing, Unique
-from tale.engine.events import Event, Explode, Tick, Tock, Materialize, Move
-from tale.engine.people import Person, Male, Female
-from tale.engine.narrate import Narrative, Narrator
+from world import Sheep, Thing, Unique, Event, Explode, Tick, Tock, Materialize, Move, Person, Male, Female
+from narrate import Narrative, Narrator
 
 from time import sleep
 from weakref import proxy

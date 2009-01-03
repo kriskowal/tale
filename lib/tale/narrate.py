@@ -1,5 +1,5 @@
 
-from engine import Event, Thing, Unique, Person, Male, Female, Creature
+from world import Event, Thing, Unique, Person, Male, Female, Creature
 from planes.python.case import lower
 from lrucache import LruCache
 
@@ -228,7 +228,7 @@ class Narrator(Person):
 
 if __name__ == '__main__':
 
-    from engine import *
+    from world import *
 
     you = Person(gender = Male)
     person1 = Person()

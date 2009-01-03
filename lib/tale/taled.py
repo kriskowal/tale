@@ -18,17 +18,14 @@ from planes.python.module_path import module_path
 from planes.python.mode import Modal, Mode
 
 from tale.narrate import Narrator, Narrative
-from tale.engine import Say, Kick, Person
+from tale.world import Say, Kick, Person
 
 class Mode(Mode):
     next_id = count().next
     def __init__(self, session, *args, **kws):
         self.id = self.next_id()
-        self.session = session
-        self.engine = session.engine
-        self.player = self.engine.player()
-        self.narrator = Narrator()
-        self.narrative = Narrative(self.narrator, self.player)
+        self.session = proxy(session)
+        self.player = session.engine.player()
         self.player.observe(self.observer)
         super(Mode, self).__init__(*args, **kws)
     def observer(self, event):
@@ -44,8 +41,8 @@ class ModalCommandSession(Modal, JsonConnectionService):
         super(ModalCommandSession, self).__init__(*args, **kws)
     def Mode(self):
         return Mode(self)
-    def receive(self, command):
-        self.mode.receive(command)
+    def receive(self, message):
+        self.mode.receive(message)
 
 def TaleService(engine):
     def Session():

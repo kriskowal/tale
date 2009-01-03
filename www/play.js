@@ -55,11 +55,11 @@ var connectedNotes = add(iter([
 ]));
 
 var disconnectedNotes = cycle([
-    "The narrator does not appear to be listening.  " +
-    "Don't feel unloved; it promises to return.",
-    "Tale's not listening again.",
-    "This is probably getting old, but Tale is down again.",
-    "Sorry, Tale's down now."
+    "The narrator does not appear to be listening" +
+    "Don't feel unloved; it promises to return",
+    "Tale's not listening again",
+    "This is probably getting old, but Tale is down again",
+    "Sorry, Tale's down now"
 ]);
 
 var receive = function (response) {
@@ -84,7 +84,7 @@ var receive = function (response) {
 
 var receiveError = function (response) {
     if (connected)
-        note(disconnectedNotes.next() + ' ' + response.getStatus());
+        note(disconnectedNotes.next() + '<abbr title="' + response.getStatus() + '">.</abbr>');
     window.status = 'Connecting to Tale...';
     connected = false;
     tick();

@@ -99,9 +99,9 @@ def testHierarchy(**options):
 
 if __name__=="__main__": 
     #testHierarchy() # generates a postscript diagram of A and M hierarchies
-    #from engine import *
-    import engine
-    dir(engine)
-    MROgraph(object,*[engine.Thing,engine.Person,engine.Human])
+    #from world import *
+    import world
+    dir(world)
+    MROgraph(object,*[world.Thing,world.Person,world.Human])
 
 #</MROgraph.py>
