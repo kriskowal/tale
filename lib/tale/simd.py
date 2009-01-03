@@ -1,5 +1,7 @@
+#!/usr/bin/env PYTHONPATH=.. python
 
-from world import Sheep, Thing, Unique, Event, Explode, Tick, Tock, Materialize, Move, Person, Male, Female
+from world import Sheep, Thing, Unique, Event, Explode, Tick, Tock,\
+    Materialize, Move, Person, Male, Female, Enter
 from narrate import Narrative, Narrator
 
 from time import sleep
@@ -51,6 +53,7 @@ class Room(Thing):
     children = property(get_children, set_children)
 
 class World(Room, Unique):
+
     def __init__(self):
         super(World, self).__init__(children = (
             Room(),
@@ -58,13 +61,11 @@ class World(Room, Unique):
             Room(),
             Room(),
         ))
-
     def tick(self, context):
         yield Tick(self)
         if context.time.second % 3 == 0:
             sheep = SuicideSheep()
-            yield Materialize(sheep)
-            yield Move(sheep, to = self.children[0])
+            yield Enter(sheep, self.children[0])
         yield Tock(self)
 
 world = World()
@@ -99,4 +100,4 @@ def simd():
             sleep(1)
     except KeyboardInterrupt:
         pass
-
+     
