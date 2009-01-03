@@ -1,94 +1,24 @@
 
 from weakref import proxy
 from itertools import count
-import simplejson
 from xml.sax.saxutils import escape
 
 from planes.lazy import\
     PathService,\
-    FileTreeService,\
-    FileService,\
     Response,\
     SessionService,\
     JsonService,\
     JsonRequestService,\
     JsonResponseService,\
-    FunctionService
+    FunctionService,\
+    JsonConnectionService
+
 from planes.python.mix import mix
 from planes.python.module_path import module_path
 from planes.python.mode import Modal, Mode
 
-import tale
-
-class CommandSession(PathService):
-
-    def __init__(self):
-
-        self.messages = []
-        self.requests = []
-        self.new_session = True
-
-        def command_service(request):
-            self.command(request.path[1:])
-            request.finish()
-
-        @JsonRequestService
-        def command_json_service(request, object):
-            self.requests.insert(0, request)
-            self.requests[2:] = []
-            if request.session_lost:
-                self.new_session = True
-            self.command(object['command'])
-            self.flush()
-
-        def push_service(request):
-            self.requests.insert(0, request)
-            self.requests[2:] = []
-            if request.session_lost:
-                self.new_session = True
-            self.flush()
-
-        super(CommandSession, self).__init__(
-            paths = {
-                'command': command_service,
-                'command.json': command_json_service,
-                'push.json': push_service,
-            },
-        )
-
-    def get_messages(self):
-        response = {
-            'newSession': self.new_session,
-            'messages': [
-                {
-                    'html': escape(self.messages[n]),
-                }
-                for n in range(0, len(self.messages))
-            ],
-        }
-        self.messages[:] = []
-        self.new_session = False
-        return response
-
-    def flush(self):
-        if self.requests and (self.messages or self.new_session):
-            request = self.requests.pop(0)
-            response = self.get_messages()
-            request.output.write(simplejson.dumps(response))
-            request.finish()
-
-    def output(self, message):
-        self.messages.append(message)
-        self.flush()
-
-    def command(self, command):
-        pass
-
-from engine.narrate import Narrator, Narrative
-from engine.events import Say
-
-from engine.events import Kick
-import engine.people as engine_people
+from tale.narrate import Narrator, Narrative
+from tale.engine import Say, Kick, Person
 
 class Mode(Mode):
     next_id = count().next
@@ -102,18 +32,20 @@ class Mode(Mode):
         self.player.observe(self.observer)
         super(Mode, self).__init__(*args, **kws)
     def observer(self, event):
-        self.session.output(self.narrative.narrate_event(event))
-    def command(self, command):
+        print 'sent', event
+        self.session.send({'html': escape(event)})
+    def receive(self, command):
+        print 'received', command
         self.player.command(command)
 
-class ModalCommandSession(Modal, CommandSession):
+class ModalCommandSession(Modal, JsonConnectionService):
     def __init__(self, engine, *args, **kws):
         self.engine = engine
         super(ModalCommandSession, self).__init__(*args, **kws)
     def Mode(self):
         return Mode(self)
-    def command(self, command):
-        self.mode.command(command)
+    def receive(self, command):
+        self.mode.receive(command)
 
 def TaleService(engine):
     def Session():
@@ -150,7 +82,7 @@ class TaleEngine(object):
                     event.guaranteed and
                     event.subject == player
                 ):
-                    player.signal(event)
+                    player.tell(event)
             player.tick()
     def read_requests(self):
         requests = self.requests
@@ -169,15 +101,17 @@ class Observable(object):
         for observer in self.observers:
             observer(event)
 
-from engine.events import Say
-
-class Player(Observable, engine_people.Person):
-    def __init__(self, engine, *args, **kws):
-        self.engine = engine
+class Player(Observable, Person):
+    def __init__(self, location, *args, **kws):
+        self.location = location
         self.commands = []
+        self.narrator = Narrator()
+        self.narrate = Narrative(self.narrator, self)
         super(Player, self).__init__(*args, **kws)
     def command(self, command):
         self.commands.append(command)
+    def tell(self, event):
+        self.signal(self.narrate(event))
     def read_commands(self):
         commands = self.commands
         self.commands = []
@@ -186,8 +120,8 @@ class Player(Observable, engine_people.Person):
         for command in self.read_commands():
             event = Say(self, command)
             if event.guaranteed:
-                self.signal(event)
-            self.engine.request(Say(self, command))
+                self.tell(event)
+            self.location.request(Say(self, command))
 
 Engine = mix(TaleEngine, ReactorEngine)
 
@@ -196,15 +130,11 @@ def taled():
     from planes.lazy import\
         serve,\
         PathService,\
-        AdhocKitService,\
-        LogService,\
         ResponseService
 
     engine = Engine()
     service = TaleService(engine)
     service = PathService(paths = {'session': service})
-    service = AdhocKitService(service)
-    #service = LogService(service)
     service = ResponseService(service)
     serve(service, port = 2380, debug = True, engine = engine)
 

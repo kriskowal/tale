@@ -1,53 +1,32 @@
 """
-Herein lie things.
+Herein lie things and events.
 """
 
-#from events import *
-#from things import *
-#from people import *
-#!ls *.py | cut -d. -f1
-#
-#aliens
-#animals
-#birds
-#creatures
-#events
-#fish
-#flowers
-#insects
-#invertebrates
-#mammals
-#people
-#philosophers
-#plants
-#reptiles
-#things
-#trees
-
-__all__ = []
-
 # Import all classes from this directory
+from os import listdir
+from os.path import dirname, join, basename
 import os
-mypath = os.path.dirname(__file__)
-#print 'mypath', mypath
-sub_modules = [
-    x[:-3] 
-    for x in os.listdir(mypath or '.')
-    if x[-2:] == 'py'
-]
-#print 'sub_modules', sub_modules
+from os.path import *
 
-for module in sub_modules:
-    full_name = os.path.join(os.path.basename(mypath) + '.' + module)
-    if module != '__init__':
-        #print 'loading', full_name
-        #m = __import__(full_name)
-        m = __import__(module, globals(), locals(), ['*'])
-        #print 'module:', m
-        #__all__.append(m.__name__)
-        #print m.__name__
+for module_name in (x[:-3] for x in listdir(dirname(__file__) or '.') if x[-3:] == '.py'):
+    if module_name != '__init__':
+        __import__(__name__ + '.' + module_name, {}, {}, ('*',))
 
-#print __all__
+from events import Event
+from things import Thing
+events = Event.events
+things = Thing.things
+
+from itertools import chain
+from sys import modules
+__all__ = ['events', 'things', 'Event', 'Thing']
+module = modules[__name__]
+for name, value in chain(events.items(), things.items()):
+    setattr(module, name, value)
+    __all__.append(name)
+
+from creatures import Male, Female
+
 if __name__ == '__main__':
     print dir()
 

@@ -1,11 +1,25 @@
 
 from weakproperty import WeakProperty
+from planes.python.case import lower
+
+class ThingMetaclass(type):
+    def __init__(self, name, bases, attys):
+        super(ThingMetaclass, self).__init__(name, bases, attys)
+        self.things[name] = self
 
 class Thing(object):
 
+    __metaclass__ = ThingMetaclass
+    things = {}
+
     @property
     def singular(self):
-        return self.__class__.__name__.lower()
+        return lower(self.__class__.__name__, ' ')
+
+    @property
+    def singular_a(self):
+        if self.singular[0] in 'aeiou': return 'an'
+        else: return 'a'
 
     @property
     def plural(self):
@@ -13,6 +27,11 @@ class Thing(object):
             's': 'es',
             'x': 'es',
         }.get(self.singular[-1], 's')
+
+    @property
+    def plural_a(self):
+        if self.plural[0] in 'aeiou': return 'an'
+        else: return 'a'
 
     collective = 'collection'
 
@@ -23,7 +42,7 @@ class Thing(object):
     creator = WeakProperty()
     container = WeakProperty()
 
-class Unique(object):
+class Unique(Thing):
     pass
 
 # things that can be said

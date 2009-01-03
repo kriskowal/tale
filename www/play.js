@@ -60,18 +60,20 @@ var disconnectedNotes = cycle([
     "Tale's not listening again.",
     "This is probably getting old, but Tale is down again.",
     "Sorry, Tale's down now."
-])
+]);
 
 var receive = function (response) {
     if (!response.isOk()) {
         throw new Error("receive should only get ok responses");
     }
-    response = response.getText();
-    response = json.decode(response);
+    var text = response.getText();
+    if (text == "")
+        return receiveError(response);
+    envelope = json.decode(text);
     if (!connected)
         note(connectedNotes.next());
     connected = true;
-    forEach(response.messages, function (message) {
+    forEach(envelope.messages, function (message) {
         if (message.html)
             note(message.html);
         if (message.sound)
@@ -83,25 +85,30 @@ var receive = function (response) {
 var receiveError = function (response) {
     if (connected)
         note(disconnectedNotes.next() + ' ' + response.getStatus());
+    window.status = 'Connecting to Tale...';
     connected = false;
     tick();
 };
 
 var commandError = function (response) {
     note('Tale did not accept your command.');
+    window.status = 'Connecting to Tale...';
+    connected = false;
     tick();
 };
 
 var tick = function () {
     setTimeout(function () {
         if (request) request.abort();
+        window.status = 'Tale';
         request = http.request({
             'url': '/session/push.json',
-            'content': json.encode(n),
             'ok': receive,
             'error': receiveError,
-            'asynchronous': true
+            'asynchronous': true,
+            'timeout': timeout
         });
+        request.observe('timeout', tick);
     }, quantum);
 };
 
@@ -117,16 +124,17 @@ console.observe('command', function (command) {
     }
     if (request) request.abort();
     request = http.request({
-        'url': '/session/command.json',
+        'url': '/session/post.json',
         'method': 'POST',
         'content': json.encode({
-            'n': n,
-            'command': command
+            'message': command
         }),
         'ok': receive,
         'error': commandError,
-        'asynchronous': true
+        'asynchronous': true,
+        'timeout': timeout
     });
+    request.observe('timeout', tick);
 });
 
 commandLine.focus();

@@ -1,5 +1,15 @@
 
+from planes.python.case import lower
+
+class EventMetaclass(type):
+    def __init__(self, name, bases, attys):
+        super(EventMetaclass, self).__init__(name, bases, attys)
+        self.events[name] = self
+
 class Event(object):
+
+    __metaclass__ = EventMetaclass
+    events = {}
 
     impact = 1
     aural = 0
@@ -41,7 +51,7 @@ class Event(object):
 
     @property
     def personal_present(self):
-        return self.__class__.__name__.lower()
+        return lower(self.__class__.__name__, ' ')
 
     @property
     def past(self):
@@ -110,6 +120,9 @@ class Work(Event):
     pass
 
 class Quaff(Event):
+    pass
+
+class Fall(Event):
     pass
 
 class Solve(Event):

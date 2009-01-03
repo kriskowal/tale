@@ -166,7 +166,7 @@ class OliveTree(FruitTree, HardwoodTree):
     fruit = Olive
 
 class AshTree(OliveTree):
-    pass
+    fruit = Samara
 
 class RoseTree(HardwoodTree):
     pass

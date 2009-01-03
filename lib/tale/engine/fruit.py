@@ -34,6 +34,9 @@ class Plum(Fruit):
 class Apricot(Fruit):
     pass
 
+class Samara(Fruit):
+    pass
+
 from nuts import *
 from berries import *
 
