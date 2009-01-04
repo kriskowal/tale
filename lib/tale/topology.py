@@ -116,7 +116,6 @@ class ChildProperty(object):
     def __set__(self, objekt, child):
         objekt.children[self.index] = child
 
-
 class NaryTree(object):
 
     children_len = 0
@@ -158,6 +157,12 @@ class NaryTree(object):
                 )
                 for n in range(self.children_len)
             ]
+
+    def __iter__(self):
+        return iter(self.children)
+
+    def __getitem__(self, n):
+        return self.children[n]
 
     @property
     def top_to_bottom(self):
@@ -216,14 +221,110 @@ class NaryTree(object):
 class CornerProperty(object):
     def __init__(self, index):
         self.index = index
-    def __get__(self, objekt, klass):
-        while objekt.scope > 0:
-            objekt = objekt.children[self.index]
-        return objekt
+    def __get__(self, plane, Plane):
+        while plane.scope > 0:
+            plane = plane.children[plane.corner_indicies[self.index]]
+        return plane
+
+class Edge(object):
+    def __init__(self, plane, axis, bias):
+        self.plane = plane
+        self.axis = axis
+        self.bias = bias
+    def __getitem__(self, n):
+        if n < 0:
+            n = n + self.plane.size
+        a, b = n, (self.plane.size - 1) * self.bias
+        if self.axis == 'x': x, y = a, b
+        if self.axis == 'y': y, x = a, b
+        return self.plane.go(x = x, y = y, size = 1 - self.plane.size)
+
+class EdgeProperty(object):
+    def __init__(self, axis, bias):
+        self.axis = axis
+        self.bias = bias
+    def __get__(self, plane, Plane):
+        return Edge(plane, self.axis, self.bias)
 
 class PlanarTree(NaryTree):
 
     edge_len = 1
+
+    north_west_corner = CornerProperty(0)
+    north_east_corner = CornerProperty(1)
+    south_west_corner = CornerProperty(2)
+    south_east_corner = CornerProperty(3)
+    north_edge = EdgeProperty('x', 0)
+    south_edge = EdgeProperty('x', 1)
+    west_edge = EdgeProperty('y', 0)
+    east_edge = EdgeProperty('y', 1)
+
+    @property
+    def box(self):
+        return Box((self.y, self.x, self.size))
+
+    @property
+    def corner_indicies(self):
+        return [
+            0,
+            self.edge_len - 1,
+            self.edge_len ** 2 - self.edge_len,
+            self.edge_len ** 2 - 1,
+        ]
+
+    def __init__(
+        self,
+        scope = None,
+        y = 0,
+        x = 0,
+        parent = None,
+        root = None,
+        **kws
+    ):
+        # deliberately bypasses the NaryTree initializer
+        super(NaryTree, self).__init__(**kws)
+        if root is None:
+            root = self
+        if scope is None:
+            scope = self.scope
+        self.scope = scope
+        self.root = root
+        self.parent = parent
+        self.y = y
+        self.x = x
+        if scope > 0:
+            child_scope = scope - 1
+            child_types = [
+                self.get_child_type(n)
+                for n in range(self.children_len)
+            ]
+            child_types = iter(child_types)
+            self.plane = [
+                [
+                    child_types.next()(
+                        y = self.box.y + y * self.child_size,
+                        x = self.box.x + x * self.child_size,
+                        scope = child_scope,
+                        parent = self,
+                        root = root,
+                    )
+                    for x in range(self.edge_len)
+                ]
+                for y in range(self.edge_len)
+            ]
+            self.children = [
+                self.plane[y][x]
+                for y in range(self.edge_len)
+                for x in range(self.edge_len)
+            ]
+
+    def __contains__(self, other):
+        if hasattr(other, 'root') and self.root is other.root:
+            return other.box in self.box
+        while other:
+            if other is self:
+                return True
+            other = other.parent
 
     @property
     def children_len(self):
@@ -237,40 +338,14 @@ class PlanarTree(NaryTree):
     def child_size(self):
         return self.size / self.edge_len
 
-    def __init__(self, scope = 0, x = 0, y = 0, parent = None, **kws):
-        # deliberately bypasses the NaryTree initializer
-        super(NaryTree, self).__init__(**kws)
-        if scope is None:
-            scope = self.scope
-        self.scope = scope
-        self.parent = parent
-        self.box = Box((y, x, self.size))
-        if scope > 0:
-            child_scope = scope - 1
-            child_types = [
-                self.get_child_type(n)
-                for n in range(self.children_len)
-            ]
-            child_types = iter(child_types)
-            self.plane = [
-                [
-                    child_types.next()(
-                        parent = self,
-                        scope = child_scope,
-                        x = self.box.x + x * self.child_size,
-                        y = self.box.y + y * self.child_size,
-                    )
-                    for x in range(self.edge_len)
-                ]
-                for y in range(self.edge_len)
-            ]
-            self.children = [
-                self.plane[y][x]
-                for y in range(self.edge_len)
-                for x in range(self.edge_len)
-            ]
+    def to(self, x = None, y = None, size = None):
+        if size is None: size = 1
+        if x is None: x = 0
+        if y is None: y = 0
+        to = Box((x, y, size))
+        return self.go(to = to)
 
-    def go(self, x = None, y = None, size = None, to = None, fro = None):
+    def go(self, x = None, y = None, size = None, to = None, fro = None, **kws):
 
         fro = self.box
 
@@ -290,7 +365,7 @@ class PlanarTree(NaryTree):
         elif self.parent is None:
             return
         else:
-             return self.parent.go(to = to, fro = fro)
+             return self.parent.go(to = to, fro = fro, fro_node = self)
 
 class QuadTree(PlanarTree):
     """\
@@ -311,14 +386,12 @@ class QuadTree(PlanarTree):
 
     edge_len = 2
 
+    corner_indicies = range(4)
+
     north_west_quadrant = ChildProperty(0)
     north_east_quadrant = ChildProperty(1)
     south_west_quadrant = ChildProperty(2)
     south_east_quadrant = ChildProperty(3)
-    north_west_corner = CornerProperty(0)
-    north_east_corner = CornerProperty(1)
-    south_west_corner = CornerProperty(2)
-    south_east_corner = CornerProperty(3)
 
     @property
     def north(self):
@@ -362,6 +435,33 @@ class Scaffold(object):
         return
 
 if __name__ == '__main__':
+
+    class OrderedTests(tuple):
+        def items(self): return self
+
+    __test__ = OrderedTests((
+        ('degenerate_directions', '''\
+            >>> q = QuadTree(scope = 0)
+            >>> q
+            <QuadTree 0,0 1>
+            >>> q.north
+            >>> q.south
+            >>> q.east
+            >>> q.west
+        '''),
+        ('degenerate_corners', '''
+            >>> q = QuadTree(scope = 0)
+            >>> q.north_east_corner == q
+            True
+            >>> q.north_west_corner == q
+            True
+            >>> q.south_east_corner == q
+            True
+            >>> q.south_west_corner == q
+            True
+        '''),
+    ))
+
     from doctest import testmod
     testmod()
 
