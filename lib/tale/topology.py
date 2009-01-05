@@ -1,5 +1,5 @@
 
-class index_property(object):
+class IndexProperty(object):
     def __init__(self, index):
         self.index = index
     def __get__(self, instance, klass):
@@ -23,7 +23,7 @@ class Box(tuple):
 
     """
 
-    y, x, size = (index_property(n) for n in range(3))
+    y, x, size = (IndexProperty(n) for n in range(3))
 
     def __contains__(self, other):
         """
@@ -232,12 +232,23 @@ class Edge(object):
         self.axis = axis
         self.bias = bias
     def __getitem__(self, n):
-        if n < 0:
-            n = n + self.plane.size
-        a, b = n, (self.plane.size - 1) * self.bias
-        if self.axis == 'x': x, y = a, b
-        if self.axis == 'y': y, x = a, b
-        return self.plane.go(x = x, y = y, size = 1 - self.plane.size)
+        if isinstance(n, slice):
+            start = n.start
+            stop = n.stop
+            step = n.step
+            if start is None: start = 0
+            if start < 0: start += self.plane.size
+            if stop is None: stop = self.plane.size
+            if stop < 0: stop += self.plane.size
+            if step is None: step = 1
+            return [self[n] for n in range(start, stop)][::step]
+        else:
+            if n < 0:
+                n = n + self.plane.size
+            a, b = n, (self.plane.size - 1) * self.bias
+            if self.axis == 'x': x, y = a, b
+            if self.axis == 'y': y, x = a, b
+            return self.plane.go(to = Box((self.plane.y + y, self.plane.x + x, 1)))
 
 class EdgeProperty(object):
     def __init__(self, axis, bias):
@@ -250,15 +261,31 @@ class PlanarTree(NaryTree):
 
     edge_len = 1
 
-    north_west_corner = CornerProperty(0)
-    north_east_corner = CornerProperty(1)
-    south_west_corner = CornerProperty(2)
-    south_east_corner = CornerProperty(3)
+    north_west_corner = CornerProperty(north_west)
+    north_east_corner = CornerProperty(north_east)
+    south_west_corner = CornerProperty(south_west)
+    south_east_corner = CornerProperty(south_east)
     north_edge = EdgeProperty('x', 0)
     south_edge = EdgeProperty('x', 1)
     west_edge = EdgeProperty('y', 0)
     east_edge = EdgeProperty('y', 1)
 
+    @property
+    def north(self):
+        return self.go(x = 0, y = -1)
+
+    @property
+    def south(self):
+        return self.go(x = 0, y = 1)
+
+    @property
+    def west(self):
+        return self.go(x = -1, y = 0)
+        
+    @property
+    def east(self):
+        return self.go(x = 1, y = 0)
+        
     @property
     def box(self):
         return Box((self.y, self.x, self.size))
@@ -365,7 +392,7 @@ class PlanarTree(NaryTree):
         elif self.parent is None:
             return
         else:
-             return self.parent.go(to = to, fro = fro, fro_node = self)
+            return self.parent.go(to = to, fro = fro, fro_node = self)
 
 class QuadTree(PlanarTree):
     """\
@@ -388,27 +415,11 @@ class QuadTree(PlanarTree):
 
     corner_indicies = range(4)
 
-    north_west_quadrant = ChildProperty(0)
-    north_east_quadrant = ChildProperty(1)
-    south_west_quadrant = ChildProperty(2)
-    south_east_quadrant = ChildProperty(3)
+    north_west_quadrant = ChildProperty(north_west)
+    north_east_quadrant = ChildProperty(north_east)
+    south_west_quadrant = ChildProperty(south_west)
+    south_east_quadrant = ChildProperty(south_east)
 
-    @property
-    def north(self):
-        return self.go(x = 0, y = -1)
-
-    @property
-    def south(self):
-        return self.go(x = 0, y = 1)
-
-    @property
-    def west(self):
-        return self.go(x = -1, y = 0)
-        
-    @property
-    def east(self):
-        return self.go(x = 1, y = 0)
-        
     @property
     def center(self):
         return self.north_west_quadrant.south_east_corner
@@ -459,6 +470,15 @@ if __name__ == '__main__':
             True
             >>> q.south_west_corner == q
             True
+        '''),
+        ('x', '''
+            >>> q = QuadTree(scope = 2)
+            >>> q.north_edge[:]
+            [<QuadTree 0,0 1>, <QuadTree 1,0 1>, <QuadTree 2,0 1>, <QuadTree 3,0 1>]
+            >>> q.north_edge[::2]
+            [<QuadTree 0,0 1>, <QuadTree 2,0 1>]
+            >>> q.north_edge[::-1]
+            [<QuadTree 3,0 1>, <QuadTree 2,0 1>, <QuadTree 1,0 1>, <QuadTree 0,0 1>]
         '''),
     ))
 

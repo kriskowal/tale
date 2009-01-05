@@ -18,7 +18,7 @@ from planes.python.module_path import module_path
 from planes.python.mode import Modal, Mode
 
 from tale.narrate import Narrator, Narrative
-from tale.world import Say, Kick, Person
+from tale.world import Say, Kick, Person, Dya
 
 class Mode(Mode):
     next_id = count().next
@@ -28,14 +28,13 @@ class Mode(Mode):
         self.player = session.engine.player()
         self.player.observe(self.observer)
         super(Mode, self).__init__(*args, **kws)
+        self.session.send({'html': 'Welcome to Dya.  Try <tt>/help</tt> for details.'})
     def observer(self, event):
-        print 'sent', event
         self.session.send({'html': escape(event)})
     def receive(self, command):
-        print 'received', command
-        self.player.command(command)
+        self.player.command(Say(self.player, command))
 
-class ModalCommandSession(Modal, JsonConnectionService):
+class ModalCommandSession(JsonConnectionService, Modal):
     def __init__(self, engine, *args, **kws):
         self.engine = engine
         super(ModalCommandSession, self).__init__(*args, **kws)
@@ -60,11 +59,11 @@ class ReactorEngine(object):
 
 class TaleEngine(object):
     def __init__(self, *args, **kws):
+        self.world = Dya()
         self.players = []
-        self.requests = []
         super(TaleEngine, self).__init__(*args, **kws)
     def player(self):
-        player = Player(self)
+        player = Player(self.world.euia.center)
         self.players.append(proxy(player, self.logouter(player)))
         return player
     def logouter(self, player):
@@ -72,21 +71,9 @@ class TaleEngine(object):
             self.players.remove(player)
         return logout
     def tick(self):
-        requests = self.read_requests()
+        self.world.tick()
         for player in self.players:
-            for event in requests:
-                if not (
-                    event.guaranteed and
-                    event.subject == player
-                ):
-                    player.tell(event)
             player.tick()
-    def read_requests(self):
-        requests = self.requests
-        self.requests = []
-        return requests
-    def request(self, event):
-        self.requests.append(event)
 
 class Observable(object):
     def __init__(self, *args, **kws):
@@ -104,21 +91,21 @@ class Player(Observable, Person):
         self.commands = []
         self.narrator = Narrator()
         self.narrate = Narrative(self.narrator, self)
+        location.subscribe(self)
         super(Player, self).__init__(*args, **kws)
     def command(self, command):
         self.commands.append(command)
-    def tell(self, event):
-        self.signal(self.narrate(event))
     def read_commands(self):
         commands = self.commands
         self.commands = []
         return commands
+    def tell(self, event):
+        self.signal(self.narrate(event))
     def tick(self):
-        for command in self.read_commands():
-            event = Say(self, command)
+        for event in self.read_commands():
             if event.guaranteed:
                 self.tell(event)
-            self.location.request(Say(self, command))
+            self.location.request(event)
 
 Engine = mix(TaleEngine, ReactorEngine)
 

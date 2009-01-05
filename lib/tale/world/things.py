@@ -1,16 +1,57 @@
 
+from weakref import ref
 from weakproperty import WeakProperty
 from planes.python.case import lower
 
+class Messenger(object):
+
+    def __init__(self, *args, **kws):
+        super(Messenger, self).__init__(*args, **kws)
+        self.subscriber_refs = []
+        self.requests = []
+
+    def subscribe(self, subscriber):
+        self.subscriber_refs.append(ref(subscriber))
+
+    def cull(self):
+        "Removes subscribers that no longer exist."
+        self.subscriber_refs = [
+            subscriber_ref
+            for subscriber_ref in self.subscriber_refs
+            if subscriber_ref() is not None
+        ]
+
+    def broadcast(self, event):
+        "Sends an event to all subscribers, if appropriate."
+        self.cull()
+        for subscriber_ref in self.subscriber_refs:
+            subscriber = subscriber_ref()
+            if subscriber is not None:
+                if not (event.guaranteed and event.subject == subscriber):
+                    subscriber.tell(event)
+
+    def read_requests(self):
+        requests = self.requests
+        self.requests = []
+        return requests
+
+    def request(self, event):
+        self.requests.append(event)
+
 class ThingMetaclass(type):
+
     def __init__(self, name, bases, attys):
         super(ThingMetaclass, self).__init__(name, bases, attys)
         self.things[name] = self
 
-class Thing(object):
+class Thing(Messenger):
 
     __metaclass__ = ThingMetaclass
     things = {}
+
+    def __init__(self, *args, **kws):
+        super(Thing, self).__init__(*args, **kws)
+        self._contents = set()
 
     @property
     def singular(self):
@@ -35,25 +76,38 @@ class Thing(object):
 
     collective = 'collection'
 
-    def tick(self, context):
-        if False: yield None
-
     owner = WeakProperty()
     creator = WeakProperty()
     container = WeakProperty()
 
+    def tick(self):
+        for thing in self.contents:
+            thing.tick()
+        self.echo()
+
+    def tell(self, event):
+        print 'tell', event, self
+        self.broadcast(event)
+
+    def echo(self):
+        requests = self.read_requests()
+        for event in requests:
+            self.tell(event)
+
+    @property
+    def contents(self):
+        return set(self._contents)
+
+    def add(self, thing):
+        self._contents.add(thing)
+        thing.container = self
+
+    def remove(self, thing):
+        self._contents.remove(thing)
+        thing.container = None
+
 class Unique(Thing):
     pass
-
-# things that can be said
-
-class Quote(Thing):
-    def __init__(self, sentence):
-        self.sentence = sentence
-
-class Claim(Thing):
-    def __init__(self, sentence):
-        self.sentence = sentence
 
 """
 Fish, invertebrate, or plant    Collective noun 
