@@ -18,7 +18,8 @@ from planes.python.module_path import module_path
 from planes.python.mode import Modal, Mode
 
 from tale.narrate import Narrator, Narrative
-from tale.world import Say, Kick, Person, Dya
+from tale.world import Person, Dya
+from tale.commands import do, chat
 
 class Mode(Mode):
     next_id = count().next
@@ -32,7 +33,7 @@ class Mode(Mode):
     def observer(self, event):
         self.session.send({'html': escape(event)})
     def receive(self, command):
-        self.player.command(Say(self.player, command))
+        chat(self, command)
 
 class ModalCommandSession(JsonConnectionService, Modal):
     def __init__(self, engine, *args, **kws):
@@ -88,21 +89,21 @@ class Observable(object):
 class Player(Observable, Person):
     def __init__(self, location, *args, **kws):
         self.location = location
-        self.commands = []
+        self.requests = []
         self.narrator = Narrator()
-        self.narrate = Narrative(self.narrator, self)
+        self.narrative = Narrative(self.narrator, self)
         location.subscribe(self)
         super(Player, self).__init__(*args, **kws)
-    def command(self, command):
-        self.commands.append(command)
-    def read_commands(self):
-        commands = self.commands
-        self.commands = []
-        return commands
+    def request(self, request):
+        self.requests.append(request)
+    def read_requests(self):
+        requests = self.requests
+        self.requests = []
+        return requests
     def tell(self, event):
-        self.signal(self.narrate(event))
+        self.signal(self.narrative(event))
     def tick(self):
-        for event in self.read_commands():
+        for event in self.read_requests():
             if event.guaranteed:
                 self.tell(event)
             self.location.request(event)

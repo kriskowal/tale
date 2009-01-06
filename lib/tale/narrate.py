@@ -69,6 +69,8 @@ class Narrative(object):
         if name == 'her': thing =  self.she
         if name == 'it': thing = self.it
         if name == 'them': thing = self.they
+        if name == 'myself': thing = self.audience
+        if name == 'you': thing = self.narrator
         if name in self.things: thing = self.things[name]
         self.noun(thing)
         return thing
@@ -112,7 +114,7 @@ class Narrative(object):
             subject is self.narrator or
             subject is self.they
         ):
-            return verb.personal_present # You say, I say, they say, (we say)
+            return verb.nominative # You say, I say, they say, (we say)
         return verb.present # He says, she says, it says, Joe says
 
     def noun(self, object, subject = None):

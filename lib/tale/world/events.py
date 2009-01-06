@@ -2,14 +2,27 @@
 from planes.python.case import lower
 
 class EventMetaclass(type):
+    """
+        >>> Event.events_by_nominative['say'] == Say
+        True
+    """
     def __init__(self, name, bases, attys):
         super(EventMetaclass, self).__init__(name, bases, attys)
+        lower_name = lower(name, ' ')
+        self.nominative = attys.get('nominative', lower_name)
+        self.present = attys.get('present', self.nominative + 's')
+        self.past = attys.get('past', self.nominative + 'ed')
+        self.past_perfect = attys.get('past_perfect', self.past)
         self.events[name] = self
+        self.events_by_nominative[self.nominative] = self
+        self.events_by_present[self.present] = self
 
 class Event(object):
 
     __metaclass__ = EventMetaclass
     events = {}
+    events_by_nominative = {}
+    events_by_present = {}
 
     impact = 1
     aural = 0
@@ -45,24 +58,17 @@ class Event(object):
         if mystical is not None: self.mystical = mystical
         return self
 
-    @property
-    def present(self):
-        return self.personal_present + 's'
-
-    @property
-    def personal_present(self):
-        return lower(self.__class__.__name__, ' ')
-
-    @property
-    def past(self):
-        return self.present + 'ed'
-
-    @property
-    def past_perfect(self):
-        return self.past
-
     def tick(self, context):
         pass
+
+    @classmethod
+    def lookup(self, narrative, object):
+        return narrative.lookup(object)
+
+class Be(Event):
+    present = 'is'
+    past = 'was'
+    past_perfect = 'been'
 
 class Do(Event):
     present = 'does'
@@ -79,6 +85,10 @@ class Set(Event):
 class Say(Event):
     past = 'said'
     guaranteed = True
+
+    @classmethod
+    def lookup(self, narrative, object):
+        return object
 
 class Hit(Event):
     past = 'hit'
@@ -162,3 +172,7 @@ class Move(Event):
         self.subject.container = self.object
         yield Add(self.transitives['to'], self.subject)
 
+
+if __name__ == '__main__':
+    from doctest import testmod
+    testmod()
