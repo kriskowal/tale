@@ -1,4 +1,5 @@
 
 ls *.layers | while read layer; do
+    echo $layer >&2
     ./build `basename $layer .layers`
 done

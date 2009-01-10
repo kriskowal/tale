@@ -1,17 +1,17 @@
 
-svg-layers work.svg | grep rider_face_ | while read face; do
+svg-layers @.svg | grep rider_face_ | while read face; do
 
     portrait=`echo $face | sed 's/rider_face_//'` 
-    head=`svg-layers work.svg | grep rider_head_ | shuffle | head -1`
-    hair=`svg-layers work.svg | grep rider_hair_ | shuffle | head -1`
+    head=`svg-layers @.svg | grep rider_head_ | shuffle | head -1`
+    hair=`svg-layers @.svg | grep rider_hair_ | shuffle | head -1`
     hair_name=`echo $hair | sed 's/rider_hair_//'`
-    bangs=`svg-layers work.svg | grep rider_bangs_$hair_name`
-    ear=`svg-layers work.svg | grep rider_ear_ | shuffle | head -1`
+    bangs=`svg-layers @.svg | grep rider_bangs_$hair_name`
+    ear=`svg-layers @.svg | grep rider_ear_ | shuffle | head -1`
     (echo $hair_name | grep long || echo $hair_name | grep short) && bangs=`(echo rider_bangs_straight; echo rider_bangs_parted; echo rider_bangs_split) | shuffle | head -1`
 
     echo $portrait $face $head $hair $bangs $ear
 
-    cat work.svg \
+    cat @.svg \
     | svg-crop rider_crop_face \
     | svg-select $face $head $hair $bangs $ear rider_male_arm_down_left rider_male_arm_down_right \
     | rsvg -w 100 - portraits/$portrait.png
