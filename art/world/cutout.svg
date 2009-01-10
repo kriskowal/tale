@@ -117,28 +117,6 @@
     <radialGradient
        inkscape:collect="always"
        xlink:href="#linearGradient46096"
-       id="radialGradient5291"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(3.838597e-2,1.768353,-1.130046,2.453014e-2,6181.857,-7475.317)"
-       cx="4481.4551"
-       cy="454.04242"
-       fx="4481.4551"
-       fy="454.04242"
-       r="40.859318" />
-    <radialGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient46096"
-       id="radialGradient5293"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.344931,0.837627,-1.227944,0.505662,4814.978,-3498.616)"
-       cx="4545.3013"
-       cy="392.92868"
-       fx="4545.3013"
-       fy="392.92868"
-       r="68.233871" />
-    <radialGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient46096"
        id="radialGradient5307"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(3.838597e-2,1.768353,-1.130046,2.453014e-2,6181.857,-7475.317)"
@@ -452,9 +430,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.72"
-     inkscape:cx="561.67448"
-     inkscape:cy="495.57928"
+     inkscape:zoom="0.50911688"
+     inkscape:cx="764.98753"
+     inkscape:cy="470.61588"
      inkscape:current-layer="layer1"
      id="namedview3397"
      showgrid="false"
@@ -478,7 +456,7 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="opacity:1;fill:#000000;fill-opacity:0;fill-rule:nonzero;stroke:none;stroke-width:5.17999982999999986;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4.09999990000000025;stroke-dasharray:none;stroke-dashoffset:1.15200001000000007;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       style="opacity:1;fill:#46b3d3;fill-opacity:0;fill-rule:nonzero;stroke:none;stroke-width:5.17999982999999986;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4.09999990000000025;stroke-dasharray:none;stroke-dashoffset:1.15200001000000007;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
        id="rect5335"
        width="818.05554"
        height="1034.7222"
