@@ -16,7 +16,7 @@
    inkscape:version="0.46"
    sodipodi:docbase="/home/kkowal/tale/art"
    sodipodi:docname="world.svg"
-   inkscape:export-filename="/home/kris/tale/art/dya.png"
+   inkscape:export-filename="/home/kris/tale/art/world.png"
    inkscape:export-xdpi="40.5"
    inkscape:export-ydpi="40.5"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
@@ -640,7 +640,9 @@
      inkscape:window-height="975"
      inkscape:window-x="0"
      inkscape:window-y="49"
-     showgrid="false" />
+     showgrid="false"
+     showguides="true"
+     inkscape:guide-bbox="true" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -664,7 +666,7 @@
      inkscape:groupmode="layer"
      id="layer6"
      inkscape:label="dyo"
-     style="display:none">
+     style="display:inline">
     <rect
        style="opacity:1;fill:url(#radialGradient2751);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:square;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
        id="rect18725"
@@ -2089,5 +2091,12 @@
        inkscape:export-filename="/home/kkowal/tale/art/world.png"
        inkscape:export-xdpi="72"
        inkscape:export-ydpi="72" />
+    <rect
+       style="opacity:1;fill:#008cd0;fill-opacity:0;fill-rule:nonzero;stroke:none;stroke-width:3.9000001;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect5475"
+       width="840.9809"
+       height="842.14893"
+       x="-19.856493"
+       y="-22.292423" />
   </g>
 </svg>
