@@ -1,16 +1,15 @@
 <html xmlns:chiron="http://chironjs.org">
     <head>
-        <script src="/js/modules.js?./index.js"></script>
         <style>@import url(index.css);</style>
     </head>
     <body>
         <div id="body">
-            <div id="horizon">
+            <div class="horizon">
                 <div id="deadcentre">
                     <div class="content">
 
                         <p class="encounter">
-                            <img id="tale" src="art/world-300.png" alt="The world of Tale is a cube.">
+                            <img id="tale" src="art/world.png" height="360" width="360" alt="Dya is a cube.">
                         </p>
 
                         <h1>Tale</h1>
@@ -21,24 +20,29 @@
 
                         <p class="menuBar">
                             <a id="playButton" class="choice" href="noscript.html">Play</a>
-                            <a class="choice" href="https://cixar.com/tale/wiki/">Flee</a>
+                            <a class="choice" href="http://www.cafepress.com/taleshoppe">Shop</a>
+                            <a class="choice" href="https://cixar.com/tale/wiki/">Wiki</a>
+                            <a class="choice" href="http://en.wikipedia.org/wiki/Special:Random">Flee</a>
                         </p>
 
                     </div>
                 </div>
             </div>
-            <div>
-        </div>
-        <div id="hudHorizon">
-            <div id="hud">
-                <div id="left">
-                    <div id="ad"></div>
-                    <div id="widgetBar"></div>
-                </div>
-                <div id="right">
-                    <div id="map"></div>
+            <div id="hudHorizon">
+                <div id="hud">
+                    <div id="left">
+                        <div id="ad"></div>
+                        <div id="widgetBar"></div>
+                    </div>
+                    <div id="right">
+                        <div id="map"></div>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="horizon">
+            <div id="music"></div>
+        </div>
+        <script src="/js/modules.js?./index.js"></script>
     </body>
 </html>

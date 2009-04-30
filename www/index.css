@@ -23,7 +23,7 @@
 
     /* vertical align middle */
         
-        #horizon {
+        .horizon {
             position: absolute;
             top: 50%;
             left: 0px;
@@ -194,35 +194,48 @@
 
         #hud {
             position: fixed;
-            height: 100%;
+            height: 50%;
         }
 
         #hudHorizon {
             position: absolute;
             top: 50%;
             left: 0px;
-            width: 100%;
+            width: 600px;
+            margin: auto auto;
             height: 1px;
             overflow: visible;
             visibility: visible;
             display: block;
         }
-        
+
+        #music {
+            position: absolute;
+            left: 0;
+            top: -100px;
+            width: 100px;
+            height: 200px;
+        }
+
+        .javascript #music {
+            cursor: pointer;
+        }
+
+        #music.ready {
+            background-image: url(/art/play.png);
+        }
+
+        #music.play {
+            background-image: url(/art/pause.png);
+        }
+
         #map {
             position: absolute;
             height: 300px;
             width: 300px;
             top: -150px;
         }
-        
-        #ad {
-            position: absolute;
-            height: 600px;
-            width: 120px;
-            top: -300px;
-            left: -280px;
-        }
-        
+
         #widgetBar {
             position: absolute;
             height: 400px;

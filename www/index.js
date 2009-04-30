@@ -18,32 +18,46 @@ observe(
 
 var clicked;
 var sound;
-observe(img.parentNode, 'click', function () {
+var playing;
+var musicWidget = document.getElementById('music')
+observe(musicWidget, 'click', function () {
     if (!clicked) {
         sound = require('sound.js');
         sound.ready.observe(function () {
             sound.play('music/6-1-euia-adventure.mp3');
+            insertClass(musicWidget, 'play');
         });
         clicked = true;
+        playing = true;
     } else {
         sound.ready.observe(function () {
             sound.toggle();
+            if (playing) {
+                removeClass(musicWidget, 'play');
+            } else {
+                insertClass(musicWidget, 'play');
+            }
+            playing = !playing;
         });
     }
 });
+insertClass(musicWidget, 'ready');
 
-img.parentNode.style.cursor = 'pointer';
+// prefetch
+new Image().src = "/art/pause.png";
 
 if (isSafari || isFirefox) {
 
-    var quantum = isSafari ? 100 : 1000;
+    var start = new Date().getTime();
+
+    var quantum = isSafari ? 200 : 1000;
+    var rate = Math.PI * 2 / 1000 / 5;
+
     var animate = function (rate, functor) {
-        var lastPosition = new Date().getTime();
         var tick = function () {
             try {
-                var position = new Date().getTime() * rate / quantum;
-                functor(position - lastPosition);
-                lastPosition = position;
+                var position = (new Date().getTime() - start) * rate / quantum;
+                functor(position);
             } finally {
                 setTimeout(tick, quantum);
             }
@@ -51,25 +65,39 @@ if (isSafari || isFirefox) {
         tick();
     };
 
-    var canvas = document.createElement('canvas');
-    canvas.width = 360;
-    canvas.height = 360;
+    var dyo = new Image();
+    var dya = new Image();
+    dyo.src = "/art/dyo.png";
+    dya.src = "/art/dya.png";
+    dya.onload = function () {dya.ready = true; ready()};
+    dyo.onload = function () {dyo.ready = true; ready()};
+    var ready = function () {
+        if (!dya.ready || !dyo.ready)
+            return;
 
-    // legerdemain
-    var parentNode = img.parentNode;
-    parentNode.removeChild(img);
-    parentNode.appendChild(canvas);
+        var canvas = document.createElement('canvas');
+        canvas.width = 360;
+        canvas.height = 360;
 
-    var context = canvas.getContext('2d');
-    context.translate(180, 180);
-    context.rotate(Math.PI * 2 / 1000 / 5);
+        // legerdemain
+        var parentNode = img.parentNode;
+        parentNode.removeChild(img);
+        parentNode.appendChild(canvas);
 
-    var lastPosition;
-    animate(Math.PI * 2 / 1000 / 5, function (delta) {
-        context.clearRect(-180, -180, 360, 360);
-        context.rotate(delta);
-        context.drawImage(img, -123, -180, 261, 300);
-    });
+        var context = canvas.getContext('2d');
+        context.translate(180, 180);
+        context.drawImage(img, -180, -180, 360, 360);
+
+        animate(rate, function (delta) {
+            context.save();
+            context.clearRect(-180, -180, 360, 360);
+            context.drawImage(dyo, -180, -180, 360, 360);
+            context.rotate(delta);
+            context.drawImage(dya, -180, -180, 360, 360);
+            context.restore();
+        });
+
+    };
 
 }
 
