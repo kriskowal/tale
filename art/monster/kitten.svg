@@ -2,22 +2,31 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:cc="http://creativecommons.org/ns#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="792pt"
    height="612pt"
    id="svg2"
    sodipodi:version="0.32"
-   inkscape:version="0.43"
+   inkscape:version="0.46"
    version="1.0"
    sodipodi:docbase="/home/kkowal/tale/art"
-   sodipodi:docname="kitten.svg">
+   sodipodi:docname="kitten.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
   <defs
-     id="defs4" />
+     id="defs4">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 382.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="990 : 382.5 : 1"
+       inkscape:persp3d-origin="495 : 255 : 1"
+       id="perspective4429" />
+  </defs>
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -29,11 +38,12 @@
      inkscape:cx="596.53646"
      inkscape:cy="394.34401"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer2"
      inkscape:window-width="1600"
-     inkscape:window-height="1125"
-     inkscape:window-x="0"
-     inkscape:window-y="25" />
+     inkscape:window-height="1050"
+     inkscape:window-x="4"
+     inkscape:window-y="49"
+     showgrid="false" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -45,6 +55,15 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="outline">
+    <path
+       style="opacity:1;fill:#93b8c2;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3.9000001;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
+       d="M 729.09375,56.6875 C 702.91188,60.78919 681.7343,78.183364 657.7869,88.298724 C 612.24263,111.60272 568.58265,138.85713 523.125,162.15625 C 513.76438,166.19192 503.35785,164.20484 494.76603,159.39279 C 455.37779,142.27581 419.53436,118.2111 382.67992,96.506627 C 365.54755,86.152401 348.48049,75.061422 330.125,67.25 C 317.01653,63.684227 300.2712,72.194141 299.8125,86.6875 C 297.42069,105.7957 309.80324,122.20994 316.62989,139.09449 C 339.79563,186.63408 364.50316,233.5946 393.6875,277.75 C 377.14563,283.51867 360.27828,288.78407 343.34375,293.34375 C 341.5212,300.02211 335.44953,305.19398 335.65625,312.375 C 310.22623,332.04748 306.45477,374.23837 328.9375,397.53125 C 341.46989,411.38658 363.55697,417.57111 380.46875,407.65625 C 401.59409,396.41183 429.72769,397.2217 447.9375,413.53125 C 459.68431,424.50616 464.0691,441.64372 462.34375,457.21875 C 460.23766,474.75273 442.92212,485.27825 426.90625,488.5 C 411.38145,492.15815 395.61666,488.95569 380.15625,487.09375 C 356.8825,485.54056 330.73714,493.0735 317.65625,513.40625 C 306.39339,532.52344 312.79155,555.70836 317.71875,575.71875 C 322.17336,594.92633 334.11297,615.15066 354.59375,620 C 379.4828,626.42625 404.99893,614.78668 423.90625,599.28125 C 436.15286,590.26269 448.58151,578.21417 464.53125,577 C 476.29075,579.46464 480.49476,592.98798 482.71875,603.3125 C 486.73116,622.13164 489.00215,645.05438 506.46875,656.75 C 523.83597,667.04142 545.25046,660.9194 562.875,654.59375 C 579.23623,648.20368 595.94596,639.70597 606.4375,625.21875 C 618.47078,604.29252 612.45099,577.42109 598.78125,558.875 C 586.00659,539.22199 560.45887,528.79862 553.84375,504.96875 C 545.46552,477.91377 551.75738,448.78356 552.21875,420.96875 C 553.29624,407.69318 565.4503,398.25664 577.96875,396.90625 C 594.60612,394.29177 609.42985,404.23885 626.03112,403.20363 C 642.77318,403.7343 659.21344,396.85753 670.59375,384.71875 C 691.34674,364.38106 699.36955,329.18952 683.09375,303.71875 C 676.84401,293.65262 666.54424,286.38979 656.21875,281.46875 C 655.31321,272.07405 644.57754,267.64107 636.21875,269.4375 C 640.72369,262.76368 646.77474,255.34733 655.7596,255.66804 C 666.64167,253.4028 677.4636,251.00095 688.28125,248.5625 C 691.02351,241.11053 699.52282,233.65777 694.84375,225.15625 C 689.90692,217.36891 679.46121,220.82599 672.46875,222.96875 C 704.21892,180.27694 735.79781,135.707 751.09375,84.25 C 753.38853,72.411933 746.22661,57.678807 733.125,56.8125 C 731.78849,56.641185 730.4385,56.610458 729.09375,56.6875 z"
+       id="path4432" />
+  </g>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
