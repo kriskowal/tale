@@ -1,0 +1,17 @@
+Each face of ["Dya"] has a musical tonic, a ["DyalTone"].  Motion from face to face therefore has a corresponding modulation.
+
+Each ["Trychotomy"]'s group of tonics forms a major triad.  C Major is formed by Dysia, Austra, and Occia while F# Major (a tritone removed from C Major) is formed by Euia, Borea, and Oria.
+
+Each ["Dychotomy"]'s tonics are at an interval of a tritone relative to one another.
+
+This means that when travelling to an adjacent face, the intervals by which the tonic may change, ordered ascending by dissonance, are P5/P4, M3/m6, M2/m7, or m2/M7.  The opposite face is a tritone away, arguably similar in dissonance to the m2/M7, but for these purposes, the least consonant of intervals possible.
+
+When moving to an adjacent face, here are the possible tonic transitions:
+||Current Tonic||||||||New Tonic||
+||F#|| C# || A# || E || G ||
+||C# || F# || A# || E || C ||
+||A# || F# || C# || G || C ||
+||E || F# || C# || G || C ||
+||G || F# || A# || E || C ||
+||C || C# || A# || E || G ||
+

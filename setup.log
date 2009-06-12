@@ -1,0 +1,13 @@
+copy .bash* .vimrc
+apt-get install vim
+apt-get install subversion
+apt-get install lighttpd
+apt-get install python-twisted
+apt-get install python-django
+apt-get install simplejson
+cd /; svn co https://cixar.com/svns/tale
+cd /tale/var; chown -R www-data:www-data .
+cd /etc/lighttpd; mv lighttpd.conf{,.original}; ln -s /tale/etc/lighttpd.conf
+cd /tale/www; svn checkout https://chironjs.googlecode.com/svn/trunk/src js 
+
+apt-get install git-core

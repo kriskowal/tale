@@ -1,0 +1,53 @@
+||<-2> ["Faerie"] ||
+|| || ["Sprite"] ||
+|| https://cixar.com/tale/art/monster/gnome-100.png || ["Gnome"] ||
+|| https://cixar.com/tale/art/monster/elf-100.png || ["Elf"] ||
+|| || ["Brownie"] ||
+|| || ["Dwarf"] ||
+|| https://cixar.com/tale/art/monster/troll-100.png || ["Troll"] ||
+|| https://cixar.com/tale/art/monster/first-troll-100.png || FirstTroll ||
+|| https://cixar.com/tale/art/monster/consul-troll-100.png || TrollConsul ||
+||<-2> ["Animal"] ||
+|| https://cixar.com/tale/art/monster/kitten-100.png ||<100%> FeralKitten ||
+|| https://cixar.com/tale/art/monster/puppy-100.png ||  DirePuppy ||
+|| || HellPoodle ||
+|| https://cixar.com/tale/art/monster/little-bunny-100.png || LittleBunny ||
+|| https://cixar.com/tale/art/monster/squirrel-100.png ||  ["Squirrel"] ||
+|| https://cixar.com/tale/art/monster/monkey-100.png || InsaneMutantMonkey ||
+|| https://cixar.com/tale/art/monster/sheepish-sapper-100.png || SheepishSapper ||
+|| https://cixar.com/tale/art/monster/dancing-hamster-100.png || DancingHamster ||
+|| || DreadKoala ||
+|| || KiwiFiend ||
+|| || GnuPirate ||
+|| || ["Daemon"] ||
+|| || CowNinja ||
+|| https://cixar.com/tale/art/monster/penguin-100.png || ["Penguin"] ||
+|| https://cixar.com/tale/art/monster/rocket-penguin-100.png || RocketPenguin ||
+|| https://cixar.com/tale/art/monster/aero-penguin-100.png || AeroPenguin ||
+|| https://cixar.com/tale/art/monster/poler-bear-100.png || PolerBear ||
+|| https://cixar.com/tale/art/monster/narwhal-100.png || ["Narwhal"] ||
+|| https://cixar.com/tale/art/monster/fire-drake-gold-100.png || FireDrake ||
+|| || SableSquirrel ||
+||<-2> Vegetable ||
+|| https://cixar.com/tale/art/monster/shrub-100.png || ["Shrub"] ||
+|| https://cixar.com/tale/art/monster/binary-treant-100.png || BinaryTreant ||
+|| || UndeadSucculent ||
+||<-2> Monster ||
+|| || ["Shroomba"] ||
+|| https://cixar.com/tale/art/monster/lighthouse-100.png || SinisterLighthouse ||
+|| https://cixar.com/tale/art/monster/bug-100.png || ["Heisenbug"] ||
+|| https://cixar.com/tale/art/monster/lag-100.png || LagMonster ||
+|| https://cixar.com/tale/art/monster/schmeterling-100.png || ["Schmeterling"] ||
+|| || ["Cthulwoot and Cthulhoot"] ||
+|| https://cixar.com/tale/art/monster/segway-krikket-bot-100.png || SegwayKrikkitBot ||
+|| https://cixar.com/tale/art/monster/kodra-100.png || ["Kodra"] ||
+|| https://cixar.com/tale/art/monster/panda-assassin-100.png || PandaAssassin ||
+|| https://cixar.com/tale/art/monster/samsoit-100.png || ["Samsoit"] ||
+|| || ["Nunja"] ||
+||<-2> Character ||
+|| https://cixar.com/tale/art/monster/magus-borealis-100.png || MagusBorealis ||
+|| https://cixar.com/tale/art/monster/magus-australis-100.png || MagusAustralis ||
+|| https://cixar.com/tale/art/monster/renegade-duck-100.png || RenegadeDuck ||
+|| https://cixar.com/tale/art/monster/francis-drake-100.png || FrancisDrake ||
+|| https://cixar.com/tale/art/monster/sand-witch-100.png || SandWitch ||
+

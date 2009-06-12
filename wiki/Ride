@@ -1,0 +1,22 @@
+A vehicle or friendly creature that will permit you to ride it.
+
+Rides:
+
+||<-2> Land Vehicles ||
+|| https://cixar.com/tale/art/ride/trojan-badger-100.png || TrojanBadger ||
+|| https://cixar.com/tale/art/ride/siege-platypus-100.png || SiegePlatypus ||
+|| https://cixar.com/tale/art/ride/steam-castle-100.png || SteamCastle ||
+|| https://cixar.com/tale/art/ride/mc-lorry-100.png || McLorry ||
+|| https://cixar.com/tale/art/ride/machina-ex-deus-100.png || MachinaExDeus ||
+|| || ["Catapult"] (pun intended) ||
+|| || ["Trebuchet"] ||
+|| || BallistaBallistaBallista ||
+||<-2> Land Mounts ||
+|| https://cixar.com/tale/art/sprite/jackalope-100.png || MountList ||
+||<-2> Sea Vehicles ||
+|| https://cixar.com/tale/art/ride/mallard/galley-100.png || MallardList ||
+||<-2> Sky Vehicles ||
+|| https://cixar.com/tale/art/ride/mallard/skyboat-100.png || MallardList ||
+|| https://cixar.com/tale/art/ride/gyro-pig-100.png || GyroPig ||
+|| https://cixar.com/tale/art/ride/lamb-chopper-100.png || LambChopper ||
+

@@ -1,0 +1,9 @@
+||<:tableclass="frame"> http://cixar.com/tale/art/monster/panda-assassin-400.png ||
+
+''"Eats shoots and leaves"''
+
+ * ["Creature"], ["Animal"], ["Panda"]
+ * has ["Blunderbuss"], ["MonkeyWrench"]
+ * is from ["Oria"]
+ * eats ["PIzza"]
+ * is ["LawfulEvil"]

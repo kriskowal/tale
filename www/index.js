@@ -51,7 +51,7 @@ if (isSafari || isFirefox) {
     var start = new Date().getTime();
 
     var quantum = isSafari ? 200 : 1000;
-    var rate = Math.PI * 2 / 1000 / 5;
+    var rate = Math.PI * 2 / 1000 / 4;
 
     var animate = function (rate, functor) {
         var tick = function () {
