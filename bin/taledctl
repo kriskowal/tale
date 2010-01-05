@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 """\
-Usage: taledctl start|stop|restart|reload
+Usage: taledctl start|stop|restart|reload|log
 """
 
 # get bearings
@@ -14,6 +14,7 @@ from subprocess import call
 ROOTDIR = realpath(join(dirname(__file__), '..'))
 BINFILE = join(ROOTDIR, 'bin', 'taled')
 PIDFILE = join(ROOTDIR, 'var', 'run', 'taled.pid')
+LOGFILE = join(ROOTDIR, 'var', 'log', 'taled', 'error.log')
 
 def help():
     print>>sys.stderr, __doc__,
@@ -23,13 +24,20 @@ def start():
     return call(['/usr/bin/env', 'python', BINFILE])
 
 def stop():
-    os.kill(int(file(PIDFILE).read()), signal.SIGTERM)
+    if not exists(PIDFILE):
+        print>>sys.stderr, 'taled does not appear to be running.'
+        print>>sys.stderr, '(no PID file: %r)' % PIDFILE
+    else:
+        os.kill(int(file(PIDFILE).read()), signal.SIGTERM)
     return 0
     
 def restart():
     stop()
     start()
     return 0
+
+def log():
+    return call(['/usr/bin/tail', '-f', LOGFILE])
 
 reload = restart
 
