@@ -1,5 +1,6 @@
 
-= Tale =
+Tale
+====
 
 Tale is intended to be an immersive, quirky, humerous, text-based, multi-player
 adventure game set on the faces of a six-sided die and played in a web browser.
@@ -76,7 +77,8 @@ same size.  This permits certain optimizations, the authoring of simple
 map/reduce style event propagation and physics simulations, and flushes well
 with Zelda-like room to room movement.
 
-== Setup ==
+Setup
+-----
 
 * Twisted Python (python-twisted)
 * LigHTTPd (lighttpd)
