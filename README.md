@@ -84,4 +84,5 @@ Setup
 * LigHTTPd (lighttpd)
 * Python `simplejson`
 * Chiron installed in `www/chiron`
+* `git submodule update` grabs Python on Planes
 

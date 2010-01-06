@@ -21,24 +21,41 @@ sys.path.insert(0, LIBDIR)
 from os import makedirs, chown
 from os.path import exists
 VARDIR = join(ROOTDIR, 'var')
+
 # var/run
 RUNDIR = join(VARDIR, 'run')
 if not exists(RUNDIR):
     makedirs(RUNDIR)
 chown(RUNDIR, UID, 0)
+
+# var/run/taled.pid
+TALED_PID = join(RUNDIR, 'taled.pid')
+if exists(TALED_PID):
+    chown(TALED_PID, UID, 0)
+
 # var/log/taled
 LOGDIR = join(VARDIR, 'log', 'taled')
 if not exists(LOGDIR):
     makedirs(LOGDIR)
 chown(LOGDIR, UID, 0)
 
+# var/log/taled/status.log
+STATUS_LOG = join(LOGDIR, 'status.log')
+if exists(STATUS_LOG):
+    chown(STATUS_LOG, UID, 0)
+
+# var/log/taled/error.log
+ERROR_LOG = join(LOGDIR, 'error.log')
+if exists(ERROR_LOG):
+    chown(ERROR_LOG, UID, 0)
+
 # double fork, divorce session, write pid file, deescalate user privs
 from daemon import daemon
 @daemon(
     user = USER,
-    pidfile = join(RUNDIR, 'taled.pid'),
-    logfile = join(LOGDIR, 'status.log'),
-    errorfile = join(LOGDIR, 'error.log'),
+    pidfile = TALED_PID,
+    logfile = STATUS_LOG,
+    errorfile = ERROR_LOG,
 )
 def daemonized():
     # run the daemon
