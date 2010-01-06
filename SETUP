@@ -1,7 +1,0 @@
-
-apt-get install lighttpd
-apt-get install python-twisted
-
-install simplejson
-install chiron in client/
-

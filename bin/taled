@@ -1,5 +1,12 @@
 #!/usr/bin/env python
 
+USER = 'www-data'
+
+# get info on the user, for directory ownership and daemon process owner
+from pwd import getpwnam
+user = getpwnam(USER)
+UID = user.pw_uid
+
 # get bearings
 import sys
 from os.path import join, dirname, realpath
@@ -9,13 +16,29 @@ ROOTDIR = realpath(join(dirname(__file__), '..'))
 LIBDIR = join(ROOTDIR, 'lib')
 sys.path.insert(0, LIBDIR)
 
+# assure that directories that are not part of the
+# repository exist
+from os import makedirs, chown
+from os.path import exists
+VARDIR = join(ROOTDIR, 'var')
+# var/run
+RUNDIR = join(VARDIR, 'run')
+if not exists(RUNDIR):
+    makedirs(RUNDIR)
+chown(RUNDIR, UID, 0)
+# var/log/taled
+LOGDIR = join(VARDIR, 'log', 'taled')
+if not exists(LOGDIR):
+    makedirs(LOGDIR)
+chown(LOGDIR, UID, 0)
+
 # double fork, divorce session, write pid file, deescalate user privs
 from daemon import daemon
 @daemon(
-    user = 'www-data',
-    pidfile = join(ROOTDIR, 'var', 'run', 'taled.pid'),
-    logfile = join(ROOTDIR, 'var', 'log', 'taled', 'status.log'),
-    errorfile = join(ROOTDIR, 'var', 'log', 'taled', 'error.log'),
+    user = USER,
+    pidfile = join(RUNDIR, 'taled.pid'),
+    logfile = join(LOGDIR, 'status.log'),
+    errorfile = join(LOGDIR, 'error.log'),
 )
 def daemonized():
     # run the daemon
