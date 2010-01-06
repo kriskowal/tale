@@ -1,0 +1,3 @@
+[submodule "lib/planes"]
+	path = lib/planes
+	url = git://github.com/kriskowal/planes.git
