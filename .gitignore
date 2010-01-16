@@ -1,4 +1,5 @@
 *.pyc
+*.png
 /var
 /music/.dropbox
 /music/Icon*
