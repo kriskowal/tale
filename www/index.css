@@ -91,7 +91,7 @@
 
     /* menus */
 
-        .menuBar {
+        .menu {
             text-align: center;
         }
 
@@ -157,22 +157,22 @@
 
     /* commands */
 
-        #commandBar {
+        #command-bar {
             border: none;
             border-spacing: 0;
             margin: 0;
         }
 
-        #commandBar * {
+        #command-bar * {
             border: none;
         }
 
-        #commandBar td.B {
+        #command-bar td.B {
             width: 100%;
             padding: 0 1ex;
         }
 
-        #commandBar td.B input {
+        #command-bar td.B input {
             width: 100%;
             font-size: 1em;
             font-family: Consolas, monospace;
@@ -186,7 +186,7 @@
         #prompt {
         }
 
-        #commandLine {
+        #command-line {
             width: 100%;
         }
 

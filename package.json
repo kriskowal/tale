@@ -1,0 +1,15 @@
+{
+    "name": "tale.gg",
+    "version": "0.0.0",
+    "author": {
+        "name": "Kris Kowal",
+        "email": "kris@cixar.com",
+        "web": "http://askawizard.blogspot.com"
+    },
+    "dependencies": {
+        "jaque": "0.0.0",
+        "narwhal-lib": "0.4.0+",
+        "node-narwhal": "0.0.0+",
+        "node": "0.1.92"
+    }
+}
