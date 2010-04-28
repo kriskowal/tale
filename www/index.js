@@ -5,38 +5,54 @@
     function setup() {
         $.get("command.frag.html", function (frag) {
             $(frag).insertAfter($("#buffer"));
+            $(document).scrollTop($(document).scrollTop() + 1000);
             prompt = $("#prompt");
             commandLine = $("#command-line");
             commandLine.focus();
             form = $("#command-form");
             form.submit(function () {
-                $.post("broadcast/", encodeURIComponent(commandLine.val()));
+                $.post(
+                    "session/" + sessionId,
+                    encodeURIComponent(commandLine.val())
+                );
                 commandLine.val("").focus();
-                document.documentElement.style.scrollTop = "100%";
                 return false;
             });
-            poll();
+            $.get("session/", function (session) {
+                sessionId = JSON.parse(session).id;
+                poll();
+            });
         });
     }
 
+    var sessionId = "";
     function poll() {
-        $.get("session/", function (data) {
-            if (data !== undefined) {
-                before();
-                $("#buffer").append("<p>" + data + "</p>");
-                after();
+        $.ajax({
+            "url": "session/" + sessionId,
+            "success": function (data) {
+                if (data !== undefined) {
+                    var messages = JSON.parse(data);
+                    before();
+                    $.each(messages, function (i, message) {
+                        $("#buffer").append("<p>" + message.message + "</p>");
+                    });
+                    after();
+                }
+                poll();
             }
-            poll();
         });
     }
 
     var wasBottom = true;
     var tolerance = 10;
     function before() {
-        var before = $(document).scrollTop();
-        $(document).scrollTop(before + 1);
-        var after = $(document).scrollTop();
-        wasBottom = before === after;
+        var at = $(document).scrollTop();
+        $(document).scrollTop(at + 1);
+        var below = $(document).scrollTop();
+        $(document).scrollTop(at - 1);
+        var above = $(document).scrollTop();
+        $(document).scrollTop(at);
+        wasBottom = at === below && at !== above;
     }
 
     function after() {
